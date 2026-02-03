@@ -3,10 +3,13 @@ import static edu.wpi.first.units.Units.Volts;
 import com.ctre.phoenix6.SignalLogger;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.Follower;
+import com.ctre.phoenix6.controls.MotionMagicVelocityVoltage;
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.MotorAlignmentValue;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,9 +17,10 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase{
-private final TalonFX shooterMotor = new TalonFX(ShooterConstants.shooterMotorID);
-private final TalonFX shooterMotor1 = new TalonFX(ShooterConstants.shooterMotor1ID);
+private final TalonFX shooterMotorRight = new TalonFX(ShooterConstants.shooterMotorRightID);
+private final TalonFX shooterMotorLeft = new TalonFX(ShooterConstants.shooterMotorLeftID);
 private final double shooterMotorSpeed = 0;
+//private final SendableChooser<Double> shooterSpeedChooser;
 
 private final VoltageOut m_voltReq = new VoltageOut(0.0);
 
@@ -30,7 +34,7 @@ private final SysIdRoutine m_sysIdRoutine =
          (state) -> SignalLogger.writeString("state", state.toString())
       ),
       new SysIdRoutine.Mechanism(
-         (volts) -> shooterMotor.setControl(m_voltReq.withOutput(volts.in(Volts))),
+         (volts) -> shooterMotorLeft.setControl(m_voltReq.withOutput(volts.in(Volts))),
          null,
          this
       )
@@ -38,10 +42,13 @@ private final SysIdRoutine m_sysIdRoutine =
 
 public ShooterSubsystem() {   
 
-shooterMotor1.setControl(new Follower(shooterMotor.getDeviceID(), MotorAlignmentValue.Opposed));
+shooterMotorLeft.setControl(new Follower(shooterMotorRight.getDeviceID(), MotorAlignmentValue.Opposed));
 
 // in init function
 var talonFXConfigs = new TalonFXConfiguration();
+    talonFXConfigs.CurrentLimits.StatorCurrentLimit = 80;
+    talonFXConfigs.CurrentLimits.SupplyCurrentLimit = 40;
+    talonFXConfigs.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
 // set slot 0 gains
 var slot0Configs = talonFXConfigs.Slot0;
@@ -57,15 +64,18 @@ var motionMagicConfigs = talonFXConfigs.MotionMagic;
 motionMagicConfigs.MotionMagicAcceleration = 400; // Target acceleration of 400 rps/s (0.25 seconds to max)
 motionMagicConfigs.MotionMagicJerk = 4000; // Target jerk of 4000 rps/s/s (0.1 seconds)
 
-shooterMotor.getConfigurator().apply(talonFXConfigs);
+shooterMotorLeft.getConfigurator().apply(talonFXConfigs);
+
+ SmartDashboard.putNumber("shooterMotorSpeed",0);
 }
 
 @Override
 public void periodic() {
-
-    SmartDashboard.putNumber("shooterMotorSpeed",shooterMotorSpeed);
+   
+double speed = SmartDashboard.getNumber("shooterMotorSpeed", 0.0);
     
-    shooterMotor.set(shooterMotorSpeed);
+    System.out.println("shooterMotorSpeed"+speed);
+    shooterMotorLeft.set(speed);
 }
 
 public Command sysIdQuasistatic(SysIdRoutine.Direction direction) {
@@ -74,6 +84,11 @@ public Command sysIdQuasistatic(SysIdRoutine.Direction direction) {
 
 public Command sysIdDynamic(SysIdRoutine.Direction direction) {
    return m_sysIdRoutine.dynamic(direction);
+}
+
+public void setShooterVelocity(double velocity){
+   final MotionMagicVelocityVoltage m_request = new MotionMagicVelocityVoltage(0);
+   shooterMotorLeft.setControl(m_request.withVelocity(velocity));
 }
 
 }

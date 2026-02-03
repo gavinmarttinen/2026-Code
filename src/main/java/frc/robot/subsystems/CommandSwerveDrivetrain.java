@@ -17,6 +17,7 @@ import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 
 import edu.wpi.first.math.Matrix;
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
@@ -29,6 +30,7 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
+import frc.robot.LimelightHelpers;
 import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
 
 /**
@@ -262,6 +264,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
 
     @Override
     public void periodic() {
+       // updateOdometry();
         /*
          * Periodically try to apply the operator perspective.
          * If we haven't applied the operator perspective before, then we should apply it regardless of DS state.
@@ -339,5 +342,39 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     @Override
     public Optional<Pose2d> samplePoseAt(double timestampSeconds) {
         return super.samplePoseAt(Utils.fpgaToCurrentTime(timestampSeconds));
+    }
+
+    public void updateOdometry(){
+        LimelightHelpers.SetRobotOrientation("limelight-threeG", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
+        LimelightHelpers.SetRobotOrientation("limelight-four", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
+        LimelightHelpers.PoseEstimate mt2LL3G = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-threeG");
+        LimelightHelpers.PoseEstimate mt2LL4 = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-four");
+
+        boolean doRejectUpdateLL3G = false;
+        boolean doRejectUpdateLL4 = false;
+
+    if(Math.abs(getState().Speeds.omegaRadiansPerSecond) > 360){
+        doRejectUpdateLL3G = true;
+        doRejectUpdateLL4 = true;
+    }
+    if(mt2LL3G != null){
+    if(mt2LL3G.tagCount == 0){
+        doRejectUpdateLL3G = true;
+    }
+   
+    if(!doRejectUpdateLL3G){
+        super.setStateStdDevs(VecBuilder.fill(.7,.7,9999));
+        super.addVisionMeasurement(mt2LL3G.pose, mt2LL3G.timestampSeconds);
+    }
+}
+    if(mt2LL4 != null){
+     if(mt2LL4.tagCount == 0){
+        doRejectUpdateLL4 = true;
+    }
+    if(!doRejectUpdateLL4){
+        super.setStateStdDevs(VecBuilder.fill(.7,.7,9999));
+        super.addVisionMeasurement(mt2LL4.pose, mt2LL4.timestampSeconds);
+    }
+}
     }
 }
