@@ -28,26 +28,11 @@ public class SpindexSubsystem extends SubsystemBase {
 
 @Override
 public void periodic(){
-    //SmartDashboard.putNumber("Spindex Current", getSpindexCurrent());
 }
 
 public void setSpindexSpeed(double spindexMotorSpeed, double kickerMotorSpeed){
-    // if(getSpindexCurrent()>SpindexConstants.spindexCurrentLimit){
-    //     spindexTimer.start();
-      
-        
-    // }
-    //  if(spindexTimer.get()<SpindexConstants.spindexTimer&&spindexTimer.isRunning()){
-    //     stopSpindex();
-    //    // reverseSpindex();
-    // }
-
-    // else{
      spindexMotor.set(spindexMotorSpeed);
      kickerMotor.set(kickerMotorSpeed);
-    //spindexTimer.stop();
-    //spindexTimer.reset();
-//}
 }
 
 public void stopSpindex(){
@@ -55,11 +40,12 @@ public void stopSpindex(){
     kickerMotor.set(0);
 }
 
-// public double getSpindexCurrent(){
-//     return spindexMotor.getSupplyCurrent().getValueAsDouble();
-// }
-
 public void reverseSpindex(){
    spindexMotor.set(SpindexConstants.spindexReverseSpeed);
+}
+
+public void reverseKickerStopSpindex(){
+    kickerMotor.set(SpindexConstants.kickerMotorReverseSpeed);
+    spindexMotor.set(0);
 }
 }

@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 
 import com.ctre.phoenix6.SignalLogger;
 import com.ctre.phoenix6.Utils;
+import com.ctre.phoenix6.swerve.SwerveDrivetrain;
 import com.ctre.phoenix6.swerve.SwerveDrivetrainConstants;
 import com.ctre.phoenix6.swerve.SwerveModuleConstants;
 import com.ctre.phoenix6.swerve.SwerveRequest;
@@ -18,19 +19,26 @@ import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
+import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.LimelightHelpers;
+import frc.robot.Constants.FieldConstants;
 import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
 
 /**
@@ -41,9 +49,14 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
  * https://v6.docs.ctr-electronics.com/en/stable/docs/tuner/tuner-swerve/index.html
  */
     public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Subsystem {
+    boolean useMegaTag2 = true; //set to false to use MegaTag1
     private static final double kSimLoopPeriod = 0.004; // 4 ms
     private Notifier m_simNotifier = null;
     private double m_lastSimTime;
+    private boolean blue = false;
+    Optional<DriverStation.Alliance> alliance = DriverStation.getAlliance();
+    Field2d m_field;
+    private final SwerveDrivePoseEstimator m_poseEstimator;
 
     /* Blue alliance sees forward as 0 degrees (toward red alliance wall) */
     private static final Rotation2d kBlueAlliancePerspectiveRotation = Rotation2d.kZero;
@@ -141,6 +154,8 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
             startSimThread();
         }
         configureAutoBuilder();
+        m_field = new Field2d();
+        m_poseEstimator = new SwerveDrivePoseEstimator(getKinematics(), getState().Pose.getRotation(), getState().ModulePositions, new Pose2d());
     }
 
     /**
@@ -166,6 +181,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
             startSimThread();
         }
         configureAutoBuilder();
+         m_poseEstimator = new SwerveDrivePoseEstimator(getKinematics(), getState().Pose.getRotation(), getState().ModulePositions, new Pose2d());
     }
 
     /**
@@ -199,6 +215,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
             startSimThread();
         }
         configureAutoBuilder();
+         m_poseEstimator = new SwerveDrivePoseEstimator(getKinematics(), getState().Pose.getRotation(), getState().ModulePositions, new Pose2d());
     }
 
     private void configureAutoBuilder() {
@@ -262,9 +279,30 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
         return m_sysIdRoutineToApply.dynamic(direction);
     }
 
+    public boolean isBlue(){
+        return blue;
+    }
+
     @Override
     public void periodic() {
-       // updateOdometry();
+        SmartDashboard.putNumber("front left current",getModule(0).getDriveMotor().getStatorCurrent().getValueAsDouble());
+         SmartDashboard.putNumber("front right current",getModule(1).getDriveMotor().getStatorCurrent().getValueAsDouble());
+          SmartDashboard.putNumber("back right current",getModule(2).getDriveMotor().getStatorCurrent().getValueAsDouble());
+           SmartDashboard.putNumber("back left current",getModule(3).getDriveMotor().getStatorCurrent().getValueAsDouble());
+           SmartDashboard.putNumber("Hub Distance", getHubDistance());
+        blue = alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Blue : false;
+System.out.println(getState().Pose.getRotation().getDegrees());
+        // if(DriverStation.isDisabled()){
+        //     useMegaTag2 = false;
+        // }
+        // else{
+        //     useMegaTag2 = true;
+        // }
+
+        SmartDashboard.putNumber("Steer Setpoint", 0);
+        updateOdometry();
+        m_field.setRobotPose(getState().Pose);
+         SmartDashboard.putData("FieldWithVision", m_field);
         /*
          * Periodically try to apply the operator perspective.
          * If we haven't applied the operator perspective before, then we should apply it regardless of DS state.
@@ -345,36 +383,111 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     }
 
     public void updateOdometry(){
-        LimelightHelpers.SetRobotOrientation("limelight-threeG", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
+        LimelightHelpers.SetRobotOrientation("limelight-three", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
         LimelightHelpers.SetRobotOrientation("limelight-four", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
-        LimelightHelpers.PoseEstimate mt2LL3G = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-threeG");
-        LimelightHelpers.PoseEstimate mt2LL4 = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-four");
+
+ m_poseEstimator.update(
+        getState().Pose.getRotation(),
+        getState().ModulePositions);
 
         boolean doRejectUpdateLL3G = false;
         boolean doRejectUpdateLL4 = false;
 
+       
+        boolean doRejectUpdate = false;
+
+    if(useMegaTag2 == false)
+    {
+      LimelightHelpers.PoseEstimate mt1LL3G = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-threeG");
+      LimelightHelpers.PoseEstimate mt1LL4 = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-four");
+     
+      if(mt1LL3G != null) {
+      if(mt1LL3G.tagCount == 1 && mt1LL3G.rawFiducials.length == 1)
+      {
+        if(mt1LL3G.rawFiducials[0].ambiguity > .7)
+        {
+          doRejectUpdate = true;
+        }
+        if(mt1LL3G.rawFiducials[0].distToCamera > 3)
+        {
+          doRejectUpdate = true;
+        }
+      }
+      if(mt1LL3G.tagCount == 0)
+      {
+        doRejectUpdate = true;
+      }
+
+      if(!doRejectUpdate)
+      {
+        super.setStateStdDevs(VecBuilder.fill(.7,.7,0.7));
+        super.addVisionMeasurement(mt1LL3G.pose, mt1LL3G.timestampSeconds);
+      }
+    }
+      if(mt1LL4 != null){
+      if(mt1LL4.tagCount == 1 && mt1LL4.rawFiducials.length == 1)
+      {
+        if(mt1LL4.rawFiducials[0].ambiguity > .7)
+        {
+          doRejectUpdate = true;
+        }
+        if(mt1LL4.rawFiducials[0].distToCamera > 3)
+        {
+          doRejectUpdate = true;
+        }
+      }
+      if(mt1LL4.tagCount == 0)
+      {
+        doRejectUpdate = true;
+      }
+
+      if(!doRejectUpdate)
+      {
+        super.setStateStdDevs(VecBuilder.fill(.7,.7,0.7));
+        super.addVisionMeasurement(mt1LL4.pose, mt1LL4.timestampSeconds);
+      }
+    }
+    }
+
+    if (useMegaTag2 == true) {
+        LimelightHelpers.PoseEstimate mt2LL3G = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-three");
+        LimelightHelpers.PoseEstimate mt2LL4 = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-four");
+       if(mt2LL4 == null){System.out.println("LL4 is null" );}
     if(Math.abs(getState().Speeds.omegaRadiansPerSecond) > 360){
         doRejectUpdateLL3G = true;
         doRejectUpdateLL4 = true;
     }
     if(mt2LL3G != null){
-    if(mt2LL3G.tagCount == 0){
+    if(mt2LL3G.tagCount == 0||mt2LL3G.avgTagDist > 2.5){
         doRejectUpdateLL3G = true;
     }
    
     if(!doRejectUpdateLL3G){
-        super.setStateStdDevs(VecBuilder.fill(.7,.7,9999));
-        super.addVisionMeasurement(mt2LL3G.pose, mt2LL3G.timestampSeconds);
+        setStateStdDevs(VecBuilder.fill(.7,.7,99999999));
+        addVisionMeasurement(mt2LL3G.pose, mt2LL3G.timestampSeconds);
     }
 }
     if(mt2LL4 != null){
-     if(mt2LL4.tagCount == 0){
+     if(mt2LL4.tagCount == 0 || mt2LL4.avgTagDist > 2.5){
         doRejectUpdateLL4 = true;
     }
     if(!doRejectUpdateLL4){
-        super.setStateStdDevs(VecBuilder.fill(.7,.7,9999));
-        super.addVisionMeasurement(mt2LL4.pose, mt2LL4.timestampSeconds);
+       // m_poseEstimator.setVisionMeasurementStdDevs(VecBuilder.fill(0.5,0.5,9999));
+        //m_poseEstimator.addVisionMeasurement(mt2LL4.pose, mt2LL4.timestampSeconds);
+        setVisionMeasurementStdDevs(VecBuilder.fill(0.7,0.7,99999999));
+        addVisionMeasurement(mt2LL4.pose, mt2LL4.timestampSeconds);
+        System.out.println("adding vision measurement!");
     }
 }
     }
+}
+public Pose2d getVisionPose(){
+    return m_poseEstimator.getEstimatedPosition();
+}
+
+public double getHubDistance(){
+     Pose2d robotPose = getState().Pose;
+     Translation2d goalPosition = blue?FieldConstants.blueHub:FieldConstants.redHub;
+     return robotPose.getTranslation().getDistance(goalPosition);
+}
 }

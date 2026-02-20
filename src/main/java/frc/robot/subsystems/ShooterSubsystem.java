@@ -20,7 +20,6 @@ public class ShooterSubsystem extends SubsystemBase{
 private final TalonFX shooterMotorRight = new TalonFX(ShooterConstants.shooterMotorRightID);
 private final TalonFX shooterMotorLeft = new TalonFX(ShooterConstants.shooterMotorLeftID);
 private final double shooterMotorSpeed = 0;
-//private final SendableChooser<Double> shooterSpeedChooser;
 
 private final VoltageOut m_voltReq = new VoltageOut(0.0);
 
@@ -66,16 +65,17 @@ motionMagicConfigs.MotionMagicJerk = 4000; // Target jerk of 4000 rps/s/s (0.1 s
 
 shooterMotorLeft.getConfigurator().apply(talonFXConfigs);
 
- SmartDashboard.putNumber("shooterMotorSpeed",0);
+ SmartDashboard.putNumber("Shooter Motor Speed",0);
 }
 
 @Override
 public void periodic() {
    
-double speed = SmartDashboard.getNumber("shooterMotorSpeed", 0.0);
-    
-    System.out.println("shooterMotorSpeed"+speed);
-    shooterMotorLeft.set(speed);
+// double speed = SmartDashboard.getNumber("shooterMotorSpeed", 0.0);
+//     shooterMotorLeft.set(speed);
+
+ SmartDashboard.putNumber("Actual Velocity", shooterMotorLeft.getVelocity().getValueAsDouble());
+ SmartDashboard.putNumber("Velocity Setpoint", shooterMotorLeft.getClosedLoopReference().getValueAsDouble());
 }
 
 public Command sysIdQuasistatic(SysIdRoutine.Direction direction) {
@@ -86,9 +86,9 @@ public Command sysIdDynamic(SysIdRoutine.Direction direction) {
    return m_sysIdRoutine.dynamic(direction);
 }
 
-public void setShooterVelocity(double velocity){
+public void setShooterVelocity(){
    final MotionMagicVelocityVoltage m_request = new MotionMagicVelocityVoltage(0);
-   shooterMotorLeft.setControl(m_request.withVelocity(velocity));
+   shooterMotorLeft.setControl(m_request.withVelocity(ShooterConstants.shooterMotorVelocity));
 }
 
 }

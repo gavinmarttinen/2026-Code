@@ -7,8 +7,12 @@ package frc.robot;
 import static edu.wpi.first.units.Units.*;
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
+import com.pathplanner.lib.auto.AutoBuilder;
+
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
@@ -28,6 +32,8 @@ import frc.robot.subsystems.TurretSubsystem;
 
 public class RobotContainer {
 
+    private final SendableChooser<Command> autoChooser;
+
     private final CommandPS5Controller driverController = new CommandPS5Controller(0);
     private final CommandPS5Controller operatorController = new CommandPS5Controller(1);
 
@@ -36,7 +42,6 @@ public class RobotContainer {
     private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
     private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
     private final TurretSubsystem turretSubsystem = new TurretSubsystem();
-    private final HoodSubsystem hoodSubsystem = new HoodSubsystem();
 
 
     private double MaxSpeed = 1.0 * TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
@@ -51,12 +56,14 @@ public class RobotContainer {
 
     private final Telemetry logger = new Telemetry(MaxSpeed);
 
-   
-
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
+    private final AutoAim autoAim = new AutoAim(drivetrain);
+    private final HoodSubsystem hoodSubsystem = new HoodSubsystem(autoAim);
 
     public RobotContainer() {
         configureBindings();
+        autoChooser = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("Auto Chooser", autoChooser);
     }
 
     private void configureBindings() {
@@ -77,10 +84,13 @@ public class RobotContainer {
         RobotModeTriggers.disabled().whileTrue(
             drivetrain.applyRequest(() -> idle).ignoringDisable(true)
         );
-        turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretSpeed(MathUtil.applyDeadband(operatorController.getLeftY(),0.05)), turretSubsystem));
+     //turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretVoltage(operatorController.getLeftX()), turretSubsystem));
+        //turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(50),turretSubsystem));
+        turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.stopTurretMotor(), turretSubsystem));
         climberSubsystem.setDefaultCommand(Commands.run(()->climberSubsystem.setClimberSpeed(0), climberSubsystem));
-        spindexSubsystem.setDefaultCommand(Commands.run(()->spindexSubsystem.stopSpindex(),spindexSubsystem));
+        spindexSubsystem.setDefaultCommand(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(),spindexSubsystem));
         intakeSubsystem.setDefaultCommand(Commands.run(()->intakeSubsystem.setIntakeSpeed(0), intakeSubsystem));
+        hoodSubsystem.setDefaultCommand(Commands.run(()->hoodSubsystem.setHoodPosition(), hoodSubsystem));
 
        // joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
        // joystick.b().whileTrue(drivetrain.applyRequest(() ->
@@ -101,26 +111,14 @@ public class RobotContainer {
         operatorController.L2().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed), intakeSubsystem));
         operatorController.R2().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed1), intakeSubsystem));
         operatorController.L1().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(IntakeConstants.intakeMotorSpeed), intakeSubsystem));
-       // operatorController.L1().whileTrue(Commands.run(()-> hoodSubsystem.setPosition(100), hoodSubsystem));
+        operatorController.R1().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeedWithCurrent(), intakeSubsystem));
+        operatorController.triangle().whileTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity()));
+        operatorController.cross().whileTrue(Commands.run(()->turretSubsystem.setTurretPosition(4.5),turretSubsystem));
+        //operatorController.circle().whileTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity(100)));
         drivetrain.registerTelemetry(logger::telemeterize);
     }
     
     public Command getAutonomousCommand() {
-        // Simple drive forward auton
-        final var idle = new SwerveRequest.Idle();
-        return Commands.sequence(
-            // Reset our field centric heading to match the robot
-            // facing away from our alliance station wall (0 deg).
-            drivetrain.runOnce(() -> drivetrain.seedFieldCentric(Rotation2d.kZero)),
-            // Then slowly drive forward (away from us) for 5 seconds.
-            drivetrain.applyRequest(() ->
-                drive.withVelocityX(0.5)
-                    .withVelocityY(0)
-                    .withRotationalRate(0)
-            )
-            .withTimeout(5.0),
-            // Finally idle for the rest of auton
-            drivetrain.applyRequest(() -> idle)
-        );
+          return autoChooser.getSelected();
     }
 }

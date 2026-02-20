@@ -1,8 +1,16 @@
 {
-  "robotWidth": 0.9906,
+  "robotWidth": 0.991,
   "robotLength": 0.75565,
   "holonomicMode": true,
-  "pathFolders": [],
+  "pathFolders": [
+    "Trench-L Disrupt",
+    "Trench-L Neutral Neutral",
+    "Trench-L Preload Neutral Climb",
+    "Trench-R Disrupt",
+    "Trench-R Neutral Neutral",
+    "Trench-R Pass",
+    "Trench-R Preload Neutral Climb"
+  ],
   "autoFolders": [],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,

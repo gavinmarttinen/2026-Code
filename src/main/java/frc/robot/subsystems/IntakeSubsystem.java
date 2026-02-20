@@ -27,8 +27,6 @@ public void periodic() {
    
 double speed = SmartDashboard.getNumber("intakeMotorSpeed", 0.0);
 SmartDashboard.putNumber("Intake Current", getIntakeCurrent());
-    
-    System.out.println("intakeMotorSpeed"+speed);
    // intakeMotor.set(speed);
 }
 
@@ -40,5 +38,8 @@ public void setIntakeSpeed (double speed){
     intakeMotor.set(speed);
 }
 
+public void setIntakeSpeedWithCurrent(){
+    intakeMotor.set(0.02*Math.pow(getIntakeCurrent(), 2) - 0.04*getIntakeCurrent() + 0.7);
+}
 
 }

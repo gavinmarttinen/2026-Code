@@ -10,6 +10,7 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
@@ -22,12 +23,15 @@ import frc.robot.Constants.TurretConstants;
 
 public class TurretSubsystem extends SubsystemBase {
 private final TalonFX turretMotor = new TalonFX(TurretConstants.turretMotorID);
+double turretDeg;
 
-AnalogInput m_input = new AnalogInput(1);
+//double fullRange = 0;
 
-AnalogPotentiometer potentiometer = new AnalogPotentiometer(m_input,180,-90);
+AnalogPotentiometer potentiometer = new AnalogPotentiometer(3,-581,581);
     
 public TurretSubsystem(){
+
+SmartDashboard.putNumber("Full Range", 0);
 
 var talonFXConfigs = new TalonFXConfiguration();
 talonFXConfigs.CurrentLimits.StatorCurrentLimit = 60;
@@ -35,50 +39,73 @@ talonFXConfigs.CurrentLimits.SupplyCurrentLimit = 30;
 talonFXConfigs.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
 var slot0Configs = talonFXConfigs.Slot0;
-slot0Configs.kS = ShooterConstants.kS;
-slot0Configs.kV = ShooterConstants.kV;
-slot0Configs.kA = ShooterConstants.kA;
-slot0Configs.kP = ShooterConstants.kP;
-slot0Configs.kI = ShooterConstants.kI;
-slot0Configs.kD = ShooterConstants.kD;
+slot0Configs.kS = TurretConstants.kS;
+slot0Configs.kV = TurretConstants.kV;
+slot0Configs.kA = TurretConstants.kA;
+slot0Configs.kP = TurretConstants.kP;
+slot0Configs.kI = TurretConstants.kI;
+slot0Configs.kD = TurretConstants.kD;
 
 var motionMagicConfigs = talonFXConfigs.MotionMagic;
+motionMagicConfigs.MotionMagicCruiseVelocity = 80;
 motionMagicConfigs.MotionMagicAcceleration = 400;
-motionMagicConfigs.MotionMagicJerk = 4000;
+motionMagicConfigs.MotionMagicJerk = 1600;
 
-talonFXConfigs.SoftwareLimitSwitch.ForwardSoftLimitEnable = true;
-talonFXConfigs.SoftwareLimitSwitch.ReverseSoftLimitEnable = true;
+talonFXConfigs.SoftwareLimitSwitch.ForwardSoftLimitEnable = false;
+talonFXConfigs.SoftwareLimitSwitch.ReverseSoftLimitEnable = false;
 
-talonFXConfigs.SoftwareLimitSwitch.ForwardSoftLimitThreshold = TurretConstants.turretMaximumRotation;
-talonFXConfigs.SoftwareLimitSwitch.ReverseSoftLimitThreshold = TurretConstants.turretMinimumRotation;
+//talonFXConfigs.SoftwareLimitSwitch.ForwardSoftLimitThreshold = TurretConstants.turretMaximumRotation;
+//talonFXConfigs.SoftwareLimitSwitch.ReverseSoftLimitThreshold = TurretConstants.turretMinimumRotation;
 turretMotor.getConfigurator().apply(talonFXConfigs);
-zeroFromPotentiometer();
+//zeroFromPotentiometer();
 boolean potentiometerConnected = potentiometer.get()==-90 ? false : true;
 SmartDashboard.putBoolean("Potentiometer Connected", potentiometerConnected);
 }
 
+
 @Override
 public void periodic(){
+    SmartDashboard.putNumber("pot value", potentiometer.get());
+    SmartDashboard.putNumber("turret motor position", turretMotor.getPosition().getValueAsDouble());
+    turretDeg = turretMotor.getPosition().getValueAsDouble()*TurretConstants.gearRatio*TurretConstants.degreesPerRev;
+    SmartDashboard.putNumber("turret Degrees", turretDeg);
+    //fullRange = SmartDashboard.getNumber("Full Range", 0);
+
 }
 
-private double clampTurretRotation(double targetRotations) {
-    MathUtil.clamp(targetRotations, TurretConstants.turretMinimumRotation, TurretConstants.turretMaximumRotation);
-    return targetRotations;
+private double clampTurretRotation(double degrees) {
+    MathUtil.clamp(degrees, TurretConstants.turretMinimumRotation, TurretConstants.turretMaximumRotation);
+    return degrees;
 }
 
 private void zeroFromPotentiometer(){
-    double turretDeg = potentiometer.get();
-    turretDeg = MathUtil.clamp(turretDeg, TurretConstants.turretMinimumRotation, TurretConstants.turretMaximumRotation);
-    turretMotor.setPosition(Units.degreesToRotations(turretDeg));
+    turretMotor.setPosition(potentiometer.get()/360 * 5.33);
 }
 
-public void setTurretPosition(double position){
+public void setTurretPosition(double degrees){
     final MotionMagicVoltage m_request = new MotionMagicVoltage(0);
-    double clampedSetpoint = clampTurretRotation(position);
-    turretMotor.setControl(m_request.withPosition(Units.degreesToRotations(clampedSetpoint)));
+    //double clampedSetpoint = clampTurretRotation(degreesToRotations(degrees));
+    turretMotor.setControl(m_request.withPosition(degrees));
+}
+
+public double degreesToRotations(double degrees){
+    return degrees/360 * 5.33;
+}
+
+public double getTurretDegrees(){
+    turretDeg = turretMotor.getPosition().getValueAsDouble()*TurretConstants.gearRatio*TurretConstants.degreesPerRev;
+    return turretDeg;
 }
 
 public void setTurretSpeed(double speed){
     turretMotor.set(speed);
+}
+
+public void setTurretVoltage(double volts){
+    turretMotor.setVoltage(volts);
+}
+
+public void stopTurretMotor(){
+    turretMotor.stopMotor();
 }
 }
