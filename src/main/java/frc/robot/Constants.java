@@ -38,14 +38,14 @@ public class Constants {
     public static class TurretConstants{
         public static final int turretMotorID = 17;
         public static final int turretEncoderID = 1;
-        public static final double turretMinimumRotation = 204;
-        public static final double turretMaximumRotation = 359;
+        public static final double turretMinimumRotation = 0;
+        public static final double turretMaximumRotation = 125;
         public static final double kS = 0.22;
-        public static final double kV = 0.1265;
+        public static final double kV = 0.126;
         public static final double kA = 0.0;
-        public static final double kP = 0.0;
+        public static final double kP = 0.75;
         public static final double kI = 0;
-        public static final double kD = 0.0;
+        public static final double kD = 0.1;
         public static final double gearRatio = 0.1875;
         public static final double degreesPerRev = 360;
     }

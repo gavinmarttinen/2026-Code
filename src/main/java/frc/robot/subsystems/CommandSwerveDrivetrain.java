@@ -21,6 +21,7 @@ import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rectangle2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
@@ -290,8 +291,10 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
           SmartDashboard.putNumber("back right current",getModule(2).getDriveMotor().getStatorCurrent().getValueAsDouble());
            SmartDashboard.putNumber("back left current",getModule(3).getDriveMotor().getStatorCurrent().getValueAsDouble());
            SmartDashboard.putNumber("Hub Distance", getHubDistance());
+        SmartDashboard.putNumber("Swerve Rotation", getState().Pose.getRotation().getDegrees());
         blue = alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Blue : false;
-System.out.println(getState().Pose.getRotation().getDegrees());
+        System.out.println(blue);
+//System.out.println(getState().Pose.getRotation().getDegrees());
         // if(DriverStation.isDisabled()){
         //     useMegaTag2 = false;
         // }
@@ -490,4 +493,39 @@ public double getHubDistance(){
      Translation2d goalPosition = blue?FieldConstants.blueHub:FieldConstants.redHub;
      return robotPose.getTranslation().getDistance(goalPosition);
 }
+
+// public Translation2d getGoalPose(){
+//    // Rectangle2d leftTrench = new Rectangle2d(new Translation2d(), new Translation2d());
+//    // Rectangle2d rightTrench = new Rectangle2d(new Translation2d(), new Translation2d());
+//     Rectangle2d allianceZone = new Rectangle2d(new Translation2d(), new Translation2d());
+//     Rectangle2d leftNeutral = new Rectangle2d(new Translation2d(), new Translation2d());
+//     Rectangle2d rightNeutral = new Rectangle2d(new Translation2d(), new Translation2d());
+//     Rectangle2d opponentZone = new Rectangle2d(new Translation2d(), new Translation2d());
+
+//     Translation2d robotPose = getState().Pose.getTranslation();
+
+//     if(leftTrench.contains(robotPose)){
+//         return "leftTrench";
+//     }
+//     else if(rightTrench.contains(robotPose)){
+//         return "rightTrench";
+//     }
+//     else if(allianceZone.contains(robotPose)){
+//         return "allianceZone";
+//     }
+//     else if(leftNeutral.contains(robotPose)){
+//         return "leftNeutral";
+//     }
+//     else if(rightNeutral.contains(robotPose)){
+//         return "rightNeutral";
+//     }
+//     else if(opponentZone.contains(robotPose)){
+//         return "opponenetZone";
+//     }
+
+//     else{
+//         return "";
+//     }
+
+//}
 }

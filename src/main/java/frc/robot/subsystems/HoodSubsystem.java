@@ -33,6 +33,9 @@ private AutoAim autoAim;
  // leftServo.setPosition(SmartDashboard.getNumber("Hood Position", 0));
   //rightServo.setPosition(SmartDashboard.getNumber("Hood Position", 0));
   SmartDashboard.putNumber("AutoAim hub distance", autoAim.getHubDistance());
+  SmartDashboard.putNumber("AutoAim hub rotation", autoAim.getHubRotation().getDegrees());
+  SmartDashboard.putNumber("goal pose X", autoAim.goalPositionWithTOF().getX());
+    SmartDashboard.putNumber("goal pose Y", autoAim.goalPositionWithTOF().getY());
  }
 
  public void setHoodPosition(){

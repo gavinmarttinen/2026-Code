@@ -84,13 +84,16 @@ public class RobotContainer {
         RobotModeTriggers.disabled().whileTrue(
             drivetrain.applyRequest(() -> idle).ignoringDisable(true)
         );
-     //turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretVoltage(operatorController.getLeftX()), turretSubsystem));
+      //  turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretSpeed(operatorController.getLeftX()), turretSubsystem));
         //turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(50),turretSubsystem));
-        turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.stopTurretMotor(), turretSubsystem));
+        //turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.stopTurretMotor(), turretSubsystem));
+        turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(autoAim.getHubRotation().getDegrees() - drivetrain.getState().Pose.getRotation().getDegrees()), turretSubsystem));
         climberSubsystem.setDefaultCommand(Commands.run(()->climberSubsystem.setClimberSpeed(0), climberSubsystem));
         spindexSubsystem.setDefaultCommand(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(),spindexSubsystem));
         intakeSubsystem.setDefaultCommand(Commands.run(()->intakeSubsystem.setIntakeSpeed(0), intakeSubsystem));
         hoodSubsystem.setDefaultCommand(Commands.run(()->hoodSubsystem.setHoodPosition(), hoodSubsystem));
+
+
 
        // joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
        // joystick.b().whileTrue(drivetrain.applyRequest(() ->
@@ -108,12 +111,12 @@ public class RobotContainer {
         operatorController.povUp().whileTrue(Commands.run(()->climberSubsystem.setClimberSpeed(ClimberConstants.climberMotorSpeed), climberSubsystem));
         operatorController.povDown().whileTrue(Commands.run(()->climberSubsystem.setClimberSpeed(-ClimberConstants.climberMotorSpeed), climberSubsystem));
         operatorController.square().whileTrue(Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed, SpindexConstants.kickerMotorSpeed),spindexSubsystem));
-        operatorController.L2().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed), intakeSubsystem));
-        operatorController.R2().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed1), intakeSubsystem));
-        operatorController.L1().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(IntakeConstants.intakeMotorSpeed), intakeSubsystem));
+      //  operatorController.L2().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed), intakeSubsystem));
+       // operatorController.R2().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed1), intakeSubsystem));
+        //operatorController.L1().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(IntakeConstants.intakeMotorSpeed), intakeSubsystem));
         operatorController.R1().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeedWithCurrent(), intakeSubsystem));
         operatorController.triangle().whileTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity()));
-        operatorController.cross().whileTrue(Commands.run(()->turretSubsystem.setTurretPosition(4.5),turretSubsystem));
+        operatorController.cross().whileTrue(Commands.run(()->turretSubsystem.setTurretPosition(200),turretSubsystem));
         //operatorController.circle().whileTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity(100)));
         drivetrain.registerTelemetry(logger::telemeterize);
     }

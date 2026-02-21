@@ -27,7 +27,7 @@ public AutoAim(CommandSwerveDrivetrain drivetrain){
  timeOfFlightTable.put(3.55, 1.36);
  timeOfFlightTable.put(5.4, 1.11);
  this.drivetrain = drivetrain;
- allianceHub = drivetrain.isBlue() ? FieldConstants.blueHub:FieldConstants.redHub;
+
 }
 
 public double calculateHoodAngle(){
@@ -36,7 +36,7 @@ public double calculateHoodAngle(){
 }
 
 public Translation2d goalPositionWithTOF(){
-    
+     allianceHub = drivetrain.isBlue() ? FieldConstants.blueHub:FieldConstants.redHub;
     Pose2d robotPose = drivetrain.getState().Pose;
     //Pose2d turretPose = robotPose.transformBy(new Transform2d(-0.1,-0.2, new Rotation2d())).rotateAround(robotPose.getTranslation(), robotPose.getRotation());
     double distance = robotPose.getTranslation().getDistance(allianceHub);
@@ -49,7 +49,7 @@ public Translation2d goalPositionWithTOF(){
     Translation2d goalPoseWithTOF1 = allianceHub.minus(robotVelocity.times(TOF1));
     double goalDistance1 = robotPose.getTranslation().getDistance(goalPoseWithTOF1);
     double TOF2 = timeOfFlightTable.get(goalDistance1);
-    Translation2d goalPoseWithTOF2 = allianceHub.plus(robotVelocity.times(TOF2));
+    Translation2d goalPoseWithTOF2 = allianceHub.minus(robotVelocity.times(TOF2));
     return goalPoseWithTOF2;
 }
 
@@ -57,5 +57,12 @@ public double getHubDistance(){
     Pose2d robotPose = drivetrain.getState().Pose;
    // Pose2d turretPose = robotPose.transformBy(new Transform2d(-0.1,-0.2, new Rotation2d())).rotateAround(robotPose.getTranslation(), robotPose.getRotation());
     return robotPose.getTranslation().getDistance(goalPositionWithTOF());
+}
+
+public Rotation2d getHubRotation(){
+    Pose2d robotPose = drivetrain.getState().Pose;
+    Translation2d hub = goalPositionWithTOF();
+    Rotation2d setpoint = hub.minus(robotPose.getTranslation()).getAngle();
+    return setpoint;
 }
 }

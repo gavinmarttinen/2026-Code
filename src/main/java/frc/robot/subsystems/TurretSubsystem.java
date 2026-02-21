@@ -28,6 +28,7 @@ double turretDeg;
 //double fullRange = 0;
 
 AnalogPotentiometer potentiometer = new AnalogPotentiometer(3,-581,581);
+private double setpoint = 0;
     
 public TurretSubsystem(){
 
@@ -60,6 +61,7 @@ turretMotor.getConfigurator().apply(talonFXConfigs);
 //zeroFromPotentiometer();
 boolean potentiometerConnected = potentiometer.get()==-90 ? false : true;
 SmartDashboard.putBoolean("Potentiometer Connected", potentiometerConnected);
+turretMotor.setPosition(degreesToRotations(90));
 }
 
 
@@ -70,6 +72,8 @@ public void periodic(){
     turretDeg = turretMotor.getPosition().getValueAsDouble()*TurretConstants.gearRatio*TurretConstants.degreesPerRev;
     SmartDashboard.putNumber("turret Degrees", turretDeg);
     //fullRange = SmartDashboard.getNumber("Full Range", 0);
+    SmartDashboard.putNumber("clamped setpoint", setpoint);
+
 
 }
 
@@ -83,9 +87,20 @@ private void zeroFromPotentiometer(){
 }
 
 public void setTurretPosition(double degrees){
+    double min = TurretConstants.turretMinimumRotation;
+    double max = TurretConstants.turretMaximumRotation;
+    if(degrees < min){
+        setpoint = min;
+    }
+    else if(degrees > max){
+        setpoint = max;
+    }
+    else{
+        setpoint = degrees;
+    }
     final MotionMagicVoltage m_request = new MotionMagicVoltage(0);
-    //double clampedSetpoint = clampTurretRotation(degreesToRotations(degrees));
-    turretMotor.setControl(m_request.withPosition(degrees));
+    //double clampedSetpoint = clampTurretRotation(degrees);
+    turretMotor.setControl(m_request.withPosition(degreesToRotations(setpoint)));
 }
 
 public double degreesToRotations(double degrees){
