@@ -8,6 +8,7 @@ import static edu.wpi.first.units.Units.*;
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -15,11 +16,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.Constants.ClimberConstants;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ShooterConstants;
 import frc.robot.Constants.SpindexConstants;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.ClimberSubsystem;
@@ -62,6 +65,18 @@ public class RobotContainer {
 
     public RobotContainer() {
         configureBindings();
+
+        NamedCommands.registerCommand("Spin Up Shooter", Commands.run(()-> shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity), shooterSubsystem));
+        NamedCommands.registerCommand("Run Intake", Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed), intakeSubsystem));
+        NamedCommands.registerCommand("Right Trench Turret Position 1 Sec", new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(85),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem)).withTimeout(1));
+        NamedCommands.registerCommand("Right Trench Turret Position 0.5 Sec", new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(85),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem)).withTimeout(0.5));
+        NamedCommands.registerCommand("Left Trench Turret Position 1 Sec", new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(6),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem)).withTimeout(1));
+        NamedCommands.registerCommand("Left Trench Turret Position 0.5 Sec", new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(6),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem)).withTimeout(0.5));
+        NamedCommands.registerCommand("Run Spindex 7 Sec", Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed,SpindexConstants.kickerMotorSpeed), spindexSubsystem).withTimeout(7).andThen(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(), spindexSubsystem).withTimeout(0.1)));
+        NamedCommands.registerCommand("Run Spindex 3.5 Sec", Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed,SpindexConstants.kickerMotorSpeed), spindexSubsystem).withTimeout(3.5).andThen(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(), spindexSubsystem).withTimeout(0.1)));
+        NamedCommands.registerCommand("Run Spindex 2 Sec", Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed,SpindexConstants.kickerMotorSpeed), spindexSubsystem).withTimeout(2).andThen(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(), spindexSubsystem).withTimeout(0.1)));
+        NamedCommands.registerCommand("Stop Spindex", Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(), spindexSubsystem).withTimeout(0.1));
+        
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
     }
@@ -84,40 +99,54 @@ public class RobotContainer {
         RobotModeTriggers.disabled().whileTrue(
             drivetrain.applyRequest(() -> idle).ignoringDisable(true)
         );
-      //  turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretSpeed(operatorController.getLeftX()), turretSubsystem));
-        //turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(50),turretSubsystem));
+
+        //turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretSpeed(operatorController.getLeftX()), turretSubsystem));
         //turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.stopTurretMotor(), turretSubsystem));
-        turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(autoAim.getHubRotation().getDegrees() - drivetrain.getState().Pose.getRotation().getDegrees()), turretSubsystem));
+        turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(autoAim.getHubRotation() - drivetrain.getState().Pose.getRotation().getDegrees()), turretSubsystem));
         climberSubsystem.setDefaultCommand(Commands.run(()->climberSubsystem.setClimberSpeed(0), climberSubsystem));
         spindexSubsystem.setDefaultCommand(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(),spindexSubsystem));
         intakeSubsystem.setDefaultCommand(Commands.run(()->intakeSubsystem.setIntakeSpeed(0), intakeSubsystem));
         hoodSubsystem.setDefaultCommand(Commands.run(()->hoodSubsystem.setHoodPosition(), hoodSubsystem));
 
+        // driverController.button(15).onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
+        // driverController.R1().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(41),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.32), hoodSubsystem))); //Right Trench
+        // driverController.R2().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(85),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem))); //Right Deep
+        // driverController.L1().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(32),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.45), hoodSubsystem))); //Left Trench
+        // driverController.L2().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(96),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem))); //Left Deep
+        // driverController.button(12).whileTrue(Commands.run(()->turretSubsystem.setTurretPosition(90),turretSubsystem)); //Fix Turret
 
+        driverController.button(15).onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
+        //driverController.R1().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(41),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.32), hoodSubsystem))); //Right Trench
+        //driverController.L1().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(32),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.45), hoodSubsystem))); //Left Trench
+        driverController.L2().whileTrue(Commands.run(()->turretSubsystem.setTurretPosition(90),turretSubsystem)); //Fix Turret
+        driverController.R2().whileTrue(Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed, SpindexConstants.kickerMotorSpeed),spindexSubsystem));
 
-       // joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
-       // joystick.b().whileTrue(drivetrain.applyRequest(() ->
-        //    point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))
-        //));
-        // Run SysId routines when holding back/start and X/Y.
-        // Note that each routine should be run exactly once in a single log.
-       // joystick.back().and(joystick.y()).whileTrue(drivetrain.sysIdDynamic(Direction.kForward));
-       // joystick.back().and(joystick.x()).whileTrue(drivetrain.sysIdDynamic(Direction.kReverse));
-       // joystick.start().and(joystick.y()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kForward));
-       // joystick.start().and(joystick.x()).whileTrue(drivetrain.sysIdQuasistatic(Direction.kReverse));
+        // operatorController.povUp().whileTrue(Commands.run(()->climberSubsystem.setClimberSpeed(ClimberConstants.climberMotorSpeed), climberSubsystem));
+        // operatorController.povDown().whileTrue(Commands.run(()->climberSubsystem.setClimberSpeed(-ClimberConstants.climberMotorSpeed), climberSubsystem));
+        // operatorController.L2().whileTrue(Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed, SpindexConstants.kickerMotorSpeed),spindexSubsystem));
+        // operatorController.R1().toggleOnTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed), intakeSubsystem));
+        // operatorController.L1().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(IntakeConstants.intakeMotorSpeed), intakeSubsystem));
+        // operatorController.povLeft().onTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity)));
+        // operatorController.povRight().whileTrue(new ParallelCommandGroup(Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocityMax),shooterSubsystem),Commands.run(()->hoodSubsystem.setHood(1), hoodSubsystem))); //Far Pass
+        // operatorController.cross().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(90),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem))); //Tower
+        // operatorController.circle().whileTrue(Commands.run(()->turretSubsystem.setPosition(), turretSubsystem));
+        // operatorController.square().whileTrue(Commands.run(()->hoodSubsystem.setPosition(), hoodSubsystem));
+        //operatorController.cross().whileTrue(Commands.run(()->turretSubsystem.setTurretPosition(autoAim.getHubRotation() - drivetrain.convertSwerveRotation()), turretSubsystem));
 
-        // Reset the field-centric heading on left bumper press.
-        driverController.L1().onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
+        operatorController.R2().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(75),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem))); //Right Trench
+        operatorController.circle().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(41),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.32), hoodSubsystem))); //Right Deep
+        operatorController.L2().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(99),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem))); //Left Trench
+        operatorController.square().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(32),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.45), hoodSubsystem))); //Left Deep
         operatorController.povUp().whileTrue(Commands.run(()->climberSubsystem.setClimberSpeed(ClimberConstants.climberMotorSpeed), climberSubsystem));
         operatorController.povDown().whileTrue(Commands.run(()->climberSubsystem.setClimberSpeed(-ClimberConstants.climberMotorSpeed), climberSubsystem));
-        operatorController.square().whileTrue(Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed, SpindexConstants.kickerMotorSpeed),spindexSubsystem));
-      //  operatorController.L2().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed), intakeSubsystem));
-       // operatorController.R2().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed1), intakeSubsystem));
-        //operatorController.L1().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(IntakeConstants.intakeMotorSpeed), intakeSubsystem));
-        operatorController.R1().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeedWithCurrent(), intakeSubsystem));
-        operatorController.triangle().whileTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity()));
-        operatorController.cross().whileTrue(Commands.run(()->turretSubsystem.setTurretPosition(200),turretSubsystem));
-        //operatorController.circle().whileTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity(100)));
+        operatorController.L1().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(IntakeConstants.intakeMotorSpeed), intakeSubsystem));
+        operatorController.R1().toggleOnTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed), intakeSubsystem));
+        operatorController.povLeft().onTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity)));
+        operatorController.povRight().whileTrue(new ParallelCommandGroup(Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocityMax),shooterSubsystem),Commands.run(()->hoodSubsystem.setHood(1), hoodSubsystem))); //Far Pass
+        operatorController.cross().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(90),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem))); //Tower
+        operatorController.triangle().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(0),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.0), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocityHub), shooterSubsystem)));
+        //operatorController.circle().whileTrue(Commands.run(()->turretSubsystem.setPosition(), turretSubsystem));
+        // operatorController.square().whileTrue(Commands.run(()->hoodSubsystem.setPosition(), hoodSubsystem));
         drivetrain.registerTelemetry(logger::telemeterize);
     }
     

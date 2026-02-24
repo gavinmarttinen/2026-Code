@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.077644444444445,
-        "y": 0.558166666666666
+        "x": 3.966788888888889,
+        "y": 0.7395666666666658
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8806888888888902,
-        "y": 0.669022222222222
+        "x": 3.986944444444444,
+        "y": -0.08681111111111273
       },
       "isLocked": false,
-      "linkedName": "End of path 2"
+      "linkedName": "Right Trench Wall"
     },
     {
       "anchor": {
-        "x": 1.4775777777777777,
-        "y": 2.785355555555556
+        "x": 3.966788888888889,
+        "y": 0.7093333333333327
       },
       "prevControl": {
-        "x": 1.5380444444444443,
-        "y": 1.5961777777777788
+        "x": 3.9970222222222223,
+        "y": 1.0922888888888895
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of path 3"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": "Trench-R Preload Neutral Climb",
+  "folder": "Trench-R Preload Neutral",
   "idealStartingState": {
-    "velocity": 3.0,
-    "rotation": -90.0
+    "velocity": 0,
+    "rotation": 0.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

@@ -17,17 +17,19 @@ public IntakeSubsystem(){
 
     var talonFXConfigs = new TalonFXConfiguration();
     talonFXConfigs.CurrentLimits.StatorCurrentLimit = 60;
-    talonFXConfigs.CurrentLimits.SupplyCurrentLimit = 30;
+    talonFXConfigs.CurrentLimits.SupplyCurrentLimit = 50;
     talonFXConfigs.MotorOutput.NeutralMode = NeutralModeValue.Coast;
     intakeMotor.getConfigurator().apply(talonFXConfigs);
 }
 
 @Override
 public void periodic() {
+
+SmartDashboard.putNumber("intakeRPS", intakeMotor.getDifferentialAverageVelocity().getValueAsDouble());
    
 double speed = SmartDashboard.getNumber("intakeMotorSpeed", 0.0);
 SmartDashboard.putNumber("Intake Current", getIntakeCurrent());
-    intakeMotor.set(speed);
+  //  intakeMotor.set(speed);
 }
 
 public double getIntakeCurrent(){

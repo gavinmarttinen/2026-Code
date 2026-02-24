@@ -3,45 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.077644444444445,
-        "y": 0.558166666666666
+        "x": 1.326,
+        "y": 4.690055555550516
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.6470994717730365,
-        "y": 0.676754053921939
-      },
-      "isLocked": false,
-      "linkedName": "End of path 2"
-    },
-    {
-      "anchor": {
-        "x": 7.4523013048635836,
-        "y": 0.9524911032028467
-      },
-      "prevControl": {
-        "x": 7.130218455443346,
-        "y": 0.6454541499992528
-      },
-      "nextControl": {
-        "x": 7.747197704555787,
-        "y": 1.2336116044502328
+        "x": 1.07852711139164,
+        "y": 4.654598970776539
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.675411111106072,
-        "y": 3.5512666666717054
+        "x": 1.1,
+        "y": 4.69
       },
       "prevControl": {
-        "x": 7.649381743396534,
-        "y": 2.100000514255002
+        "x": 1.3497242108826892,
+        "y": 4.701739612387887
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of path 1"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -58,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": "Trench-R Preload Neutral Climb",
+  "folder": "Trench-L Preload Depot Climb",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

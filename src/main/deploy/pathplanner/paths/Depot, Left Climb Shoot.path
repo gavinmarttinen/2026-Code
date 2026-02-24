@@ -3,32 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.077644444444445,
-        "y": 0.558166666666666
+        "x": 0.4597222222233994,
+        "y": 5.909466666664213
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8806888888888902,
-        "y": 0.669022222222222
+        "x": 2.6768333333321466,
+        "y": 6.121100000000334
       },
       "isLocked": false,
-      "linkedName": "End of path 2"
+      "linkedName": "End Depot"
     },
     {
       "anchor": {
-        "x": 1.4775777777777777,
-        "y": 2.785355555555556
+        "x": 1.3264111111060723,
+        "y": 4.690055555550516
       },
       "prevControl": {
-        "x": 1.5380444444444443,
-        "y": 1.5961777777777788
+        "x": 2.0419333333321465,
+        "y": 5.042777777778112
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "End of path 3"
+      "linkedName": "Left Climb shooting"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.23157894736842333,
+      "rotationDegrees": 180.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -42,13 +47,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": "Trench-R Preload Neutral Climb",
+  "folder": "Trench-L Preload Depot Climb",
   "idealStartingState": {
-    "velocity": 3.0,
-    "rotation": -90.0
+    "velocity": 0,
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

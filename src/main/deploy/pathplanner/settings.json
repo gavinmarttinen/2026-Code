@@ -1,14 +1,13 @@
 {
-  "robotWidth": 0.991,
-  "robotLength": 0.75565,
+  "robotWidth": 0.98425,
+  "robotLength": 0.736,
   "holonomicMode": true,
   "pathFolders": [
+    "Trench-L Preload Depot Climb",
     "Trench-L Disrupt",
-    "Trench-L Neutral Neutral",
-    "Trench-L Preload Neutral Climb",
+    "Trench-L Preload Neutral",
     "Trench-R Disrupt",
-    "Trench-R Neutral Neutral",
-    "Trench-R Pass",
+    "Trench-R Preload Neutral",
     "Trench-R Preload Neutral Climb"
   ],
   "autoFolders": [],
@@ -17,7 +16,7 @@
   "defaultMaxAngVel": 540.0,
   "defaultMaxAngAccel": 720.0,
   "defaultNominalVoltage": 12.0,
-  "robotMass": 52.1631,
+  "robotMass": 65.77,
   "robotMOI": 6.883,
   "robotTrackwidth": 0.546,
   "driveWheelRadius": 0.051,

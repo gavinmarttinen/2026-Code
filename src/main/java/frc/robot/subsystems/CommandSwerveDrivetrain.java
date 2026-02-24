@@ -292,8 +292,10 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
            SmartDashboard.putNumber("back left current",getModule(3).getDriveMotor().getStatorCurrent().getValueAsDouble());
            SmartDashboard.putNumber("Hub Distance", getHubDistance());
         SmartDashboard.putNumber("Swerve Rotation", getState().Pose.getRotation().getDegrees());
+        SmartDashboard.putNumber("Converted Swerve Rotation", convertSwerveRotation());
         blue = alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Blue : false;
         System.out.println(blue);
+
 //System.out.println(getState().Pose.getRotation().getDegrees());
         // if(DriverStation.isDisabled()){
         //     useMegaTag2 = false;
@@ -323,6 +325,14 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
                 m_hasAppliedOperatorPerspective = true;
             });
         }
+    }
+
+    public double convertSwerveRotation(){
+        double robotRotation = getState().Pose.getRotation().getDegrees();
+        if(robotRotation < 0){
+            robotRotation += 360;
+        }
+        return robotRotation;
     }
 
     private void startSimThread() {
@@ -453,15 +463,15 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     }
 
     if (useMegaTag2 == true) {
-        LimelightHelpers.PoseEstimate mt2LL3G = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-three");
-        LimelightHelpers.PoseEstimate mt2LL4 = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-four");
+        LimelightHelpers.PoseEstimate mt2LL3G = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-three");
+        LimelightHelpers.PoseEstimate mt2LL4 = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-four");
        if(mt2LL4 == null){System.out.println("LL4 is null" );}
     if(Math.abs(getState().Speeds.omegaRadiansPerSecond) > 360){
         doRejectUpdateLL3G = true;
         doRejectUpdateLL4 = true;
     }
     if(mt2LL3G != null){
-    if(mt2LL3G.tagCount == 0||mt2LL3G.avgTagDist > 2.5){
+    if(mt2LL3G.tagCount == 0||mt2LL3G.avgTagDist > 3.5){//2.5
         doRejectUpdateLL3G = true;
     }
    
@@ -471,7 +481,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     }
 }
     if(mt2LL4 != null){
-     if(mt2LL4.tagCount == 0 || mt2LL4.avgTagDist > 2.5){
+     if(mt2LL4.tagCount == 0 || mt2LL4.avgTagDist > 3.5){//2.5
         doRejectUpdateLL4 = true;
     }
     if(!doRejectUpdateLL4){
@@ -494,38 +504,4 @@ public double getHubDistance(){
      return robotPose.getTranslation().getDistance(goalPosition);
 }
 
-// public Translation2d getGoalPose(){
-//    // Rectangle2d leftTrench = new Rectangle2d(new Translation2d(), new Translation2d());
-//    // Rectangle2d rightTrench = new Rectangle2d(new Translation2d(), new Translation2d());
-//     Rectangle2d allianceZone = new Rectangle2d(new Translation2d(), new Translation2d());
-//     Rectangle2d leftNeutral = new Rectangle2d(new Translation2d(), new Translation2d());
-//     Rectangle2d rightNeutral = new Rectangle2d(new Translation2d(), new Translation2d());
-//     Rectangle2d opponentZone = new Rectangle2d(new Translation2d(), new Translation2d());
-
-//     Translation2d robotPose = getState().Pose.getTranslation();
-
-//     if(leftTrench.contains(robotPose)){
-//         return "leftTrench";
-//     }
-//     else if(rightTrench.contains(robotPose)){
-//         return "rightTrench";
-//     }
-//     else if(allianceZone.contains(robotPose)){
-//         return "allianceZone";
-//     }
-//     else if(leftNeutral.contains(robotPose)){
-//         return "leftNeutral";
-//     }
-//     else if(rightNeutral.contains(robotPose)){
-//         return "rightNeutral";
-//     }
-//     else if(opponentZone.contains(robotPose)){
-//         return "opponenetZone";
-//     }
-
-//     else{
-//         return "";
-//     }
-
-//}
 }

@@ -86,9 +86,9 @@ public Command sysIdDynamic(SysIdRoutine.Direction direction) {
    return m_sysIdRoutine.dynamic(direction);
 }
 
-public void setShooterVelocity(){
+public void setShooterVelocity(double velocity){
    final MotionMagicVelocityVoltage m_request = new MotionMagicVelocityVoltage(0);
-   shooterMotorLeft.setControl(m_request.withVelocity(ShooterConstants.shooterMotorVelocity));
+   shooterMotorLeft.setControl(m_request.withVelocity(velocity));
 }
 
 }

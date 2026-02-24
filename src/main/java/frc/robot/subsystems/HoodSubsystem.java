@@ -28,14 +28,19 @@ private AutoAim autoAim;
   rightServo.setPosition(SmartDashboard.getNumber("Hood Position", 0));
  }
 
+ public void setHood(double position){
+    leftServo.setPosition(position);
+    rightServo.setPosition(position);
+ }
+
  @Override
  public void periodic(){
  // leftServo.setPosition(SmartDashboard.getNumber("Hood Position", 0));
   //rightServo.setPosition(SmartDashboard.getNumber("Hood Position", 0));
   SmartDashboard.putNumber("AutoAim hub distance", autoAim.getHubDistance());
-  SmartDashboard.putNumber("AutoAim hub rotation", autoAim.getHubRotation().getDegrees());
+  SmartDashboard.putNumber("AutoAim hub rotation", autoAim.getHubRotation());
   SmartDashboard.putNumber("goal pose X", autoAim.goalPositionWithTOF().getX());
-    SmartDashboard.putNumber("goal pose Y", autoAim.goalPositionWithTOF().getY());
+  SmartDashboard.putNumber("goal pose Y", autoAim.goalPositionWithTOF().getY());
  }
 
  public void setHoodPosition(){

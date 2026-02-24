@@ -48,8 +48,8 @@ slot0Configs.kI = TurretConstants.kI;
 slot0Configs.kD = TurretConstants.kD;
 
 var motionMagicConfigs = talonFXConfigs.MotionMagic;
-motionMagicConfigs.MotionMagicCruiseVelocity = 80;
-motionMagicConfigs.MotionMagicAcceleration = 400;
+motionMagicConfigs.MotionMagicCruiseVelocity = 50;
+motionMagicConfigs.MotionMagicAcceleration = 600;
 motionMagicConfigs.MotionMagicJerk = 1600;
 
 talonFXConfigs.SoftwareLimitSwitch.ForwardSoftLimitEnable = false;
@@ -58,10 +58,11 @@ talonFXConfigs.SoftwareLimitSwitch.ReverseSoftLimitEnable = false;
 //talonFXConfigs.SoftwareLimitSwitch.ForwardSoftLimitThreshold = TurretConstants.turretMaximumRotation;
 //talonFXConfigs.SoftwareLimitSwitch.ReverseSoftLimitThreshold = TurretConstants.turretMinimumRotation;
 turretMotor.getConfigurator().apply(talonFXConfigs);
-//zeroFromPotentiometer();
+zeroFromPotentiometer();
 boolean potentiometerConnected = potentiometer.get()==-90 ? false : true;
 SmartDashboard.putBoolean("Potentiometer Connected", potentiometerConnected);
-turretMotor.setPosition(degreesToRotations(90));
+//turretMotor.setPosition(degreesToRotations(90));
+SmartDashboard.putNumber("Turret Position", 0);
 }
 
 
@@ -73,9 +74,11 @@ public void periodic(){
     SmartDashboard.putNumber("turret Degrees", turretDeg);
     //fullRange = SmartDashboard.getNumber("Full Range", 0);
     SmartDashboard.putNumber("clamped setpoint", setpoint);
-
-
 }
+
+ public void setPosition(){
+  setTurretPosition(SmartDashboard.getNumber("Turret Position", 0));
+ }
 
 private double clampTurretRotation(double degrees) {
     MathUtil.clamp(degrees, TurretConstants.turretMinimumRotation, TurretConstants.turretMaximumRotation);
@@ -83,12 +86,15 @@ private double clampTurretRotation(double degrees) {
 }
 
 private void zeroFromPotentiometer(){
-    turretMotor.setPosition(potentiometer.get()/360 * 5.33);
+    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(200.62));
 }
 
 public void setTurretPosition(double degrees){
     double min = TurretConstants.turretMinimumRotation;
     double max = TurretConstants.turretMaximumRotation;
+    if(degrees < 0){
+        degrees += 360;
+    }
     if(degrees < min){
         setpoint = min;
     }

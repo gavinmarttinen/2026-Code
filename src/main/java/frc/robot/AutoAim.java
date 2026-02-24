@@ -1,10 +1,14 @@
 package frc.robot;
 
+import com.ctre.phoenix6.mechanisms.swerve.LegacySwerveRequest.FieldCentric;
+
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rectangle2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.FieldConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -16,16 +20,18 @@ public class AutoAim {
     private Translation2d allianceHub;
 
 public AutoAim(CommandSwerveDrivetrain drivetrain){
- hoodAngleTable.put(2.21, 0.0);
- hoodAngleTable.put(3.55, 0.25);
- hoodAngleTable.put(5.4, 0.65);
+ hoodAngleTable.put(3.0, 0.0);
+ hoodAngleTable.put(3.5, 0.10);
+ hoodAngleTable.put(4.0, 0.24);
+ hoodAngleTable.put(5.25, 0.65);
 
  //value is the time of flight for the fuel
  //key is the distance from hub
 
- timeOfFlightTable.put(2.21, 1.43);
- timeOfFlightTable.put(3.55, 1.36);
- timeOfFlightTable.put(5.4, 1.11);
+ timeOfFlightTable.put(3.0, 1.44);
+ timeOfFlightTable.put(3.5, 1.4);
+ timeOfFlightTable.put(4.0, 1.32);
+ timeOfFlightTable.put(5.25, 1.13);
  this.drivetrain = drivetrain;
 
 }
@@ -36,13 +42,14 @@ public double calculateHoodAngle(){
 }
 
 public Translation2d goalPositionWithTOF(){
+    ChassisSpeeds speeds= ChassisSpeeds.fromRobotRelativeSpeeds(drivetrain.getState().Speeds.vxMetersPerSecond, drivetrain.getState().Speeds.vyMetersPerSecond, drivetrain.getState().Speeds.omegaRadiansPerSecond, drivetrain.getState().Pose.getRotation());
      allianceHub = drivetrain.isBlue() ? FieldConstants.blueHub:FieldConstants.redHub;
     Pose2d robotPose = drivetrain.getState().Pose;
     //Pose2d turretPose = robotPose.transformBy(new Transform2d(-0.1,-0.2, new Rotation2d())).rotateAround(robotPose.getTranslation(), robotPose.getRotation());
     double distance = robotPose.getTranslation().getDistance(allianceHub);
     double TOF = timeOfFlightTable.get(distance);
-    Translation2d robotVelocity = new Translation2d(drivetrain.getState().Speeds.vxMetersPerSecond,
-    drivetrain.getState().Speeds.vyMetersPerSecond);
+    Translation2d robotVelocity = new Translation2d(speeds.vxMetersPerSecond,
+    speeds.vyMetersPerSecond);
     Translation2d goalPoseWithTOF = allianceHub.minus(robotVelocity.times(TOF));
     double goalDistance = robotPose.getTranslation().getDistance(goalPoseWithTOF);
     double TOF1 = timeOfFlightTable.get(goalDistance);
@@ -59,10 +66,51 @@ public double getHubDistance(){
     return robotPose.getTranslation().getDistance(goalPositionWithTOF());
 }
 
-public Rotation2d getHubRotation(){
+public double getHubRotation(){
     Pose2d robotPose = drivetrain.getState().Pose;
     Translation2d hub = goalPositionWithTOF();
-    Rotation2d setpoint = hub.minus(robotPose.getTranslation()).getAngle();
-    return setpoint;
+    double setpoint = hub.minus(robotPose.getTranslation()).getAngle().getDegrees();
+    // if(setpoint<0){
+    //     setpoint += 360;
+    // }
+        return setpoint; 
+}
+
+public Translation2d getGoalPose(){
+   // Rectangle2d leftTrench = new Rectangle2d(new Translation2d(), new Translation2d());
+   // Rectangle2d rightTrench = new Rectangle2d(new Translation2d(), new Translation2d());
+    Rectangle2d allianceZone = new Rectangle2d(new Translation2d(), new Translation2d());
+    Rectangle2d leftNeutral = new Rectangle2d(new Translation2d(), new Translation2d());
+    Rectangle2d rightNeutral = new Rectangle2d(new Translation2d(), new Translation2d());
+    Rectangle2d leftOpponentZone = new Rectangle2d(new Translation2d(), new Translation2d());
+    Rectangle2d rightOpponentZone = new Rectangle2d(new Translation2d(), new Translation2d());
+
+    Translation2d allianceZoneGoal = drivetrain.isBlue() ? FieldConstants.blueHub : FieldConstants.redHub;
+    Translation2d leftNeutralZoneGoal = new Translation2d();
+    Translation2d rightNeutralZoneGoal = new Translation2d();
+    Translation2d leftOpponentZoneGoal = new Translation2d();
+    Translation2d rightOpponentZoneGoal = new Translation2d();  
+
+    Translation2d robotPose = drivetrain.getState().Pose.getTranslation();
+
+    if(allianceZone.contains(robotPose)){
+        return allianceZoneGoal;
+    }
+    else if(leftNeutral.contains(robotPose)){
+        return leftNeutralZoneGoal;
+    }
+    else if(rightNeutral.contains(robotPose)){
+        return rightNeutralZoneGoal;
+    }
+    else if(leftOpponentZone.contains(robotPose)){
+        return leftOpponentZoneGoal;
+    }
+     else if(rightOpponentZone.contains(robotPose)){
+        return rightOpponentZoneGoal;
+    }
+
+    else{
+        return allianceZoneGoal;
+}
 }
 }
