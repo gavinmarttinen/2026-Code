@@ -3,37 +3,32 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.4597222222233994,
-        "y": 5.909466666664213
+        "x": 1.578355555555555,
+        "y": 7.6126111111161485
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.6768333333321466,
-        "y": 6.121100000000334
+        "x": 2.2838,
+        "y": 6.312577777777777
       },
       "isLocked": false,
-      "linkedName": "End Depot"
+      "linkedName": "Left Deep"
     },
     {
       "anchor": {
-        "x": 1.3264111111060723,
-        "y": 4.690055555550516
+        "x": 1.5380444444444445,
+        "y": 4.942
       },
       "prevControl": {
-        "x": 2.0419333333321465,
-        "y": 5.042777777778112
+        "x": 2.9993222222222222,
+        "y": 5.214099999999999
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Left Climb shooting"
+      "linkedName": "Left Tower Wall"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.23157894736842333,
-      "rotationDegrees": 180.0
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -50,10 +45,10 @@
     "rotation": 0.0
   },
   "reversed": false,
-  "folder": "Trench-L Preload Depot Climb",
+  "folder": "Trench-L Preload Neutral Climb",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

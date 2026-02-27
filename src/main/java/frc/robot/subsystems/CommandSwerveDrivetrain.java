@@ -5,6 +5,8 @@ import static edu.wpi.first.units.Units.*;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+import org.opencv.video.TrackerDaSiamRPN_Params;
+
 import com.ctre.phoenix6.SignalLogger;
 import com.ctre.phoenix6.Utils;
 import com.ctre.phoenix6.swerve.SwerveDrivetrain;
@@ -74,6 +76,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     private final SwerveRequest.SysIdSwerveSteerGains m_steerCharacterization = new SwerveRequest.SysIdSwerveSteerGains();
     private final SwerveRequest.SysIdSwerveRotation m_rotationCharacterization = new SwerveRequest.SysIdSwerveRotation();
 
+    
     /* SysId routine for characterizing translation. This is used to find PID gains for the drive motors. */
     private final SysIdRoutine m_sysIdRoutineTranslation = new SysIdRoutine(
         new SysIdRoutine.Config(
@@ -398,7 +401,6 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     public void updateOdometry(){
         LimelightHelpers.SetRobotOrientation("limelight-three", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
         LimelightHelpers.SetRobotOrientation("limelight-four", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
-
  m_poseEstimator.update(
         getState().Pose.getRotation(),
         getState().ModulePositions);
@@ -471,7 +473,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
         doRejectUpdateLL4 = true;
     }
     if(mt2LL3G != null){
-    if(mt2LL3G.tagCount == 0||mt2LL3G.avgTagDist > 3.5){//2.5
+    if(mt2LL3G.tagCount == 0||mt2LL3G.avgTagDist > 2.5){//3.5
         doRejectUpdateLL3G = true;
     }
    
@@ -481,7 +483,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     }
 }
     if(mt2LL4 != null){
-     if(mt2LL4.tagCount == 0 || mt2LL4.avgTagDist > 3.5){//2.5
+     if(mt2LL4.tagCount == 0 || mt2LL4.avgTagDist > 2.5){//3.5
         doRejectUpdateLL4 = true;
     }
     if(!doRejectUpdateLL4){
@@ -504,4 +506,49 @@ public double getHubDistance(){
      return robotPose.getTranslation().getDistance(goalPosition);
 }
 
+public Translation2d getGoalPose(){
+
+    Rectangle2d allianceZone = blue ? FieldConstants.blueAllianceZone : FieldConstants.redAllianceZone;
+    Rectangle2d leftZone = blue ? FieldConstants.blueLeftZone : FieldConstants.redLeftZone;
+    Rectangle2d rightZone = blue ? FieldConstants.blueRightZone : FieldConstants.redRightZone;
+    Translation2d allianceZoneGoal = blue ? FieldConstants.blueHub : FieldConstants.redHub;
+    Translation2d leftZoneGoal = blue ? FieldConstants.blueLeftZoneGoal : FieldConstants.redLeftZoneGoal;
+    Translation2d rightZoneGoal = blue ? FieldConstants.blueRightZoneGoal : FieldConstants.redRightZoneGoal;
+
+    Translation2d robotPose = getState().Pose.getTranslation();
+
+    if(allianceZone.contains(robotPose)){
+        return allianceZoneGoal;
+    }
+    else if(leftZone.contains(robotPose)){
+        return leftZoneGoal;
+    }
+    else if(rightZone.contains(robotPose)){
+        return rightZoneGoal;
+    }
+    else{
+        return allianceZoneGoal;
+    }
+}
+
+public double driveToClimbLeftX(){
+    Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbLeft : FieldConstants.redClimbLeft);
+    double xSpeed = 1 * distanceToClimb.getX();
+    return xSpeed;
+}
+public double driveToClimbLeftY(){
+ Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbLeft : FieldConstants.redClimbLeft);
+    double ySpeed = 1 * distanceToClimb.getY();
+    return ySpeed;
+}
+public double driveToClimbRightX(){
+ Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbRight : FieldConstants.redClimbRight);
+    double xSpeed = 1 * distanceToClimb.getX();
+    return xSpeed;
+}
+public double driveToClimbRightY(){
+ Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbRight : FieldConstants.redClimbRight);
+    double ySpeed = 1 * distanceToClimb.getY();
+    return ySpeed;
+}
 }

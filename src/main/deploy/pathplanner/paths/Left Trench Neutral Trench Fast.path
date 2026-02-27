@@ -1,0 +1,112 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 4.017177777777778,
+        "y": 7.421133333333334
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 8.149066666666666,
+        "y": 7.995566666666667
+      },
+      "isLocked": false,
+      "linkedName": "Left Trench"
+    },
+    {
+      "anchor": {
+        "x": 8.118833333333333,
+        "y": 3.9846111111111107
+      },
+      "prevControl": {
+        "x": 8.753733333333333,
+        "y": 4.145855555555555
+      },
+      "nextControl": {
+        "x": 6.037948042450953,
+        "y": 3.456132307077489
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.017177777777778,
+        "y": 7.421133333333334
+      },
+      "prevControl": {
+        "x": 8.159144444444443,
+        "y": 8.328133333333334
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Left Trench"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.0,
+      "rotationDegrees": -76.16724867773819
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.6423034330011048,
+      "maxWaypointRelativePos": 2.0,
+      "constraints": {
+        "maxVelocity": 2.0,
+        "maxAcceleration": 2.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "Left Trench Turret Position 1 Sec",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "Left Trench Turret Position 1 Sec"
+        }
+      }
+    },
+    {
+      "name": "Spin Up Shooter 5 Sec",
+      "waypointRelativePos": 1.864894795127354,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "Spin Up Shooter 5 Sec"
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "reversed": false,
+  "folder": "Trench-L Neutral Disrupt",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "useDefaultConstraints": true
+}

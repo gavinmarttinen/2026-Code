@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Rectangle2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.util.Units;
 
@@ -28,6 +29,7 @@ public class Constants {
         public static final int spindexMotorID = 21;
         public static final int kickerMotorID = 22;
         public static final double spindexMotorSpeed = 1;
+        public static final double spindexMotorSpeedSlow = 0.5;
         public static final double kickerMotorSpeed = 1;
         public static final double kickerMotorReverseSpeed = -0.05;
         public static final double spindexTimer = 2;
@@ -58,6 +60,20 @@ public class Constants {
     public static class FieldConstants{
         public static final Translation2d redHub = new Translation2d(Units.inchesToMeters(469.11), Units.inchesToMeters(158.84));
         public static final Translation2d blueHub = new Translation2d(Units.inchesToMeters(182.11), Units.inchesToMeters(158.84));
-    }
+        public static final Translation2d blueLeftZoneGoal = new Translation2d();
+        public static final Translation2d blueRightZoneGoal = new Translation2d();
+        public static final Translation2d redLeftZoneGoal = new Translation2d();
+        public static final Translation2d redRightZoneGoal = new Translation2d();
+        public static final Rectangle2d blueLeftZone = new Rectangle2d(new Translation2d(4.365,8),new Translation2d(16.5,4));
+        public static final Rectangle2d blueRightZone = new Rectangle2d(new Translation2d(16.5,4),new Translation2d(4.365,0));
+        public static final Rectangle2d redLeftZone = new Rectangle2d(new Translation2d(12.1,0),new Translation2d(0,4));
+        public static final Rectangle2d redRightZone = new Rectangle2d(new Translation2d(0,4),new Translation2d(12.1,8));
+        public static final Rectangle2d blueAllianceZone = new Rectangle2d(new Translation2d(0,0), new Translation2d(4.365,8));
+        public static final Rectangle2d redAllianceZone = new Rectangle2d(new Translation2d(12.1,0), new Translation2d(16.5,8));
+        public static final Translation2d blueClimbLeft = new Translation2d();
+        public static final Translation2d blueClimbRight = new Translation2d();
+        public static final Translation2d redClimbLeft = new Translation2d();
+        public static final Translation2d redClimbRight = new Translation2d();
     
+    }
 }

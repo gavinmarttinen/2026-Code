@@ -43,7 +43,7 @@ public double calculateHoodAngle(){
 
 public Translation2d goalPositionWithTOF(){
     ChassisSpeeds speeds= ChassisSpeeds.fromRobotRelativeSpeeds(drivetrain.getState().Speeds.vxMetersPerSecond, drivetrain.getState().Speeds.vyMetersPerSecond, drivetrain.getState().Speeds.omegaRadiansPerSecond, drivetrain.getState().Pose.getRotation());
-     allianceHub = drivetrain.isBlue() ? FieldConstants.blueHub:FieldConstants.redHub;
+     allianceHub = drivetrain.getGoalPose();
     Pose2d robotPose = drivetrain.getState().Pose;
     //Pose2d turretPose = robotPose.transformBy(new Transform2d(-0.1,-0.2, new Rotation2d())).rotateAround(robotPose.getTranslation(), robotPose.getRotation());
     double distance = robotPose.getTranslation().getDistance(allianceHub);
@@ -74,43 +74,5 @@ public double getHubRotation(){
     //     setpoint += 360;
     // }
         return setpoint; 
-}
-
-public Translation2d getGoalPose(){
-   // Rectangle2d leftTrench = new Rectangle2d(new Translation2d(), new Translation2d());
-   // Rectangle2d rightTrench = new Rectangle2d(new Translation2d(), new Translation2d());
-    Rectangle2d allianceZone = new Rectangle2d(new Translation2d(), new Translation2d());
-    Rectangle2d leftNeutral = new Rectangle2d(new Translation2d(), new Translation2d());
-    Rectangle2d rightNeutral = new Rectangle2d(new Translation2d(), new Translation2d());
-    Rectangle2d leftOpponentZone = new Rectangle2d(new Translation2d(), new Translation2d());
-    Rectangle2d rightOpponentZone = new Rectangle2d(new Translation2d(), new Translation2d());
-
-    Translation2d allianceZoneGoal = drivetrain.isBlue() ? FieldConstants.blueHub : FieldConstants.redHub;
-    Translation2d leftNeutralZoneGoal = new Translation2d();
-    Translation2d rightNeutralZoneGoal = new Translation2d();
-    Translation2d leftOpponentZoneGoal = new Translation2d();
-    Translation2d rightOpponentZoneGoal = new Translation2d();  
-
-    Translation2d robotPose = drivetrain.getState().Pose.getTranslation();
-
-    if(allianceZone.contains(robotPose)){
-        return allianceZoneGoal;
-    }
-    else if(leftNeutral.contains(robotPose)){
-        return leftNeutralZoneGoal;
-    }
-    else if(rightNeutral.contains(robotPose)){
-        return rightNeutralZoneGoal;
-    }
-    else if(leftOpponentZone.contains(robotPose)){
-        return leftOpponentZoneGoal;
-    }
-     else if(rightOpponentZone.contains(robotPose)){
-        return rightOpponentZoneGoal;
-    }
-
-    else{
-        return allianceZoneGoal;
-}
 }
 }

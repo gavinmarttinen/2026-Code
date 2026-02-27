@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 4.007099999999999,
-        "y": 7.400977777777777
+        "x": 3.986944444444444,
+        "y": 7.3909
       },
       "prevControl": {
-        "x": 4.017177777777778,
-        "y": 7.864555555555555
+        "x": 3.997022222222223,
+        "y": 7.8544777777777774
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Left Wall"
     }
   ],
   "rotationTargets": [],

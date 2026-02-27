@@ -3,32 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.107877777777778,
-        "y": 7.451366666666667
+        "x": 7.403311111111111,
+        "y": 4.800911111111111
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.213255555555556,
-        "y": 6.645144444444444
+        "x": 7.242066666666667,
+        "y": 8.55992222222726
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Left Neutral Safe"
     },
     {
       "anchor": {
-        "x": 0.43956666666666666,
-        "y": 5.929622222222222
+        "x": 1.578355555555555,
+        "y": 7.6126111111161485
       },
       "prevControl": {
-        "x": 1.7327069627322726,
-        "y": 5.929622222222222
+        "x": 3.523366666666666,
+        "y": 7.400977777782816
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Depot"
+      "linkedName": "Left Deep"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.4,
+      "rotationDegrees": -90.49821161261355
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -42,13 +47,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "Trench-L Preload Depot Climb",
+  "folder": "Trench-L Preload Neutral Climb",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

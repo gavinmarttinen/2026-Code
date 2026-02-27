@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.986944444444444,
-        "y": 7.3909
+        "x": 4.017177777777778,
+        "y": 7.421133333333334
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.986944444444444,
-        "y": 7.3909
+        "x": 6.899422222222222,
+        "y": 7.461444444444444
       },
       "isLocked": false,
-      "linkedName": "Left Wall"
+      "linkedName": "Left Trench"
     },
     {
       "anchor": {
-        "x": 4.0,
-        "y": 6.0
+        "x": 7.403311111111111,
+        "y": 4.800911111111111
       },
       "prevControl": {
-        "x": 3.0,
-        "y": 6.0
+        "x": 7.5444,
+        "y": 7.239733333333333
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Left Neutral Safe"
     }
   ],
   "rotationTargets": [],
@@ -42,10 +42,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "Trench-L Disrupt",
+  "folder": "Trench-L Preload Neutral Climb",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0
