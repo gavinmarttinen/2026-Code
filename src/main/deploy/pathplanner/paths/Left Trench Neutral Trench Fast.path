@@ -32,16 +32,16 @@
     },
     {
       "anchor": {
-        "x": 4.017177777777778,
-        "y": 7.421133333333334
+        "x": 3.8660111111111117,
+        "y": 7.431211111111111
       },
       "prevControl": {
-        "x": 8.159144444444443,
-        "y": 8.328133333333334
+        "x": 8.007977777777779,
+        "y": 8.33821111111111
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Left Trench"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
@@ -67,17 +67,6 @@
   ],
   "pointTowardsZones": [],
   "eventMarkers": [
-    {
-      "name": "Left Trench Turret Position 1 Sec",
-      "waypointRelativePos": 0.0,
-      "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "Left Trench Turret Position 1 Sec"
-        }
-      }
-    },
     {
       "name": "Spin Up Shooter 5 Sec",
       "waypointRelativePos": 1.864894795127354,

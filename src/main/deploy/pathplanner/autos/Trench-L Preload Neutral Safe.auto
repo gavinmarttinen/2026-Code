@@ -15,19 +15,19 @@
                 }
               },
               {
-                "type": "named",
-                "data": {
-                  "name": "Left Trench Turret Position"
-                }
-              },
-              {
                 "type": "sequential",
                 "data": {
                   "commands": [
                     {
-                      "type": "path",
+                      "type": "named",
                       "data": {
-                        "pathName": "Left Trench Neutral Trench Fast"
+                        "name": "Left Trench Turret Position 1 Sec"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.75
                       }
                     },
                     {
@@ -39,32 +39,19 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Left Trench Neutral Sweep"
+                        "pathName": "Left Trench Neutral Sweep Safe"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 2 Sec"
+                        "name": "Left Trench Turret Position 0.5 Sec"
                       }
                     },
                     {
-                      "type": "parallel",
+                      "type": "named",
                       "data": {
-                        "commands": [
-                          {
-                            "type": "path",
-                            "data": {
-                              "pathName": "Left Wall"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Run Spindex 7 Sec"
-                            }
-                          }
-                        ]
+                        "name": "Run Spindex 7 Sec"
                       }
                     }
                   ]

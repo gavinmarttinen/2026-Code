@@ -11,12 +11,6 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Spin Up Shooter"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "Run Intake"
                 }
               },
@@ -33,7 +27,7 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "Right Trench Turret Position 0.5 Sec"
+                        "name": "Right Trench Turret Position 1 Sec"
                       }
                     },
                     {
@@ -43,34 +37,9 @@
                       }
                     },
                     {
-                      "type": "parallel",
-                      "data": {
-                        "commands": [
-                          {
-                            "type": "path",
-                            "data": {
-                              "pathName": "Right Wall"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Run Spindex 3.5 Sec"
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    {
                       "type": "path",
                       "data": {
                         "pathName": "Right Trench Neutral Sweep"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Right Trench Turret Position 0.5 Sec"
                       }
                     },
                     {

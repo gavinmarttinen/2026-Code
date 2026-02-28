@@ -3,10 +3,12 @@
   "robotLength": 0.736,
   "holonomicMode": true,
   "pathFolders": [
-    "Trench-R Neutral Disrupt",
+    "Trench-R Preload Neutral Safe",
     "Trench-L Neutral Disrupt",
     "Trench-L Preload Neutral",
     "Trench-L Preload Neutral Climb",
+    "Trench-L Preload Neutral Safe",
+    "Trench-R Neutral Disrupt",
     "Trench-R Preload Neutral",
     "Trench-R Preload Neutral Climb"
   ],
