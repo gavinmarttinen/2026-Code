@@ -21,15 +21,15 @@
                 }
               },
               {
+                "type": "named",
+                "data": {
+                  "name": "Right Trench Turret Position"
+                }
+              },
+              {
                 "type": "sequential",
                 "data": {
                   "commands": [
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Right Trench Turret Position"
-                      }
-                    },
                     {
                       "type": "wait",
                       "data": {
@@ -52,12 +52,6 @@
                       "type": "path",
                       "data": {
                         "pathName": "Right Neutral Trench"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Right Trench Turret Position"
                       }
                     },
                     {
@@ -95,6 +89,6 @@
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "Unsafe Autos",
   "choreoAuto": false
 }

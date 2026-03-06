@@ -3,43 +3,38 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.403311111111111,
-        "y": 4.800911111111111
+        "x": 3.6342222222222222,
+        "y": 3.924144444444445
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.242066666666667,
-        "y": 8.55992222222726
+        "x": 3.3842222222222222,
+        "y": 3.924144444444445
       },
       "isLocked": false,
-      "linkedName": "Left Neutral Safe"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.578355555555555,
-        "y": 7.6126111111161485
+        "x": 2.979166666666667,
+        "y": 3.9443
       },
       "prevControl": {
-        "x": 3.523366666666666,
-        "y": 7.400977777782816
+        "x": 3.563677777777779,
+        "y": 3.9443
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Left Deep"
+      "linkedName": "Left Climb Shoot"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.4,
-      "rotationDegrees": -90.49821161261355
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 1.0,
+    "maxAcceleration": 1.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -47,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": "Trench-L Preload Neutral Climb",
+  "folder": "Hub Preload Climb",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

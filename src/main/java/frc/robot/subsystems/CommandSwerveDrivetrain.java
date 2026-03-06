@@ -401,7 +401,8 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     public void updateOdometry(){
         LimelightHelpers.SetRobotOrientation("limelight-three", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
         LimelightHelpers.SetRobotOrientation("limelight-four", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
- m_poseEstimator.update(
+        LimelightHelpers.SetIMUMode("limelight-four", 0);
+        m_poseEstimator.update(
         getState().Pose.getRotation(),
         getState().ModulePositions);
 

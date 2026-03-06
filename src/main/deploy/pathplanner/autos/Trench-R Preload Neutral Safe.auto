@@ -15,15 +15,21 @@
                 }
               },
               {
+                "type": "named",
+                "data": {
+                  "name": "Right Trench Turret Position"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Spin Up Shooter"
+                }
+              },
+              {
                 "type": "sequential",
                 "data": {
                   "commands": [
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Right Trench Turret Position 1 Sec"
-                      }
-                    },
                     {
                       "type": "wait",
                       "data": {
@@ -45,13 +51,13 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "Right Trench Turret Position 0.5 Sec"
+                        "name": "Run Spindex 7 Sec"
                       }
                     },
                     {
-                      "type": "named",
+                      "type": "path",
                       "data": {
-                        "name": "Run Spindex 7 Sec"
+                        "pathName": "Copy of  Right Trench Neutral Sweep Safe"
                       }
                     }
                   ]
@@ -64,6 +70,6 @@
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "Safe Autos",
   "choreoAuto": false
 }

@@ -11,6 +11,12 @@
               {
                 "type": "named",
                 "data": {
+                  "name": "Right Trench Turret Position"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
                   "name": "Spin Up Shooter"
                 }
               },
@@ -25,12 +31,6 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "named",
-                      "data": {
-                        "name": "Left Trench Turret Position 1 Sec"
-                      }
-                    },
-                    {
                       "type": "wait",
                       "data": {
                         "waitTime": 0.75
@@ -39,56 +39,31 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 3.5 Sec"
+                        "name": "Run Spindex 4 Sec"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Left Trench Neutral Safe"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Left Neutral Safe Tower"
+                        "pathName": "Right Trench Neutral Trench Fast"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Left Deep Turret Position 1 Sec"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Run Spindex 2 Sec"
-                      }
-                    },
-                    {
-                      "type": "parallel",
-                      "data": {
-                        "commands": [
-                          {
-                            "type": "path",
-                            "data": {
-                              "pathName": "Left Deep Wall"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Run Spindex 3.5 Sec"
-                            }
-                          }
-                        ]
+                        "name": "Run Spindex 6 Sec"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Left Deep Tower"
+                        "pathName": "Right Trench Neutral Sweep"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Run Spindex 7 Sec"
                       }
                     }
                   ]
@@ -101,6 +76,6 @@
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "Preload Disrupt Autos",
   "choreoAuto": false
 }

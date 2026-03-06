@@ -3,16 +3,26 @@
   "robotLength": 0.736,
   "holonomicMode": true,
   "pathFolders": [
-    "Trench-R Preload Neutral Safe",
+    "Hub Preload Climb",
+    "Trench-R Climb",
+    "Trench-L Climb",
     "Trench-L Neutral Disrupt",
     "Trench-L Preload Neutral",
-    "Trench-L Preload Neutral Climb",
+    "Trench-L Preload Neutral Cross",
     "Trench-L Preload Neutral Safe",
     "Trench-R Neutral Disrupt",
     "Trench-R Preload Neutral",
-    "Trench-R Preload Neutral Climb"
+    "Trench-R Preload Neutral Cross",
+    "Trench-R Preload Neutral Safe"
   ],
-  "autoFolders": [],
+  "autoFolders": [
+    "Climb Autos",
+    "Preload Cross Autos",
+    "Disrupt Autos",
+    "Preload Disrupt Autos",
+    "Safe Autos",
+    "Unsafe Autos"
+  ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,

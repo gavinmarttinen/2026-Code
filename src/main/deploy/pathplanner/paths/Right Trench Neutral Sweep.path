@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.986944444444444,
-        "y": 0.6589444444444439
+        "x": 3.9970222222222223,
+        "y": 0.6186333333333334
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.098677777777777,
-        "y": 0.5682444444444434
+        "x": 8.511866666666666,
+        "y": 0.2256000000000003
       },
       "isLocked": false,
       "linkedName": "Right Trench Wall"
@@ -20,44 +20,44 @@
         "y": 2.825666666666666
       },
       "prevControl": {
-        "x": 7.524550633573401,
-        "y": 2.2819688793354054
+        "x": 7.518125059268004,
+        "y": 2.2817650644760397
       },
       "nextControl": {
-        "x": 7.433544444444444,
-        "y": 4.7001333333333335
+        "x": 7.463777777777778,
+        "y": 4.387722222222222
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.851333333333333,
-        "y": 3.0473777777777773
+        "x": 6.052888888888889,
+        "y": 2.956677777777778
       },
       "prevControl": {
-        "x": 5.758697387432656,
-        "y": 4.668506831039596
+        "x": 5.962188888888888,
+        "y": 4.115622222222222
       },
       "nextControl": {
-        "x": 5.972266666666667,
-        "y": 0.931044444444443
+        "x": 6.218279449514233,
+        "y": 0.8433539475650673
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.986944444444444,
-        "y": 0.6589444444444439
+        "x": 3.795466666666667,
+        "y": 0.6085555555555562
       },
       "prevControl": {
-        "x": 7.141288888888888,
-        "y": 0.35661111111111043
+        "x": 7.342844444444445,
+        "y": 0.35661111111111155
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Right Trench Wall"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
@@ -99,19 +99,7 @@
     }
   ],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "Spin Up Shooter",
-      "waypointRelativePos": 0,
-      "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "Spin Up Shooter"
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

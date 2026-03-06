@@ -5,6 +5,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.math.controller.BangBangController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ClimberConstants;
 
@@ -25,14 +26,19 @@ public void setClimberSpeed (double speed){
 
 public void climberUp (double speed){
     climberMotor.set(speed);
-    if(climberMotor.getPosition().getValueAsDouble()>67){
+    if(climberMotor.getPosition().getValueAsDouble()>224){
         climberMotor.set(0);
     }
 }
 public void climberDown (double speed){
     climberMotor.set(speed);
-    if(climberMotor.getPosition().getValueAsDouble()<67){
+    if(climberMotor.getPosition().getValueAsDouble()<78){
         climberMotor.set(0);
     }
+}
+
+@Override
+public void periodic(){
+    SmartDashboard.putNumber("Climber Position", climberMotor.getPosition().getValueAsDouble());
 }
 }

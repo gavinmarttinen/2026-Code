@@ -51,13 +51,13 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 7 Sec"
+                        "name": "Run Spindex 3.5 Sec"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Copy of Left Trench Neutral Sweep Safe"
+                        "pathName": "Trench-L Climb"
                       }
                     }
                   ]
@@ -70,6 +70,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Safe Autos",
+  "folder": "Climb Autos",
   "choreoAuto": false
 }

@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.017177777777778,
-        "y": 7.421133333333334
+        "x": 3.923285883748518,
+        "y": 7.483321470937129
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.149066666666666,
-        "y": 7.995566666666667
+        "x": 8.055174772637407,
+        "y": 8.057754804270463
       },
       "isLocked": false,
       "linkedName": "Left Trench"
     },
     {
       "anchor": {
-        "x": 8.118833333333333,
-        "y": 3.9846111111111107
+        "x": 7.732040332147095,
+        "y": 3.9865836298932384
       },
       "prevControl": {
-        "x": 8.753733333333333,
-        "y": 4.145855555555555
+        "x": 8.366940332147095,
+        "y": 4.147828074337683
       },
       "nextControl": {
-        "x": 6.037948042450953,
-        "y": 3.456132307077489
+        "x": 5.651155041264715,
+        "y": 3.4581048258596168
       },
       "isLocked": false,
       "linkedName": null
@@ -66,19 +66,7 @@
     }
   ],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "Spin Up Shooter 5 Sec",
-      "waypointRelativePos": 1.864894795127354,
-      "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "Spin Up Shooter 5 Sec"
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

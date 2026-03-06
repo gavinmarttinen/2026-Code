@@ -17,12 +17,6 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Left Trench Turret Position"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "Spin Up Shooter"
                 }
               },
@@ -31,9 +25,9 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "named",
                       "data": {
-                        "waitTime": 0.75
+                        "name": "Right Trench Turret Position 0.5 Sec"
                       }
                     },
                     {
@@ -45,19 +39,25 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Left Trench Neutral Sweep Safe"
+                        "pathName": "Trench-R Preload Neutral Trench-L"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Run Spindex 3.5 Sec"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Trench-L Neutral Trench-R"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
                         "name": "Run Spindex 7 Sec"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Copy of Left Trench Neutral Sweep Safe"
                       }
                     }
                   ]
@@ -70,6 +70,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Safe Autos",
+  "folder": "Preload Cross Autos",
   "choreoAuto": false
 }

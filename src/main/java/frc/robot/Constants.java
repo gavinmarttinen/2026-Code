@@ -9,7 +9,7 @@ public class Constants {
     public static class ShooterConstants{
         public static final int shooterMotorRightID = 14; 
         public static final int shooterMotorLeftID = 15; 
-        public static final double shooterMotorVelocity = 58;
+        public static final double shooterMotorVelocity = 63;
         public static final double shooterMotorVelocityMax = 100;
         public static final double shooterMotorVelocityHub = 45;
         public static final double kS = 0;
@@ -22,7 +22,7 @@ public class Constants {
 
     public static class IntakeConstants{
         public static final int intakeMotorID = 16;
-        public static final double intakeMotorSpeed = 1;
+        public static final double intakeMotorSpeed = 0.9;
     }
 
     public static class SpindexConstants{
@@ -41,7 +41,7 @@ public class Constants {
         public static final int turretMotorID = 17;
         public static final int turretEncoderID = 1;
         public static final double turretMinimumRotation = 0;
-        public static final double turretMaximumRotation = 155; //125;
+        public static final double turretMaximumRotation = 105; //155; //125;
         public static final double kS = 0.22;
         public static final double kV = 0.126;
         public static final double kA = 0.0;
