@@ -17,7 +17,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Spin Up Shooter"
+                  "name": "Spin Up Shooter Left Trench"
                 }
               },
               {
@@ -51,7 +51,7 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 6 Sec"
+                        "name": "Run Spindex 7 Sec"
                       }
                     },
                     {

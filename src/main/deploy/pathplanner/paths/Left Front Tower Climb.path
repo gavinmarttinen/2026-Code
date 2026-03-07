@@ -3,35 +3,42 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.979166666666667,
-        "y": 3.9443
+        "x": 2.7935705812574145,
+        "y": 3.6638078291814944
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.5066865148126722,
-        "y": 3.95376432661695
+        "x": 2.7947194828461925,
+        "y": 2.486137630567082
       },
       "isLocked": false,
       "linkedName": "Left Climb Shoot"
     },
     {
       "anchor": {
-        "x": 1.0946222222222224,
-        "y": 4.710211111111112
+        "x": 1.4977333333333334,
+        "y": 2.8559
       },
       "prevControl": {
-        "x": 2.3140333333333336,
-        "y": 4.730366666666666
+        "x": 1.7349872452635817,
+        "y": 2.9347072412522732
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Right Tower"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 1.0,
     "maxAcceleration": 1.0,
@@ -42,13 +49,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "Hub Preload Climb",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": false
 }

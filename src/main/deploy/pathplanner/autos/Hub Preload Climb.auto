@@ -11,13 +11,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Spin Up Shooter"
+                  "name": "Long Hub Turret Position"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Hub Turret Position"
+                  "name": "Run Intake"
                 }
               },
               {
@@ -33,13 +33,31 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 3.5 Sec"
+                        "name": "Run Spindex 5 Sec"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Climber Up"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
                         "pathName": "Left Front Tower Climb"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Right Tower Climb"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Climber Down"
                       }
                     }
                   ]
