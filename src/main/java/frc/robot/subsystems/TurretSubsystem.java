@@ -74,6 +74,8 @@ public void periodic(){
     SmartDashboard.putNumber("turret Degrees", turretDeg);
     //fullRange = SmartDashboard.getNumber("Full Range", 0);
     SmartDashboard.putNumber("clamped setpoint", setpoint);
+
+    //setPosition();
 }
 
  public void setPosition(){
@@ -86,13 +88,13 @@ private double clampTurretRotation(double degrees) {
 }
 
 private void zeroFromPotentiometer(){
-    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(200.62));
+    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(197.32));//200.62
 }
 
 public void setTurretPosition(double degrees){
     double min = TurretConstants.turretMinimumRotation;
     double max = TurretConstants.turretMaximumRotation;
-    if(degrees < 0){
+    if(degrees < 0 && degrees < -53){
         degrees += 360;
     }
     if(degrees < min){

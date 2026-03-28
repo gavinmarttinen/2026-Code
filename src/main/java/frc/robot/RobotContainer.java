@@ -43,7 +43,6 @@ public class RobotContainer {
     private final ClimberSubsystem climberSubsystem = new ClimberSubsystem();
     private final SpindexSubsystem spindexSubsystem = new SpindexSubsystem();
     private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
-    private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
     private final TurretSubsystem turretSubsystem = new TurretSubsystem();
 
 
@@ -63,6 +62,7 @@ public class RobotContainer {
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
     private final AutoAim autoAim = new AutoAim(drivetrain);
     private final HoodSubsystem hoodSubsystem = new HoodSubsystem(autoAim);
+    private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem(autoAim);
 
     public RobotContainer() {
         configureBindings();
@@ -118,18 +118,23 @@ public class RobotContainer {
             drivetrain.applyRequest(() -> idle).ignoringDisable(true)
         );
 
-        turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(autoAim.getHubRotation() - drivetrain.getState().Pose.getRotation().getDegrees()), turretSubsystem));
+       turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(autoAim.getHubRotation() - drivetrain.getState().Pose.getRotation().getDegrees()), turretSubsystem));
         //turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretSpeed(operatorController.getLeftX()), turretSubsystem));
-       // turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.stopTurretMotor(), turretSubsystem));
+        //turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.stopTurretMotor(), turretSubsystem));
         climberSubsystem.setDefaultCommand(Commands.run(()->climberSubsystem.setClimberSpeed(0), climberSubsystem));
         spindexSubsystem.setDefaultCommand(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(),spindexSubsystem));
         intakeSubsystem.setDefaultCommand(Commands.run(()->intakeSubsystem.setIntakeSpeed(0), intakeSubsystem));
-        hoodSubsystem.setDefaultCommand(Commands.run(()->hoodSubsystem.setHoodPosition(), hoodSubsystem));
-        shooterSubsystem.setDefaultCommand(Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocityHub), shooterSubsystem));
+        hoodSubsystem.setDefaultCommand(Commands.run(()->hoodSubsystem.setHood(0), hoodSubsystem));
+        shooterSubsystem.setDefaultCommand(Commands.run(()->shooterSubsystem.setShooterVelocity(0), shooterSubsystem));
+        //hoodSubsystem.setDefaultCommand(Commands.run(()->hoodSubsystem.setHood(0), hoodSubsystem));
 
         driverController.L2().whileTrue(drivetrain.applyRequest(()->brake));
         driverController.button(15).onTrue(drivetrain.runOnce(drivetrain::seedFieldCentric));
         driverController.R2().whileTrue(Commands.run(()->spindexSubsystem.setSpindexSpeed(driverController.getRawAxis(4)<0.5 ? SpindexConstants.spindexMotorSpeedSlow : SpindexConstants.spindexMotorSpeed, SpindexConstants.kickerMotorSpeed),spindexSubsystem));
+        driverController.R1().whileTrue(new ParallelCommandGroup(Commands.run(()->shooterSubsystem.setAutoAimShooterVelocity(), shooterSubsystem), Commands.run(()->hoodSubsystem.setAutoAimHoodPosition(), hoodSubsystem)));
+        // driverController.povUp().whileTrue(Commands.run(()->hoodSubsystem.setHood(1), hoodSubsystem));
+       // driverController.povDown().whileTrue(Commands.run(()->hoodSubsystem.setHood(-1), hoodSubsystem));
+
 
         operatorController.R2().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(82),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity), shooterSubsystem))); //Right Trench
         operatorController.circle().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(45),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.5), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity), shooterSubsystem))); //Right Deep
@@ -141,7 +146,7 @@ public class RobotContainer {
         operatorController.R1().toggleOnTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed), intakeSubsystem));
         operatorController.povLeft().onTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity)));
         operatorController.povRight().whileTrue(new ParallelCommandGroup(Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocityMax),shooterSubsystem),Commands.run(()->hoodSubsystem.setHood(1), hoodSubsystem), Commands.run(()->turretSubsystem.setTurretPosition(90), turretSubsystem))); //Far Pass
-        operatorController.button(9).whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(90),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity), shooterSubsystem))); //Tower
+        operatorController.button(9).whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(100),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.2), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity), shooterSubsystem))); //Tower
         operatorController.cross().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(0),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.16), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity), shooterSubsystem))); //Tower
         operatorController.triangle().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(0),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.0), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocityHub), shooterSubsystem))); //Hub
         operatorController.button(10).whileTrue(Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed, SpindexConstants.kickerMotorSpeed),spindexSubsystem));

@@ -14,12 +14,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
+import frc.robot.AutoAim;
 import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase{
 private final TalonFX shooterMotorRight = new TalonFX(ShooterConstants.shooterMotorRightID);
 private final TalonFX shooterMotorLeft = new TalonFX(ShooterConstants.shooterMotorLeftID);
 private final double shooterMotorSpeed = 0;
+private AutoAim autoAim;
 
 private final VoltageOut m_voltReq = new VoltageOut(0.0);
 
@@ -39,9 +41,9 @@ private final SysIdRoutine m_sysIdRoutine =
       )
    );
 
-public ShooterSubsystem() {   
+public ShooterSubsystem(AutoAim autoAim) {   
 
-shooterMotorLeft.setControl(new Follower(shooterMotorRight.getDeviceID(), MotorAlignmentValue.Opposed));
+shooterMotorRight.setControl(new Follower(shooterMotorLeft.getDeviceID(), MotorAlignmentValue.Opposed));
 
 // in init function
 var talonFXConfigs = new TalonFXConfiguration();
@@ -66,13 +68,15 @@ motionMagicConfigs.MotionMagicJerk = 4000; // Target jerk of 4000 rps/s/s (0.1 s
 shooterMotorLeft.getConfigurator().apply(talonFXConfigs);
 
  SmartDashboard.putNumber("Shooter Motor Speed",0);
+
+ this.autoAim = autoAim;
 }
 
 @Override
 public void periodic() {
    
-// double speed = SmartDashboard.getNumber("shooterMotorSpeed", 0.0);
-//     shooterMotorLeft.set(speed);
+ //double speed = SmartDashboard.getNumber("Shooter Motor Speed", 0.0);
+ //    setShooterVelocity(speed);
 
  SmartDashboard.putNumber("Actual Velocity", shooterMotorLeft.getVelocity().getValueAsDouble());
  SmartDashboard.putNumber("Velocity Setpoint", shooterMotorLeft.getClosedLoopReference().getValueAsDouble());
@@ -89,6 +93,10 @@ public Command sysIdDynamic(SysIdRoutine.Direction direction) {
 public void setShooterVelocity(double velocity){
    final MotionMagicVelocityVoltage m_request = new MotionMagicVelocityVoltage(0);
    shooterMotorLeft.setControl(m_request.withVelocity(velocity));
+}
+
+public void setAutoAimShooterVelocity(){
+   setShooterVelocity(autoAim.calculateShooterSpeed());
 }
 
 }
