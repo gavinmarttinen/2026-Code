@@ -88,13 +88,13 @@ private double clampTurretRotation(double degrees) {
 }
 
 private void zeroFromPotentiometer(){
-    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(197.32));//200.62
+    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(193));//197.32
 }
 
 public void setTurretPosition(double degrees){
     double min = TurretConstants.turretMinimumRotation;
     double max = TurretConstants.turretMaximumRotation;
-    if(degrees < 0 && degrees < -53){
+    if(degrees < 0 && degrees < -90){
         degrees += 360;
     }
     if(degrees < min){

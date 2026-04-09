@@ -3,61 +3,61 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.9970222222222223,
-        "y": 0.6186333333333334
+        "x": 4.017177777777778,
+        "y": 0.5984777777777766
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.108755555555556,
-        "y": 0.5279333333333329
-      },
-      "isLocked": false,
-      "linkedName": "Right Trench Wall"
-    },
-    {
-      "anchor": {
-        "x": 7.504088888888891,
-        "y": 2.825666666666666
-      },
-      "prevControl": {
-        "x": 7.524550633573401,
-        "y": 2.2819688793354054
-      },
-      "nextControl": {
-        "x": 7.433544444444444,
-        "y": 4.7001333333333335
+        "x": 8.532022222222217,
+        "y": 0.20544444444444343
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.851333333333333,
-        "y": 3.0473777777777773
+        "x": 7.7258,
+        "y": 2.8962111111111106
       },
       "prevControl": {
-        "x": 5.758697387432656,
-        "y": 4.668506831039596
+        "x": 7.739836170379113,
+        "y": 2.3523095089204844
       },
       "nextControl": {
-        "x": 5.972266666666667,
-        "y": 0.931044444444443
+        "x": 7.685488888888886,
+        "y": 4.458266666666667
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.804934756820879,
-        "y": 0.6727520759193351
+        "x": 6.052888888888889,
+        "y": 2.956677777777778
       },
       "prevControl": {
-        "x": 6.959279201265324,
-        "y": 0.3704187425860016
+        "x": 5.91583906065967,
+        "y": 4.111059023246961
+      },
+      "nextControl": {
+        "x": 6.314911111111112,
+        "y": 0.7496444444444426
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.017177777777778,
+        "y": 0.5984777777777766
+      },
+      "prevControl": {
+        "x": 6.133511111111112,
+        "y": 0.346533333333333
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Right Trench Wall Far"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
@@ -67,7 +67,7 @@
     },
     {
       "waypointRelativePos": 2.17368421052631,
-      "rotationDegrees": -88.65017452403984
+      "rotationDegrees": -92.0
     }
   ],
   "constraintZones": [
@@ -110,13 +110,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "Trench-R Preload Neutral Safe",
+  "folder": "2. Trench-R Preload Neutral Disrupt",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

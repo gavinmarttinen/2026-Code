@@ -17,19 +17,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Spin Up Shooter"
+                  "name": "Auto Aim"
                 }
               },
               {
                 "type": "sequential",
                 "data": {
                   "commands": [
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Right Trench Turret Position 0.5 Sec"
-                      }
-                    },
                     {
                       "type": "named",
                       "data": {

@@ -16,8 +16,8 @@ public IntakeSubsystem(){
     SmartDashboard.putNumber("intakeMotorSpeed", 0);
 
     var talonFXConfigs = new TalonFXConfiguration();
-    talonFXConfigs.CurrentLimits.StatorCurrentLimit = 60;
-    talonFXConfigs.CurrentLimits.SupplyCurrentLimit = 50;
+    talonFXConfigs.CurrentLimits.StatorCurrentLimit = 70;
+    talonFXConfigs.CurrentLimits.SupplyCurrentLimit = 60;
     talonFXConfigs.MotorOutput.NeutralMode = NeutralModeValue.Coast;
     intakeMotor.getConfigurator().apply(talonFXConfigs);
 }

@@ -75,8 +75,8 @@ shooterMotorLeft.getConfigurator().apply(talonFXConfigs);
 @Override
 public void periodic() {
    
- //double speed = SmartDashboard.getNumber("Shooter Motor Speed", 0.0);
- //    setShooterVelocity(speed);
+ double speed = SmartDashboard.getNumber("Shooter Motor Speed", 0.0);
+    // setShooterVelocity(speed);
 
  SmartDashboard.putNumber("Actual Velocity", shooterMotorLeft.getVelocity().getValueAsDouble());
  SmartDashboard.putNumber("Velocity Setpoint", shooterMotorLeft.getClosedLoopReference().getValueAsDouble());

@@ -41,10 +41,16 @@ private final PIDController pidController = new PIDController(HoodConstants.kP, 
   SmartDashboard.putNumber("AutoAim hub rotation", autoAim.getHubRotation());
   SmartDashboard.putNumber("goal pose X", autoAim.goalPositionWithTOF().getX());
   SmartDashboard.putNumber("goal pose Y", autoAim.goalPositionWithTOF().getY());
-  //setPosition(SmartDashboard.getNumber("Hood Position", 0));
+ // setPosition(SmartDashboard.getNumber("Hood Position", 0));
+  //setHood(SmartDashboard.getNumber("Hood Position", 0));
  }
 
  public void setAutoAimHoodPosition(){
-   setPosition(autoAim.calculateHoodAngle());
+   if(encoder.get() == 0){
+    setHood(-1);
+   }
+   else{
+    setPosition(autoAim.calculateHoodAngle());
+   }
  }
 }

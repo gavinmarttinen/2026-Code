@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.9970222222222223,
-        "y": 0.6186333333333334
+        "x": 4.017177777777778,
+        "y": 0.5984777777777766
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.495261644921648,
-        "y": 0.6216817714552201
+        "x": 8.515417200477206,
+        "y": 0.6015262158996633
       },
       "isLocked": false,
       "linkedName": "Right Trench Wall"
@@ -21,7 +21,7 @@
       },
       "prevControl": {
         "x": 8.298541568294661,
-        "y": 0.7807649059018162
+        "y": 0.7807649059018149
       },
       "nextControl": {
         "x": 8.097852906287072,
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 3.7726571767497044,
-        "y": 7.451043890865955
+        "x": 4.007099999999999,
+        "y": 7.411055555555556
       },
       "prevControl": {
-        "x": 7.4845788849347565,
-        "y": 7.332692763938315
+        "x": 7.719021708185052,
+        "y": 7.292704428627917
       },
       "nextControl": null,
       "isLocked": false,
@@ -56,19 +56,7 @@
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "Left Trench Turret Position 1 Sec",
-      "waypointRelativePos": 1.7437379576107912,
-      "endWaypointRelativePos": null,
-      "command": {
-        "type": "named",
-        "data": {
-          "name": "Left Trench Turret Position 1 Sec"
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -82,10 +70,10 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": "Trench-R Preload Neutral Cross",
+  "folder": "3. Trench-R Preload Neutral Cross",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

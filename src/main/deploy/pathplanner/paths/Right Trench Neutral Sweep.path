@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.9970222222222223,
-        "y": 0.6186333333333334
+        "x": 4.017177777777778,
+        "y": 0.5984777777777766
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.511866666666666,
-        "y": 0.2256000000000003
+        "x": 8.532022222222217,
+        "y": 0.20544444444444343
       },
       "isLocked": false,
       "linkedName": "Right Trench Wall"
     },
     {
       "anchor": {
-        "x": 7.504088888888891,
-        "y": 2.825666666666666
+        "x": 7.7258,
+        "y": 2.8962111111111106
       },
       "prevControl": {
-        "x": 7.518125059268004,
-        "y": 2.2817650644760397
+        "x": 7.739836170379113,
+        "y": 2.3523095089204844
       },
       "nextControl": {
-        "x": 7.463777777777778,
-        "y": 4.387722222222222
+        "x": 7.685488888888886,
+        "y": 4.458266666666667
       },
       "isLocked": false,
       "linkedName": null
@@ -36,24 +36,24 @@
         "y": 2.956677777777778
       },
       "prevControl": {
-        "x": 5.962188888888888,
-        "y": 4.115622222222222
+        "x": 5.91583906065967,
+        "y": 4.111059023246961
       },
       "nextControl": {
-        "x": 6.218279449514233,
-        "y": 0.8433539475650673
+        "x": 6.314911111111112,
+        "y": 0.7496444444444426
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.795466666666667,
-        "y": 0.6085555555555562
+        "x": 3.4713997627520765,
+        "y": 0.6189561091340454
       },
       "prevControl": {
-        "x": 7.342844444444445,
-        "y": 0.35661111111111155
+        "x": 6.2903084223013055,
+        "y": 0.14555160142348766
       },
       "nextControl": null,
       "isLocked": false,
@@ -67,7 +67,7 @@
     },
     {
       "waypointRelativePos": 2.17368421052631,
-      "rotationDegrees": -88.65017452403984
+      "rotationDegrees": -92.0
     }
   ],
   "constraintZones": [
@@ -110,13 +110,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "Trench-R Neutral Disrupt",
+  "folder": "1. Trench-R Neutral Disrupt",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

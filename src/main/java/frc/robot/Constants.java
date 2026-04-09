@@ -21,7 +21,7 @@ public class Constants {
         public static final int shooterMotorLeftID = 14;
         public static final double shooterMotorVelocity = 58;
         public static final double shooterMotorVelocityMax = 100;
-        public static final double shooterMotorVelocityHub = 45;
+        public static final double shooterMotorVelocityHub = 44.9;
         public static final double kS = 0;
         public static final double kV = 0.12;
         public static final double kA = 0;
@@ -50,12 +50,12 @@ public class Constants {
     public static class TurretConstants{
         public static final int turretMotorID = 17;
         public static final int turretEncoderID = 1;
-        public static final double turretMinimumRotation = -18;
-        public static final double turretMaximumRotation = 272; //105; //155; //125;
+        public static final double turretMinimumRotation = -70;
+        public static final double turretMaximumRotation = 250;
         public static final double kS = 0.22;
         public static final double kV = 0.126;
         public static final double kA = 0.0;
-        public static final double kP = 10;
+        public static final double kP = 8;//10
         public static final double kI = 0;
         public static final double kD = 0.1;
         public static final double gearRatio = 0.1875;
@@ -68,18 +68,18 @@ public class Constants {
     }
 
     public static class FieldConstants{
-        public static final Translation2d redHub = new Translation2d(Units.inchesToMeters(469.11), Units.inchesToMeters(158.84));
-        public static final Translation2d blueHub = new Translation2d(Units.inchesToMeters(182.11), Units.inchesToMeters(158.84));
-        public static final Translation2d blueLeftZoneGoal = new Translation2d();
-        public static final Translation2d blueRightZoneGoal = new Translation2d();
-        public static final Translation2d redLeftZoneGoal = new Translation2d();
-        public static final Translation2d redRightZoneGoal = new Translation2d();
-        public static final Rectangle2d blueLeftZone = new Rectangle2d(new Translation2d(4.365,8),new Translation2d(16.5,4));
-        public static final Rectangle2d blueRightZone = new Rectangle2d(new Translation2d(16.5,4),new Translation2d(4.365,0));
-        public static final Rectangle2d redLeftZone = new Rectangle2d(new Translation2d(12.1,0),new Translation2d(0,4));
-        public static final Rectangle2d redRightZone = new Rectangle2d(new Translation2d(0,4),new Translation2d(12.1,8));
-        public static final Rectangle2d blueAllianceZone = new Rectangle2d(new Translation2d(0,0), new Translation2d(4.365,8));
-        public static final Rectangle2d redAllianceZone = new Rectangle2d(new Translation2d(12.1,0), new Translation2d(16.5,8));
+        public static final Translation2d redHub = new Translation2d(Units.inchesToMeters(469.11), Units.inchesToMeters(158.54));//158.54
+        public static final Translation2d blueHub = new Translation2d(Units.inchesToMeters(182.11), Units.inchesToMeters(158.54));
+        public static final Translation2d blueLeftZoneGoal = new Translation2d(1.2,6.5);
+        public static final Translation2d blueRightZoneGoal = new Translation2d(1.2,1.5);
+        public static final Translation2d redLeftZoneGoal = new Translation2d(15.5,1.5);
+        public static final Translation2d redRightZoneGoal = new Translation2d(15.5,6.5);
+        public static final Rectangle2d blueLeftZone = new Rectangle2d(new Translation2d(4.5,8),new Translation2d(16.5,4));
+        public static final Rectangle2d blueRightZone = new Rectangle2d(new Translation2d(4.5,0),new Translation2d(16.5,4));
+        public static final Rectangle2d redLeftZone = new Rectangle2d(new Translation2d(12.0,0),new Translation2d(0,4));
+        public static final Rectangle2d redRightZone = new Rectangle2d(new Translation2d(0,4),new Translation2d(12.0,8));
+        public static final Rectangle2d blueAllianceZone = new Rectangle2d(new Translation2d(0,0), new Translation2d(4.5,8));
+        public static final Rectangle2d redAllianceZone = new Rectangle2d(new Translation2d(12.0,8), new Translation2d(16.5,0));
         public static final Translation2d blueClimbLeft = new Translation2d();
         public static final Translation2d blueClimbRight = new Translation2d();
         public static final Translation2d redClimbLeft = new Translation2d();

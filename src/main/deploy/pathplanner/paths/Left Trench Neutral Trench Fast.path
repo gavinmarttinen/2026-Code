@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.7726571767497044,
-        "y": 7.451043890865955
+        "x": 4.480755555555556,
+        "y": 7.370744444444444
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.904546065638594,
-        "y": 8.025477224199289
+        "x": 8.61264444444442,
+        "y": 7.945177777777779
       },
       "isLocked": false,
-      "linkedName": "Left Trench"
+      "linkedName": null
     },
     {
       "anchor": {
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 3.624144444444445,
-        "y": 7.531988888888888
+        "x": 3.9970222222222223,
+        "y": 7.380822222222222
       },
       "prevControl": {
-        "x": 7.766111111111101,
-        "y": 8.438988888888884
+        "x": 8.138988888888871,
+        "y": 8.287822222222225
       },
       "nextControl": null,
       "isLocked": false,
@@ -80,7 +80,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": "Trench-L Neutral Disrupt",
+  "folder": "1. Trench-L Neutral Disrupt",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

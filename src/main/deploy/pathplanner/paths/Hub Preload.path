@@ -45,7 +45,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": "Hub Preload Climb",
+  "folder": "4. Hub Preload Climb",
   "idealStartingState": {
     "velocity": 0.0,
     "rotation": -90.0

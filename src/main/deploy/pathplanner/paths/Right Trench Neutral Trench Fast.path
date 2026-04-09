@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.269122222222222,
+        "x": 4.440444444444445,
         "y": 0.5984777777777766
       },
       "prevControl": null,
       "nextControl": {
-        "x": 9.711122222222219,
+        "x": 9.882444444444438,
         "y": 0.43723333333333125
       },
       "isLocked": false,
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 4.107877777777778,
-        "y": 0.5884000000000003
+        "x": 4.007099999999999,
+        "y": 0.5984777777777766
       },
       "prevControl": {
-        "x": 8.350622222222222,
-        "y": 0.05427777777777676
+        "x": 8.249844444444443,
+        "y": 0.06435555555555295
       },
       "nextControl": null,
       "isLocked": false,
@@ -77,13 +77,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "reversed": false,
-  "folder": "Trench-R Neutral Disrupt",
+  "folder": "1. Trench-R Neutral Disrupt",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

@@ -17,13 +17,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Left Trench Turret Position"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Spin Up Shooter"
+                  "name": "Auto Aim"
                 }
               },
               {
@@ -34,18 +28,6 @@
                       "type": "wait",
                       "data": {
                         "waitTime": 0.75
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Run Spindex 3.5 Sec"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Left Trench Neutral Sweep Safe"
                       }
                     },
                     {

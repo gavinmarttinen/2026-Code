@@ -9,6 +9,7 @@ import org.opencv.video.TrackerDaSiamRPN_Params;
 
 import com.ctre.phoenix6.SignalLogger;
 import com.ctre.phoenix6.Utils;
+import com.ctre.phoenix6.mechanisms.swerve.LegacySwerveRequest.FieldCentric;
 import com.ctre.phoenix6.swerve.SwerveDrivetrain;
 import com.ctre.phoenix6.swerve.SwerveDrivetrainConstants;
 import com.ctre.phoenix6.swerve.SwerveModuleConstants;
@@ -25,10 +26,12 @@ import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rectangle2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -56,7 +59,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     private static final double kSimLoopPeriod = 0.004; // 4 ms
     private Notifier m_simNotifier = null;
     private double m_lastSimTime;
-    private boolean blue = false;
+    //private boolean blue;
     Optional<DriverStation.Alliance> alliance = DriverStation.getAlliance();
     Field2d m_field;
     private final SwerveDrivePoseEstimator m_poseEstimator;
@@ -76,7 +79,8 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     private final SwerveRequest.SysIdSwerveSteerGains m_steerCharacterization = new SwerveRequest.SysIdSwerveSteerGains();
     private final SwerveRequest.SysIdSwerveRotation m_rotationCharacterization = new SwerveRequest.SysIdSwerveRotation();
 
-    
+
+
     /* SysId routine for characterizing translation. This is used to find PID gains for the drive motors. */
     private final SysIdRoutine m_sysIdRoutineTranslation = new SysIdRoutine(
         new SysIdRoutine.Config(
@@ -283,9 +287,9 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
         return m_sysIdRoutineToApply.dynamic(direction);
     }
 
-    public boolean isBlue(){
-        return blue;
-    }
+    // public boolean isBlue(){
+    //     return blue;
+    // }
 
     @Override
     public void periodic() {
@@ -296,20 +300,12 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
            SmartDashboard.putNumber("Hub Distance", getHubDistance());
         SmartDashboard.putNumber("Swerve Rotation", getState().Pose.getRotation().getDegrees());
         SmartDashboard.putNumber("Converted Swerve Rotation", convertSwerveRotation());
-        blue = alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Blue : false;
-        System.out.println(blue);
 
-//System.out.println(getState().Pose.getRotation().getDegrees());
-        // if(DriverStation.isDisabled()){
-        //     useMegaTag2 = false;
-        // }
-        // else{
-        //     useMegaTag2 = true;
-        // }
+  
 
         SmartDashboard.putNumber("Steer Setpoint", 0);
         updateOdometry();
-        m_field.setRobotPose(getState().Pose);
+        m_field.setRobotPose(getVisionPose());
          SmartDashboard.putData("FieldWithVision", m_field);
         /*
          * Periodically try to apply the operator perspective.
@@ -401,15 +397,10 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     public void updateOdometry(){
         LimelightHelpers.SetRobotOrientation("limelight-three", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
         LimelightHelpers.SetRobotOrientation("limelight-four", getState().Pose.getRotation().getDegrees(), 0, 0, 0, 0, 0);
-        LimelightHelpers.SetIMUMode("limelight-four", 0);
-        m_poseEstimator.update(
-        getState().Pose.getRotation(),
-        getState().ModulePositions);
-
+        m_poseEstimator.update(getState().Pose.getRotation(), getState().ModulePositions);
+        m_poseEstimator.setVisionMeasurementStdDevs(VecBuilder.fill(1,1,99999999));
         boolean doRejectUpdateLL3G = false;
         boolean doRejectUpdateLL4 = false;
-
-       
         boolean doRejectUpdate = false;
 
     if(useMegaTag2 == false)
@@ -466,33 +457,47 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     }
 
     if (useMegaTag2 == true) {
-        LimelightHelpers.PoseEstimate mt2LL3G = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-three");
-        LimelightHelpers.PoseEstimate mt2LL4 = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-four");
-       if(mt2LL4 == null){System.out.println("LL4 is null" );}
+        LimelightHelpers.PoseEstimate mt2LL3G = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-three");
+        LimelightHelpers.PoseEstimate mt2LL4 = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-four");
+       //if(mt2LL4 == null){System.out.println("LL4 is null" );}
     if(Math.abs(getState().Speeds.omegaRadiansPerSecond) > 360){
         doRejectUpdateLL3G = true;
         doRejectUpdateLL4 = true;
     }
     if(mt2LL3G != null){
-    if(mt2LL3G.tagCount == 0||mt2LL3G.avgTagDist > 2.5){//3.5
+    if(mt2LL3G.tagCount == 0){//3.5
+        doRejectUpdateLL3G = true;
+    }
+
+    if(mt2LL3G.tagCount == 1 && mt2LL3G.avgTagDist > 2.0){
+        doRejectUpdateLL3G =true;
+    }
+    if(mt2LL3G.tagCount >= 2 && mt2LL3G.avgTagDist > 3.5){
         doRejectUpdateLL3G = true;
     }
    
     if(!doRejectUpdateLL3G){
-        setStateStdDevs(VecBuilder.fill(.7,.7,99999999));
-        addVisionMeasurement(mt2LL3G.pose, mt2LL3G.timestampSeconds);
+      //  setStateStdDevs(VecBuilder.fill(1,1,99999999));
+       // addVisionMeasurement(mt2LL3G.pose, mt2LL3G.timestampSeconds);
+       m_poseEstimator.addVisionMeasurement(mt2LL3G.pose, mt2LL3G.timestampSeconds);
     }
 }
     if(mt2LL4 != null){
-     if(mt2LL4.tagCount == 0 || mt2LL4.avgTagDist > 2.5){//3.5
+     if(mt2LL4.tagCount == 0){//3.5
         doRejectUpdateLL4 = true;
     }
+    if(mt2LL4.tagCount == 1 && mt2LL4.avgTagDist > 2.0){
+        doRejectUpdate = true;
+    }
+    if(mt2LL4.tagCount >= 2 && mt2LL4.avgTagDist > 3.5){
+        doRejectUpdateLL4 = true;
+    }
+
     if(!doRejectUpdateLL4){
-       // m_poseEstimator.setVisionMeasurementStdDevs(VecBuilder.fill(0.5,0.5,9999));
-        //m_poseEstimator.addVisionMeasurement(mt2LL4.pose, mt2LL4.timestampSeconds);
-        setVisionMeasurementStdDevs(VecBuilder.fill(0.7,0.7,99999999));
-        addVisionMeasurement(mt2LL4.pose, mt2LL4.timestampSeconds);
-        System.out.println("adding vision measurement!");
+       // setVisionMeasurementStdDevs(VecBuilder.fill(1,1,99999999));
+       // addVisionMeasurement(mt2LL4.pose, mt2LL4.timestampSeconds);
+       m_poseEstimator.addVisionMeasurement(mt2LL4.pose, mt2LL4.timestampSeconds);
+      //  System.out.println("adding vision measurement!");
     }
 }
     }
@@ -500,56 +505,82 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
 public Pose2d getVisionPose(){
     return m_poseEstimator.getEstimatedPosition();
 }
-
+public void resetOdometry(Pose2d initialHolonomicPose)
+  {
+    m_poseEstimator.resetPosition(getState().Pose.getRotation(),getState().ModulePositions,initialHolonomicPose);
+    resetOdometry(initialHolonomicPose);
+  }
 public double getHubDistance(){
-     Pose2d robotPose = getState().Pose;
+       boolean blue = alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Blue : false;
+
+     Pose2d robotPose = getState().Pose.transformBy(new Transform2d(Units.inchesToMeters(-6.25),Units.inchesToMeters(5.25), new Rotation2d()));
      Translation2d goalPosition = blue?FieldConstants.blueHub:FieldConstants.redHub;
      return robotPose.getTranslation().getDistance(goalPosition);
 }
 
 public Translation2d getGoalPose(){
-
-    Rectangle2d allianceZone = blue ? FieldConstants.blueAllianceZone : FieldConstants.redAllianceZone;
+    boolean blue = alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Blue : false;
+ Rectangle2d  allianceZone = blue ? FieldConstants.blueAllianceZone : FieldConstants.redAllianceZone;
     Rectangle2d leftZone = blue ? FieldConstants.blueLeftZone : FieldConstants.redLeftZone;
     Rectangle2d rightZone = blue ? FieldConstants.blueRightZone : FieldConstants.redRightZone;
     Translation2d allianceZoneGoal = blue ? FieldConstants.blueHub : FieldConstants.redHub;
     Translation2d leftZoneGoal = blue ? FieldConstants.blueLeftZoneGoal : FieldConstants.redLeftZoneGoal;
     Translation2d rightZoneGoal = blue ? FieldConstants.blueRightZoneGoal : FieldConstants.redRightZoneGoal;
-
     Translation2d robotPose = getState().Pose.getTranslation();
 
     if(allianceZone.contains(robotPose)){
+        System.out.println("in alliance zone");
         return allianceZoneGoal;
     }
-    else if(leftZone.contains(robotPose)){
+     if(leftZone.contains(robotPose)){
+        System.out.println("in left zone");
         return leftZoneGoal;
     }
     else if(rightZone.contains(robotPose)){
+        System.out.println("in right zone");
         return rightZoneGoal;
     }
     else{
+        System.out.println("in no zone");
         return allianceZoneGoal;
     }
 }
 
-public double driveToClimbLeftX(){
-    Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbLeft : FieldConstants.redClimbLeft);
-    double xSpeed = 1 * distanceToClimb.getX();
-    return xSpeed;
+public boolean isPassing(){
+   boolean blue = alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Blue : false;
+      Rectangle2d allianceZone = blue ? FieldConstants.blueAllianceZone : FieldConstants.redAllianceZone;
+     Rectangle2d leftZone = blue ? FieldConstants.blueLeftZone : FieldConstants.redLeftZone;
+     Rectangle2d rightZone = blue ? FieldConstants.blueRightZone : FieldConstants.redRightZone;
+    Translation2d allianceZoneGoal = blue ? FieldConstants.blueHub : FieldConstants.redHub;
+   Translation2d leftZoneGoal = blue ? FieldConstants.blueLeftZoneGoal : FieldConstants.redLeftZoneGoal;
+     Translation2d rightZoneGoal = blue ? FieldConstants.blueRightZoneGoal : FieldConstants.redRightZoneGoal;
+    Translation2d robotPose = getState().Pose.getTranslation();
+    if(!allianceZone.contains(robotPose)){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
-public double driveToClimbLeftY(){
- Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbLeft : FieldConstants.redClimbLeft);
-    double ySpeed = 1 * distanceToClimb.getY();
-    return ySpeed;
-}
-public double driveToClimbRightX(){
- Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbRight : FieldConstants.redClimbRight);
-    double xSpeed = 1 * distanceToClimb.getX();
-    return xSpeed;
-}
-public double driveToClimbRightY(){
- Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbRight : FieldConstants.redClimbRight);
-    double ySpeed = 1 * distanceToClimb.getY();
-    return ySpeed;
-}
+
+// public double driveToClimbLeftX(){
+//     Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbLeft : FieldConstants.redClimbLeft);
+//     double xSpeed = 1 * distanceToClimb.getX();
+//     return xSpeed;
+// }
+// public double driveToClimbLeftY(){
+//  Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbLeft : FieldConstants.redClimbLeft);
+//     double ySpeed = 1 * distanceToClimb.getY();
+//     return ySpeed;
+// }
+// public double driveToClimbRightX(){
+//  Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbRight : FieldConstants.redClimbRight);
+//     double xSpeed = 1 * distanceToClimb.getX();
+//     return xSpeed;
+// }
+// public double driveToClimbRightY(){
+//  Translation2d distanceToClimb = getState().Pose.getTranslation().minus(blue ? FieldConstants.blueClimbRight : FieldConstants.redClimbRight);
+//     double ySpeed = 1 * distanceToClimb.getY();
+//     return ySpeed;
+//}
 }

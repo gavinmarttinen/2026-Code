@@ -11,13 +11,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Left Trench Turret Position"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Spin Up Shooter Left Trench"
+                  "name": "Auto Aim"
                 }
               },
               {
