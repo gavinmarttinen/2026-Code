@@ -48,12 +48,12 @@
     },
     {
       "anchor": {
-        "x": 4.009359430604984,
-        "y": 7.397247924080664
+        "x": 2.7182562277580082,
+        "y": 7.160545670225385
       },
       "prevControl": {
-        "x": 5.687793594306051,
-        "y": 7.633950177935944
+        "x": 6.053606168446027,
+        "y": 7.730782918149465
       },
       "nextControl": null,
       "isLocked": false,
@@ -72,36 +72,13 @@
     {
       "waypointRelativePos": 2.0823529411764894,
       "rotationDegrees": 91.31761347335976
-    }
-  ],
-  "constraintZones": [
-    {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.9277456647398854,
-      "maxWaypointRelativePos": 2.0895953757225385,
-      "constraints": {
-        "maxVelocity": 2.0,
-        "maxAcceleration": 2.0,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
     },
     {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 2.338870431893695,
-      "maxWaypointRelativePos": 2.843853820598006,
-      "constraints": {
-        "maxVelocity": 2.0,
-        "maxAcceleration": 2.0,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
+      "waypointRelativePos": 2.808170515097698,
+      "rotationDegrees": 90.0
     }
   ],
+  "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -114,7 +91,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -135.88140399658218
   },
   "reversed": false,
   "folder": "2. Trench-L Preload Neutral Disrupt",

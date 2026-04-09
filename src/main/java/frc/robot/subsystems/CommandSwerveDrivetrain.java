@@ -230,7 +230,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
         try {
             var config = RobotConfig.fromGUISettings();
             AutoBuilder.configure(
-                () -> getState().Pose,   // Supplier of current robot pose
+                () -> getVisionPose(),   // Supplier of current robot pose
                 this::resetPose,         // Consumer for seeding pose against auto
                 () -> getState().Speeds, // Supplier of current robot speeds
                 // Consumer of ChassisSpeeds and feedforwards to drive the robot
@@ -526,7 +526,7 @@ public Translation2d getGoalPose(){
     Translation2d allianceZoneGoal = blue ? FieldConstants.blueHub : FieldConstants.redHub;
     Translation2d leftZoneGoal = blue ? FieldConstants.blueLeftZoneGoal : FieldConstants.redLeftZoneGoal;
     Translation2d rightZoneGoal = blue ? FieldConstants.blueRightZoneGoal : FieldConstants.redRightZoneGoal;
-    Translation2d robotPose = getState().Pose.getTranslation();
+    Translation2d robotPose = getVisionPose().getTranslation();
 
     if(allianceZone.contains(robotPose)){
         System.out.println("in alliance zone");
@@ -554,7 +554,7 @@ public boolean isPassing(){
     Translation2d allianceZoneGoal = blue ? FieldConstants.blueHub : FieldConstants.redHub;
    Translation2d leftZoneGoal = blue ? FieldConstants.blueLeftZoneGoal : FieldConstants.redLeftZoneGoal;
      Translation2d rightZoneGoal = blue ? FieldConstants.blueRightZoneGoal : FieldConstants.redRightZoneGoal;
-    Translation2d robotPose = getState().Pose.getTranslation();
+    Translation2d robotPose = getVisionPose().getTranslation();
     if(!allianceZone.contains(robotPose)){
         return true;
     }

@@ -27,13 +27,13 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 1.75
+                        "waitTime": 1.0
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 2 Sec"
+                        "name": "Run Spindex 2.75 Sec"
                       }
                     },
                     {
