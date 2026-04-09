@@ -519,7 +519,7 @@ public double getHubDistance(){
 }
 
 public Translation2d getGoalPose(){
-    boolean blue = alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Blue : false;
+    boolean blue = alliance.get() == DriverStation.Alliance.Blue ? true : false;
  Rectangle2d  allianceZone = blue ? FieldConstants.blueAllianceZone : FieldConstants.redAllianceZone;
     Rectangle2d leftZone = blue ? FieldConstants.blueLeftZone : FieldConstants.redLeftZone;
     Rectangle2d rightZone = blue ? FieldConstants.blueRightZone : FieldConstants.redRightZone;
@@ -529,19 +529,19 @@ public Translation2d getGoalPose(){
     Translation2d robotPose = getVisionPose().getTranslation();
 
     if(allianceZone.contains(robotPose)){
-        System.out.println("in alliance zone");
+       // System.out.println("in alliance zone");
         return allianceZoneGoal;
     }
      if(leftZone.contains(robotPose)){
-        System.out.println("in left zone");
+       // System.out.println("in left zone");
         return leftZoneGoal;
     }
     else if(rightZone.contains(robotPose)){
-        System.out.println("in right zone");
+       // System.out.println("in right zone");
         return rightZoneGoal;
     }
     else{
-        System.out.println("in no zone");
+       // System.out.println("in no zone");
         return allianceZoneGoal;
     }
 }

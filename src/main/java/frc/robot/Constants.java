@@ -70,10 +70,10 @@ public class Constants {
     public static class FieldConstants{
         public static final Translation2d redHub = new Translation2d(Units.inchesToMeters(469.11), Units.inchesToMeters(158.54));//158.54
         public static final Translation2d blueHub = new Translation2d(Units.inchesToMeters(182.11), Units.inchesToMeters(158.54));
-        public static final Translation2d blueLeftZoneGoal = new Translation2d(1.2,6.5);
+        public static final Translation2d blueLeftZoneGoal = new Translation2d(1.2,6.0); //6.5
         public static final Translation2d blueRightZoneGoal = new Translation2d(1.2,1.5);
         public static final Translation2d redLeftZoneGoal = new Translation2d(15.5,1.5);
-        public static final Translation2d redRightZoneGoal = new Translation2d(15.5,6.5);
+        public static final Translation2d redRightZoneGoal = new Translation2d(15.5,6.0); //6.5
         public static final Rectangle2d blueLeftZone = new Rectangle2d(new Translation2d(4.5,8),new Translation2d(16.5,4));
         public static final Rectangle2d blueRightZone = new Rectangle2d(new Translation2d(4.5,0),new Translation2d(16.5,4));
         public static final Rectangle2d redLeftZone = new Rectangle2d(new Translation2d(12.0,0),new Translation2d(0,4));
