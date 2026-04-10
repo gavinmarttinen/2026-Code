@@ -11,13 +11,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Auto Aim"
+                  "name": "Run Intake"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Run Intake"
+                  "name": "Auto Aim"
                 }
               },
               {
@@ -27,19 +27,19 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Left Trench Neutral Trench Fast"
+                        "pathName": "Trench-L Preload Neutral Trench-R"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 5 Sec"
+                        "name": "Run Spindex 4 Sec"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Left Trench Neutral Sweep"
+                        "pathName": "Trench-R Neutral Trench-L"
                       }
                     },
                     {
@@ -58,6 +58,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Disrupt Autos",
+  "folder": "Cross Autos",
   "choreoAuto": false
 }

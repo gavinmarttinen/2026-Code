@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.452822222222222,
-        "y": 0.5984777777777766
+        "x": 3.4830555555555556,
+        "y": 0.6488666666666665
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.967666666666668,
-        "y": 0.20544444444444343
+        "x": 7.997900000000005,
+        "y": 0.25583333333333336
       },
       "isLocked": false,
-      "linkedName": "Right Trench Wall"
+      "linkedName": null
     },
     {
       "anchor": {

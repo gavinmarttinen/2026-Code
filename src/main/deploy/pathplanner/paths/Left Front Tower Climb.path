@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.7935705812574145,
-        "y": 3.6638078291814944
+        "x": 2.8280000000000003,
+        "y": 3.6923555555555545
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.7947194828461925,
-        "y": 2.486137630567082
+        "x": 2.8291489015887783,
+        "y": 2.514685356941142
       },
       "isLocked": false,
       "linkedName": "Left Climb Shoot"
     },
     {
       "anchor": {
-        "x": 1.0240777777777776,
-        "y": 2.5031777777777777
+        "x": 1.3264111111111108,
+        "y": 2.694655555555555
       },
       "prevControl": {
-        "x": 1.261331689708026,
-        "y": 2.581985019030051
+        "x": 1.5636650230413591,
+        "y": 2.773462796807828
       },
       "nextControl": null,
       "isLocked": false,
@@ -52,7 +52,7 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": "4. Hub Preload Climb",
+  "folder": "4. Old Hub-R Preload Climb",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

@@ -25,27 +25,21 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "named",
-                      "data": {
-                        "name": "Run Spindex 3.5 Sec"
-                      }
-                    },
-                    {
                       "type": "path",
                       "data": {
-                        "pathName": "Trench-L Preload Neutral Trench-R"
+                        "pathName": "Trench-R Preload Neutral Trench-L"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 3.5 Sec"
+                        "name": "Run Spindex 4 Sec"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Trench-R Neutral Trench-L"
+                        "pathName": "Trench-L Neutral Trench-R"
                       }
                     },
                     {
@@ -64,6 +58,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Preload Cross Autos",
+  "folder": "Cross Autos",
   "choreoAuto": false
 }

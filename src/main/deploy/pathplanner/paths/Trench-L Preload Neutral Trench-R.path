@@ -4,44 +4,44 @@
     {
       "anchor": {
         "x": 4.007099999999999,
-        "y": 7.411055555555556
+        "y": 7.421133333333334
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.505339422699427,
-        "y": 7.414103993677443
-      },
-      "isLocked": false,
-      "linkedName": "Left Trench"
-    },
-    {
-      "anchor": {
-        "x": 8.290155555555556,
-        "y": 4.115622222222222
-      },
-      "prevControl": {
-        "x": 8.290155555555556,
-        "y": 7.452168008338169
-      },
-      "nextControl": {
-        "x": 8.290155555555556,
-        "y": 0.2860666666666667
+        "x": 7.796344444444443,
+        "y": 7.511833333333334
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.452822222222222,
-        "y": 0.5984777777777766
+        "x": 7.897122222222222,
+        "y": 4.105544444444445
       },
       "prevControl": {
-        "x": 7.090900000000001,
-        "y": 0.4271555555555552
+        "x": 7.846733333333333,
+        "y": 7.0684111111111125
+      },
+      "nextControl": {
+        "x": 7.962241301506605,
+        "y": 0.27654258252278163
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.442744444444445,
+        "y": 0.6186333333333334
+      },
+      "prevControl": {
+        "x": 6.929655555555557,
+        "y": 0.34653333333333297
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Right Trench Wall"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
@@ -67,10 +67,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "3. Trench-L Preload Neutral Cross",
+  "folder": "3. Trench-L Neutral Cross",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

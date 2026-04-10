@@ -3,35 +3,42 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.3264111111111108,
-        "y": 2.694655555555555
+        "x": 1.8000666666666665,
+        "y": 3.6923555555555545
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.054311111111111,
-        "y": 2.8962111111111106
+        "x": 1.9814666666666665,
+        "y": 2.896211111111109
       },
       "isLocked": false,
-      "linkedName": "Right Tower"
+      "linkedName": "Right Tower New"
     },
     {
       "anchor": {
-        "x": 0.9132222222222222,
-        "y": 2.876055555555555
+        "x": 1.3768,
+        "y": 2.6442666666666663
       },
       "prevControl": {
-        "x": 1.165166666666667,
-        "y": 2.7248888888888882
+        "x": 1.9209999999999998,
+        "y": 2.6442666666666663
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Right Tower New New"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 1.0,
     "maxAcceleration": 1.0,
@@ -45,10 +52,10 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": "4. Old Hub-R Preload Climb",
+  "folder": "4. Hub-R Preload Climb",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": false
 }

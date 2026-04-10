@@ -7,16 +7,20 @@
     "1. Trench-R Neutral Disrupt",
     "2. Trench-L Preload Neutral Disrupt",
     "2. Trench-R Preload Neutral Disrupt",
-    "4. Hub Preload Climb",
+    "3. Trench-L Neutral Cross",
+    "3. Trench-R Neutral Cross",
+    "4. Hub Center-L Preload Climb",
+    "4. Hub-L Preload Climb",
+    "4. Hub-R Preload Climb",
+    "4. Old Hub-R Preload Climb",
     "4. Trench-L Climb",
     "4. Trench-R Climb",
-    "3. Trench-L Preload Neutral Cross",
-    "3. Trench-R Preload Neutral Cross"
+    "5. Bump-L Depot Climb"
   ],
   "autoFolders": [
     "Climb Autos",
     "Disrupt Autos",
-    "Preload Cross Autos",
+    "Cross Autos",
     "Preload Disrupt Autos"
   ],
   "defaultMaxVel": 3.0,

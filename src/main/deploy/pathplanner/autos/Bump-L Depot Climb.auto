@@ -27,7 +27,19 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Left Trench Neutral Trench Fast"
+                        "pathName": "Bump-L Depot"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Climber Up"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "In Depot"
                       }
                     },
                     {
@@ -39,13 +51,13 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Left Trench Neutral Sweep"
+                        "pathName": "Out Depot"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 7 Sec"
+                        "name": "Climber Down"
                       }
                     }
                   ]
@@ -58,6 +70,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Disrupt Autos",
+  "folder": "Climb Autos",
   "choreoAuto": false
 }

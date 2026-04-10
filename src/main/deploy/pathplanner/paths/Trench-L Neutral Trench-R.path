@@ -3,48 +3,52 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.007099999999999,
-        "y": 7.411055555555556
+        "x": 2.7574555555555555,
+        "y": 7.310277777777777
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.696898339264531,
-        "y": 7.669276196124951
-      },
-      "isLocked": false,
-      "linkedName": "Left Trench"
-    },
-    {
-      "anchor": {
-        "x": 6.107402135231317,
-        "y": 3.9112692763938313
-      },
-      "prevControl": {
-        "x": 6.064445878727208,
-        "y": 7.24753853154624
-      },
-      "nextControl": {
-        "x": 6.139679715302492,
-        "y": 1.4043772241992882
+        "x": 6.808722222222222,
+        "y": 7.814166666666667
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.452822222222222,
-        "y": 0.5984777777777766
+        "x": 6.395533333333334,
+        "y": 3.9846111111111107
       },
       "prevControl": {
-        "x": 6.208072321075525,
-        "y": 0.08508493475682033
+        "x": 6.487667959054242,
+        "y": 7.319884562207937
+      },
+      "nextControl": {
+        "x": 6.345144444444444,
+        "y": 2.160533333333333
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.3419666666666665,
+        "y": 0.5783222222222231
+      },
+      "prevControl": {
+        "x": 7.574633333333333,
+        "y": -0.26821111111111107
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Right Trench Wall"
+      "linkedName": null
     }
   ],
   "rotationTargets": [
+    {
+      "waypointRelativePos": 0.252631578947364,
+      "rotationDegrees": 90.0
+    },
     {
       "waypointRelativePos": 0.6536412078152776,
       "rotationDegrees": -90.0
@@ -94,13 +98,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "3. Trench-R Preload Neutral Cross",
+  "folder": "3. Trench-R Neutral Cross",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 140.3558250428551
   },
   "useDefaultConstraints": true
 }

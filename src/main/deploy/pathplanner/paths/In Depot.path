@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.3264111111111108,
-        "y": 2.694655555555555
+        "x": 1.064388888888889,
+        "y": 5.9699333333333335
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.054311111111111,
-        "y": 2.8962111111111106
+        "x": 0.5534859267515018,
+        "y": 5.959607999347991
       },
       "isLocked": false,
-      "linkedName": "Right Tower"
+      "linkedName": "Depot"
     },
     {
       "anchor": {
-        "x": 0.9132222222222222,
-        "y": 2.876055555555555
+        "x": 0.36902222222923053,
+        "y": 5.949777777777793
       },
       "prevControl": {
-        "x": 1.165166666666667,
-        "y": 2.7248888888888882
+        "x": 0.6365757275798899,
+        "y": 5.950706654785207
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "In Depot"
     }
   ],
   "rotationTargets": [],
@@ -45,7 +45,7 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": "4. Old Hub-R Preload Climb",
+  "folder": "5. Bump-L Depot Climb",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

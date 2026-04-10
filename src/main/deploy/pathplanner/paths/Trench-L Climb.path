@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.007099999999999,
-        "y": 7.411055555555556
+        "x": 2.7574555555555555,
+        "y": 7.310277777777777
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.196291894029259,
-        "y": 6.633345195729539
+        "x": 0.9466474495848152,
+        "y": 6.53256741795176
       },
       "isLocked": false,
       "linkedName": "Left Trench"
@@ -62,7 +62,7 @@
   "folder": "4. Trench-L Climb",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 140.3558250428551
   },
   "useDefaultConstraints": true
 }

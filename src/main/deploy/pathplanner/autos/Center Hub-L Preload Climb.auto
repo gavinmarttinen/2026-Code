@@ -11,13 +11,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Run Intake"
+                  "name": "Auto Aim"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Auto Aim"
+                  "name": "Run Intake"
                 }
               },
               {
@@ -25,33 +25,33 @@
                 "data": {
                   "commands": [
                     {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Center Hub Preload"
+                      }
+                    },
+                    {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 3.5 Sec"
+                        "name": "Climber Up"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Trench-R Preload Neutral Trench-L"
+                        "pathName": "Left Tower Climb"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 3.5 Sec"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Trench-L Neutral Trench-R"
+                        "name": "Run Spindex 5 Sec"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 7 Sec"
+                        "name": "Climber Down"
                       }
                     }
                   ]
@@ -64,6 +64,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Preload Cross Autos",
+  "folder": "Climb Autos",
   "choreoAuto": false
 }
