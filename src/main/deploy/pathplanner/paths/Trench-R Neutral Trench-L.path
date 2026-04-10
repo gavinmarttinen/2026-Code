@@ -20,24 +20,24 @@
         "y": 3.934222222222221
       },
       "prevControl": {
-        "x": 6.395533333333334,
-        "y": 2.644266666666666
+        "x": 6.3584572834581135,
+        "y": 2.6447995987840054
       },
       "nextControl": {
-        "x": 6.395533333333334,
-        "y": 6.839463843113788
+        "x": 6.486233333333334,
+        "y": 7.088566666666667
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.7574555555555555,
-        "y": 7.310277777777777
+        "x": 2.334188888888889,
+        "y": 7.3203555555555555
       },
       "prevControl": {
-        "x": 7.020355555555557,
-        "y": 7.965333333333334
+        "x": 7.111055555555556,
+        "y": 8.015722222222221
       },
       "nextControl": null,
       "isLocked": false,
@@ -58,7 +58,7 @@
       "rotationDegrees": 91.0
     },
     {
-      "waypointRelativePos": 1.7754385964912358,
+      "waypointRelativePos": 1.8736842105263214,
       "rotationDegrees": 90.0
     }
   ],
@@ -102,7 +102,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 140.3558250428551
+    "rotation": -131.0
   },
   "reversed": false,
   "folder": "3. Trench-L Neutral Cross",

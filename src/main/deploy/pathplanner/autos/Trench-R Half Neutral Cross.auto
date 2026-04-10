@@ -1,0 +1,57 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Run Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Auto Aim"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Trench-R Preload Neutral Trench-L"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Run Spindex 5 Sec"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Half Trench-L Neutral Trench-R"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "Cross Autos",
+  "choreoAuto": false
+}
