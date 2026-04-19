@@ -27,7 +27,13 @@ private final PIDController pidController = new PIDController(HoodConstants.kP, 
  }
 
  public void setPosition(double position){
-   linearActuator.set(pidController.calculate(encoder.get(), MathUtil.clamp(position, HoodConstants.hoodMinPosition, HoodConstants.hoodMaxPosition)));
+   if(encoder.get() == 0){
+      setHood(-1);
+   }
+   else{
+     linearActuator.set(pidController.calculate(encoder.get(), MathUtil.clamp(position, HoodConstants.hoodMinPosition, HoodConstants.hoodMaxPosition)));
+
+   }
  }
 
  public void setHood(double speed){

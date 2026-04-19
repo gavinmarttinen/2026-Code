@@ -3,32 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.36902222222923053,
-        "y": 5.949777777777793
+        "x": 3.6543777777777784,
+        "y": 5.466044444444444
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.072166666666667,
-        "y": 5.919544444444444
+        "x": 6.304833333333334,
+        "y": 5.566822222222222
       },
       "isLocked": false,
-      "linkedName": "In Depot"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.3969555555555555,
-        "y": 4.8513
+        "x": 8.219611111111112,
+        "y": 4.176088888888888
       },
       "prevControl": {
-        "x": 1.6287444444444446,
-        "y": 5.5970555555555555
+        "x": 6.838955555555555,
+        "y": 5.214099999999999
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Depot Climb Left"
+      "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.352282515073215,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -45,10 +50,10 @@
     "rotation": 0.0
   },
   "reversed": false,
-  "folder": "5. Bump-L Depot Climb",
+  "folder": "5. Bump-L Preload Disrupt",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

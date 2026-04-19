@@ -32,7 +32,7 @@ public void climberUp (double speed){
 }
 public void climberDown (double speed){
     climberMotor.set(speed);
-    if(climberMotor.getPosition().getValueAsDouble()<65){
+    if(climberMotor.getPosition().getValueAsDouble()<25){
         climberMotor.set(0);
     }
 }

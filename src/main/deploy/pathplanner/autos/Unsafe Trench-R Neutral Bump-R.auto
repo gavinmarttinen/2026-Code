@@ -25,52 +25,33 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "parallel",
+                      "type": "wait",
                       "data": {
-                        "commands": [
-                          {
-                            "type": "path",
-                            "data": {
-                              "pathName": "Bump-L Depot"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Climber Up"
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "In Depot"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Out Depot"
+                        "waitTime": 0.5
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 6 Sec"
+                        "name": "Run Spindex 2.75 Sec"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Out Depot Climb"
+                        "pathName": "Unsafe Trench-R Neutral"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Climber Down"
+                        "name": "Auto Wait"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Unsafe Neutral Bump-R"
                       }
                     }
                   ]
@@ -83,6 +64,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Climb Autos",
+  "folder": "Unsafe Right Autos",
   "choreoAuto": false
 }

@@ -1,0 +1,82 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 8.552177777777779,
+        "y": 6.756
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 8.572333333333335,
+        "y": 5.435811111111111
+      },
+      "isLocked": false,
+      "linkedName": "Pass Center Right Trench"
+    },
+    {
+      "anchor": {
+        "x": 8.532022222222222,
+        "y": 1.0721333333333336
+      },
+      "prevControl": {
+        "x": 8.532022222222222,
+        "y": 2.0721333333333343
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Right Center "
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.2701754385964902,
+      "rotationDegrees": -90.0
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "Stop Spindex",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "Stop Spindex"
+        }
+      }
+    },
+    {
+      "name": "Run Spindex 7 Sec",
+      "waypointRelativePos": 0.4141749723145059,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "Run Spindex 7 Sec"
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 1.5,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "reversed": false,
+  "folder": "7. Trench-R Follow Pass",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 90.0
+  },
+  "useDefaultConstraints": false
+}

@@ -25,52 +25,27 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "parallel",
-                      "data": {
-                        "commands": [
-                          {
-                            "type": "path",
-                            "data": {
-                              "pathName": "Bump-L Depot"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Climber Up"
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    {
                       "type": "path",
                       "data": {
-                        "pathName": "In Depot"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Out Depot"
+                        "pathName": "Copy of Copy of Right Trench Neutral Trench Slow"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 6 Sec"
+                        "name": "Run Spindex 5 Sec"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Out Depot Climb"
+                        "pathName": "Copy of Copy of Right Trench Neutral Sweep"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Climber Down"
+                        "name": "Run Spindex 7 Sec"
                       }
                     }
                   ]
@@ -83,6 +58,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Climb Autos",
+  "folder": "Disrupt Autos",
   "choreoAuto": false
 }

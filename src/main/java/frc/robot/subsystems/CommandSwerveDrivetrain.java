@@ -231,7 +231,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
             var config = RobotConfig.fromGUISettings();
             AutoBuilder.configure(
                 () -> getVisionPose(),   // Supplier of current robot pose
-                this::resetPose,         // Consumer for seeding pose against auto
+                this::resetOdometry,         // Consumer for seeding pose against auto
                 () -> getState().Speeds, // Supplier of current robot speeds
                 // Consumer of ChassisSpeeds and feedforwards to drive the robot
                 (speeds, feedforwards) -> setControl(
@@ -307,6 +307,13 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
         updateOdometry();
         m_field.setRobotPose(getVisionPose());
          SmartDashboard.putData("FieldWithVision", m_field);
+
+         if(DriverStation.isDisabled()){
+            NetworkTableInstance.getDefault().getTable("limelight-four").getEntry("throttle_set").setNumber(200);
+         }
+         else{
+            NetworkTableInstance.getDefault().getTable("limelight-four").getEntry("throttle_set").setNumber(0);
+         }
         /*
          * Periodically try to apply the operator perspective.
          * If we haven't applied the operator perspective before, then we should apply it regardless of DS state.
@@ -457,8 +464,8 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     }
 
     if (useMegaTag2 == true) {
-        LimelightHelpers.PoseEstimate mt2LL3G = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-three");
-        LimelightHelpers.PoseEstimate mt2LL4 = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-four");
+        LimelightHelpers.PoseEstimate mt2LL3G = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-three");
+        LimelightHelpers.PoseEstimate mt2LL4 = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight-four");
        //if(mt2LL4 == null){System.out.println("LL4 is null" );}
     if(Math.abs(getState().Speeds.omegaRadiansPerSecond) > 360){
         doRejectUpdateLL3G = true;
@@ -468,11 +475,13 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
     if(mt2LL3G.tagCount == 0){//3.5
         doRejectUpdateLL3G = true;
     }
-
+    if(mt2LL3G.tagCount != 0 && mt2LL3G.rawFiducials[0].ambiguity>.7){
+        doRejectUpdateLL3G = true;
+    }
     if(mt2LL3G.tagCount == 1 && mt2LL3G.avgTagDist > 2.0){
         doRejectUpdateLL3G =true;
     }
-    if(mt2LL3G.tagCount >= 2 && mt2LL3G.avgTagDist > 3.5){
+    if(mt2LL3G.tagCount >= 2 && mt2LL3G.avgTagDist > 4.0){
         doRejectUpdateLL3G = true;
     }
    
@@ -484,6 +493,9 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
 }
     if(mt2LL4 != null){
      if(mt2LL4.tagCount == 0){//3.5
+        doRejectUpdateLL4 = true;
+    }
+      if(mt2LL4.tagCount != 0 && mt2LL4.rawFiducials[0].ambiguity>.7){
         doRejectUpdateLL4 = true;
     }
     if(mt2LL4.tagCount == 1 && mt2LL4.avgTagDist > 2.0){
@@ -507,8 +519,8 @@ public Pose2d getVisionPose(){
 }
 public void resetOdometry(Pose2d initialHolonomicPose)
   {
+    resetPose(initialHolonomicPose);
     m_poseEstimator.resetPosition(getState().Pose.getRotation(),getState().ModulePositions,initialHolonomicPose);
-    resetOdometry(initialHolonomicPose);
   }
 public double getHubDistance(){
        boolean blue = alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Blue : false;

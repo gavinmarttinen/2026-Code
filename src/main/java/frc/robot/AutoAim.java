@@ -1,5 +1,6 @@
 package frc.robot;
 
+import com.ctre.phoenix6.configs.TorqueCurrentConfigs;
 import com.ctre.phoenix6.mechanisms.swerve.LegacySwerveRequest.FieldCentric;
 
 import edu.wpi.first.math.geometry.Pose2d;
@@ -12,6 +13,7 @@ import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.FieldConstants;
+import frc.robot.Constants.TurretConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 
 public class AutoAim {
@@ -115,15 +117,15 @@ public Translation2d goalPositionWithTOF(){
     Pose2d robotPose = drivetrain.getVisionPose();
     Pose2d turretPose = robotPose.transformBy(new Transform2d(Units.inchesToMeters(-6.25),Units.inchesToMeters(5.25), new Rotation2d()));
     double distance = turretPose.getTranslation().getDistance(allianceHub);
-    double TOF = drivetrain.isPassing()?passingTimeOfFlightTable.get(distance):scoringTimeOfFlightTable.get(distance);
+    double TOF = (drivetrain.isPassing()?passingTimeOfFlightTable.get(distance):scoringTimeOfFlightTable.get(distance))+TurretConstants.lagAdjustment;
     Translation2d robotVelocity = new Translation2d(speeds.vxMetersPerSecond,
     speeds.vyMetersPerSecond);
     Translation2d goalPoseWithTOF = allianceHub.minus(robotVelocity.times(TOF));
     double goalDistance = turretPose.getTranslation().getDistance(goalPoseWithTOF);
-    double TOF1 = drivetrain.isPassing()?passingTimeOfFlightTable.get(goalDistance):scoringTimeOfFlightTable.get(goalDistance);
+    double TOF1 = (drivetrain.isPassing()?passingTimeOfFlightTable.get(goalDistance):scoringTimeOfFlightTable.get(goalDistance))+TurretConstants.lagAdjustment;
     Translation2d goalPoseWithTOF1 = allianceHub.minus(robotVelocity.times(TOF1));
     double goalDistance1 = turretPose.getTranslation().getDistance(goalPoseWithTOF1);
-    double TOF2 = drivetrain.isPassing()?passingTimeOfFlightTable.get(goalDistance1):scoringTimeOfFlightTable.get(goalDistance1);
+    double TOF2 = (drivetrain.isPassing()?passingTimeOfFlightTable.get(goalDistance1):scoringTimeOfFlightTable.get(goalDistance1))+TurretConstants.lagAdjustment;
     Translation2d goalPoseWithTOF2 = allianceHub.minus(robotVelocity.times(TOF2));
     return goalPoseWithTOF2;
 }
@@ -135,8 +137,9 @@ public double getHubDistance(){
 
 public double getHubRotation(){
     Pose2d robotPose = drivetrain.getVisionPose();
+    Pose2d turretPose = robotPose.transformBy(new Transform2d(Units.inchesToMeters(-6.25),Units.inchesToMeters(5.25), new Rotation2d()));
     Translation2d hub = goalPositionWithTOF();
-    double setpoint = hub.minus(robotPose.getTranslation()).getAngle().getDegrees();
+    double setpoint = hub.minus(turretPose.getTranslation()).getAngle().getDegrees();
     // if(setpoint<0){
     //     setpoint += 360;
     // }

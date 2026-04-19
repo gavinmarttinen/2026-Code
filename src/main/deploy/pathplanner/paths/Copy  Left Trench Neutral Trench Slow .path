@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.4629000000000003,
-        "y": 0.5984777777777766
+        "x": 3.976866666666667,
+        "y": 7.350588888888889
       },
       "prevControl": null,
       "nextControl": {
-        "x": 9.12661111111111,
-        "y": 0.24575555555555634
+        "x": 8.108755555555536,
+        "y": 7.925022222222224
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.403311111111111,
-        "y": 3.8737555555555554
+        "x": 7.732040332147095,
+        "y": 3.9865836298932384
       },
       "prevControl": {
-        "x": 8.20337815410459,
-        "y": 3.8620472573654068
+        "x": 8.366940332147095,
+        "y": 4.147828074337683
       },
       "nextControl": {
-        "x": 5.337366666666668,
-        "y": 3.903988888888889
+        "x": 5.651155041264715,
+        "y": 3.4581048258596168
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.4629000000000003,
-        "y": 0.5984777777777766
+        "x": 4.007099999999999,
+        "y": 7.340511111111112
       },
       "prevControl": {
-        "x": 8.532022222222222,
-        "y": -0.3992222222222235
+        "x": 8.149066666666645,
+        "y": 8.247511111111116
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,16 +46,16 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.5,
-      "rotationDegrees": 91.40859198457706
+      "waypointRelativePos": 1.0,
+      "rotationDegrees": -76.16724867773819
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 2.5,
+    "maxAcceleration": 2.5,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -63,13 +63,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "2. Trench-R Preload Neutral Disrupt",
+  "folder": "1. Trench-L Neutral Disrupt",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": false
 }

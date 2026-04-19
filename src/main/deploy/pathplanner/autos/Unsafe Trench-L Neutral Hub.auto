@@ -11,13 +11,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Run Intake"
+                  "name": "Auto Aim"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Auto Aim"
+                  "name": "Run Intake"
                 }
               },
               {
@@ -27,19 +27,31 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.75
+                        "waitTime": 0.5
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 3.5 Sec"
+                        "name": "Run Spindex 2.75 Sec"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Trench-L Climb"
+                        "pathName": "Unsafe Trench-L Neutral"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Auto Wait"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Unsafe Neutral Hub Left"
                       }
                     }
                   ]
@@ -52,6 +64,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Climb Autos",
+  "folder": "Unsafe Left Autos",
   "choreoAuto": false
 }

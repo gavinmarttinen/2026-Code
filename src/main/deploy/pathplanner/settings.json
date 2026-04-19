@@ -13,15 +13,22 @@
     "4. Hub-L Preload Climb",
     "4. Hub-R Preload Climb",
     "4. Old Hub-R Preload Climb",
-    "4. Trench-L Climb",
-    "4. Trench-R Climb",
-    "5. Bump-L Depot Climb"
+    "5. Bump-L Depot Climb",
+    "5. Bump-L Preload Disrupt",
+    "5. Bump-R Preload Disrupt",
+    "6. Unsafe Left Autos",
+    "6. Unsafe Right Autos",
+    "7. Trench-R Follow Pass"
   ],
   "autoFolders": [
+    "Bump Autos",
     "Climb Autos",
-    "Disrupt Autos",
     "Cross Autos",
-    "Preload Disrupt Autos"
+    "Disrupt Autos",
+    "Follow Pass Autos",
+    "Preload Disrupt Autos",
+    "Unsafe Left Autos",
+    "Unsafe Right Autos"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,

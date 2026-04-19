@@ -3,47 +3,38 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.7574555555555555,
-        "y": 7.310277777777777
+        "x": 3.694688888888888,
+        "y": 2.4930999999999996
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.9466474495848152,
-        "y": 6.53256741795176
+        "x": 4.694688888888888,
+        "y": 2.4930999999999996
       },
       "isLocked": false,
-      "linkedName": "Left Trench"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.084544444444444,
-        "y": 4.720288888888888
+        "x": 8.380855555555556,
+        "y": 4.035
       },
       "prevControl": {
-        "x": 2.7574555555555555,
-        "y": 4.760599999999999
+        "x": 7.9273555555555575,
+        "y": 2.2915444444444435
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
-  "constraintZones": [
+  "rotationTargets": [
     {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.4826589595375721,
-      "maxWaypointRelativePos": 1.0,
-      "constraints": {
-        "maxVelocity": 1.5,
-        "maxAcceleration": 1.5,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
+      "waypointRelativePos": 0.4022394487510758,
+      "rotationDegrees": 0.0
     }
   ],
+  "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -59,10 +50,10 @@
     "rotation": 0.0
   },
   "reversed": false,
-  "folder": "4. Trench-L Climb",
+  "folder": "5. Bump-R Preload Disrupt",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 140.3558250428551
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

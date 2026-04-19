@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.804934756820879,
-        "y": 0.6727520759193351
+        "x": 1.3969555555555555,
+        "y": 4.8513
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.343656979043101,
-        "y": 1.2371076314748901
+        "x": 1.2393073992819397,
+        "y": 4.657271499970934
       },
       "isLocked": false,
-      "linkedName": "Right Trench Wall Far"
+      "linkedName": "Depot Climb Left"
     },
     {
       "anchor": {
         "x": 1.084544444444444,
-        "y": 2.7651999999999997
+        "y": 4.5792
       },
       "prevControl": {
-        "x": 2.344266666666666,
-        "y": 2.724888888888889
+        "x": 1.2457888888888884,
+        "y": 4.780755555555555
       },
       "nextControl": null,
       "isLocked": false,
@@ -29,21 +29,7 @@
     }
   ],
   "rotationTargets": [],
-  "constraintZones": [
-    {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.5134874759152226,
-      "maxWaypointRelativePos": 1.0,
-      "constraints": {
-        "maxVelocity": 1.5,
-        "maxAcceleration": 1.5,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
-    }
-  ],
+  "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -55,11 +41,11 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0.0,
-    "rotation": 180.0
+    "velocity": 0,
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": "4. Trench-R Climb",
+  "folder": "5. Bump-L Depot Climb",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 0.0

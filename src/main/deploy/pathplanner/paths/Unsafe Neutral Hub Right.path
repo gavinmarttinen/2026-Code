@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.36902222222923053,
-        "y": 5.949777777777793
+        "x": 8.6328,
+        "y": 0.4372333333333336
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.072166666666667,
-        "y": 5.919544444444444
+        "x": 8.818718861209964,
+        "y": 1.0600830367734273
       },
       "isLocked": false,
-      "linkedName": "In Depot"
+      "linkedName": "Right Neutral Wall"
     },
     {
       "anchor": {
-        "x": 1.3969555555555555,
-        "y": 4.8513
+        "x": 9.991470937129302,
+        "y": 3.943546856465006
       },
       "prevControl": {
-        "x": 1.6287444444444446,
-        "y": 5.5970555555555555
+        "x": 8.991470937129302,
+        "y": 3.943546856465006
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Depot Climb Left"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -45,10 +45,10 @@
     "rotation": 0.0
   },
   "reversed": false,
-  "folder": "5. Bump-L Depot Climb",
+  "folder": "6. Unsafe Right Autos",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

@@ -24,14 +24,15 @@ import frc.robot.Constants.TurretConstants;
 public class TurretSubsystem extends SubsystemBase {
 private final TalonFX turretMotor = new TalonFX(TurretConstants.turretMotorID);
 double turretDeg;
+private CommandSwerveDrivetrain drivetrain;
 
 //double fullRange = 0;
 
 AnalogPotentiometer potentiometer = new AnalogPotentiometer(3,-581,581);
 private double setpoint = 0;
     
-public TurretSubsystem(){
-
+public TurretSubsystem(CommandSwerveDrivetrain drivetrain){
+this.drivetrain = drivetrain;
 SmartDashboard.putNumber("Full Range", 0);
 
 var talonFXConfigs = new TalonFXConfiguration();
@@ -48,7 +49,7 @@ slot0Configs.kI = TurretConstants.kI;
 slot0Configs.kD = TurretConstants.kD;
 
 var motionMagicConfigs = talonFXConfigs.MotionMagic;
-motionMagicConfigs.MotionMagicCruiseVelocity = 50;
+motionMagicConfigs.MotionMagicCruiseVelocity = 6;
 motionMagicConfigs.MotionMagicAcceleration = 600;
 motionMagicConfigs.MotionMagicJerk = 1600;
 
@@ -59,10 +60,11 @@ talonFXConfigs.SoftwareLimitSwitch.ReverseSoftLimitEnable = false;
 //talonFXConfigs.SoftwareLimitSwitch.ReverseSoftLimitThreshold = TurretConstants.turretMinimumRotation;
 turretMotor.getConfigurator().apply(talonFXConfigs);
 zeroFromPotentiometer();
+//turretMotor.setPosition(degreesToRotations(92));
 boolean potentiometerConnected = potentiometer.get()==-90 ? false : true;
 SmartDashboard.putBoolean("Potentiometer Connected", potentiometerConnected);
-//turretMotor.setPosition(degreesToRotations(90));
 SmartDashboard.putNumber("Turret Position", 0);
+SmartDashboard.putNumber("Turn Feedforward", 0);
 }
 
 
@@ -88,13 +90,14 @@ private double clampTurretRotation(double degrees) {
 }
 
 private void zeroFromPotentiometer(){
-    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(193));//197.32
+    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(203));
 }
 
 public void setTurretPosition(double degrees){
+    double turnFeedforward = drivetrain.getState().Speeds.omegaRadiansPerSecond * SmartDashboard.getNumber("Turn Feedforward", 0);
     double min = TurretConstants.turretMinimumRotation;
     double max = TurretConstants.turretMaximumRotation;
-    if(degrees < 0 && degrees < -90){
+    if(degrees < 0 && degrees < -66.5){
         degrees += 360;
     }
     if(degrees < min){
@@ -102,13 +105,14 @@ public void setTurretPosition(double degrees){
     }
     else if(degrees > max){
         setpoint = max;
+
     }
     else{
         setpoint = degrees;
     }
     final MotionMagicVoltage m_request = new MotionMagicVoltage(0);
     //double clampedSetpoint = clampTurretRotation(degrees);
-    turretMotor.setControl(m_request.withPosition(degreesToRotations(setpoint)));
+    turretMotor.setControl(m_request.withPosition(degreesToRotations(setpoint)).withFeedForward(-turnFeedforward));
 }
 
 public double degreesToRotations(double degrees){

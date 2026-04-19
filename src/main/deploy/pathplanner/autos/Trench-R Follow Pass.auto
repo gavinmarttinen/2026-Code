@@ -25,52 +25,33 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "parallel",
+                      "type": "wait",
                       "data": {
-                        "commands": [
-                          {
-                            "type": "path",
-                            "data": {
-                              "pathName": "Bump-L Depot"
-                            }
-                          },
-                          {
-                            "type": "named",
-                            "data": {
-                              "name": "Climber Up"
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "In Depot"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Out Depot"
+                        "waitTime": 1.0
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 6 Sec"
+                        "name": "Run Spindex 2.75 Sec"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Out Depot Climb"
+                        "pathName": "Trench-R Follow Pass"
                       }
                     },
                     {
-                      "type": "named",
+                      "type": "path",
                       "data": {
-                        "name": "Climber Down"
+                        "pathName": "Center Pass"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Copy of Center Pass"
                       }
                     }
                   ]
@@ -83,6 +64,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Climb Autos",
+  "folder": "Follow Pass Autos",
   "choreoAuto": false
 }
