@@ -90,7 +90,7 @@ private double clampTurretRotation(double degrees) {
 }
 
 private void zeroFromPotentiometer(){
-    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(203));
+    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(205));
 }
 
 public void setTurretPosition(double degrees){
