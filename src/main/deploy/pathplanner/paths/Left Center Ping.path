@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.360700000000001,
-        "y": 7.592455555555556
+        "x": 8.330466666666668,
+        "y": 4.659822222222221
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.138988888888889,
-        "y": 5.919544444444446
+        "x": 8.340544444444445,
+        "y": 3.813288888888887
       },
       "isLocked": false,
-      "linkedName": "Left Neutral Wall"
+      "linkedName": "Left Center Ping"
     },
     {
       "anchor": {
-        "x": 10.144466666666666,
-        "y": 3.9443
+        "x": 8.330466666666668,
+        "y": 3.3093999999999992
       },
       "prevControl": {
-        "x": 9.144466666666666,
-        "y": 3.9443
+        "x": 8.360700000000001,
+        "y": 4.2466333333333335
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Right Center Ping"
     }
   ],
   "rotationTargets": [],
@@ -33,8 +33,8 @@
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "reversed": false,
-  "folder": "6. Unsafe Left Autos",
+  "folder": "9. Trench-R Ping Pong",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 90.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

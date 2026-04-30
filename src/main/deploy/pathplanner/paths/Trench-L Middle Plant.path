@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.6328,
-        "y": 0.4372333333333336
+        "x": 4.007099999999999,
+        "y": 7.411055555555556
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.58241111111111,
-        "y": 1.4047000000000003
+        "x": 8.028133333333335,
+        "y": 7.582377777777777
       },
       "isLocked": false,
-      "linkedName": "Right Neutral Wall"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 10.981316725978647,
-        "y": 2.5448517200474496
+        "x": 8.411088888888889,
+        "y": 4.014844444444445
       },
       "prevControl": {
-        "x": 9.981316725978647,
-        "y": 2.5448517200474496
+        "x": 8.249844444444447,
+        "y": 4.982311111111112
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -89.45948981286926
   },
   "reversed": false,
-  "folder": "6. Unsafe Right Autos",
+  "folder": "8. Trench-L Middle Plant",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

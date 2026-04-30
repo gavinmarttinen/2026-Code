@@ -106,7 +106,7 @@ public double calculateShooterSpeed(){
         return passingShooterSpeedTable.get(getHubDistance());
     }
     else{
-        return scoringShooterSpeedTable.get(getHubDistance());
+        return scoringShooterSpeedTable.get(getHubDistance()+0.5);
     }
   //  return scoringShooterSpeedTable.get(getHubDistance()+0.5);
 }
@@ -139,7 +139,7 @@ public double getHubRotation(){
     Pose2d robotPose = drivetrain.getVisionPose();
     Pose2d turretPose = robotPose.transformBy(new Transform2d(Units.inchesToMeters(-6.25),Units.inchesToMeters(5.25), new Rotation2d()));
     Translation2d hub = goalPositionWithTOF();
-    double setpoint = hub.minus(turretPose.getTranslation()).getAngle().getDegrees();
+    double setpoint = hub.minus(robotPose.getTranslation()).getAngle().getDegrees();
     // if(setpoint<0){
     //     setpoint += 360;
     // }

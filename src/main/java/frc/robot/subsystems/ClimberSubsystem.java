@@ -30,9 +30,16 @@ public void climberUp (double speed){
         climberMotor.set(0);
     }
 }
-public void climberDown (double speed){
+public void autoClimberDown (double speed){
     climberMotor.set(speed);
     if(climberMotor.getPosition().getValueAsDouble()<25){
+        climberMotor.set(0);
+    }
+}
+
+public void teleopClimberDown (double speed){
+    climberMotor.set(speed);
+    if(climberMotor.getPosition().getValueAsDouble()<1){
         climberMotor.set(0);
     }
 }

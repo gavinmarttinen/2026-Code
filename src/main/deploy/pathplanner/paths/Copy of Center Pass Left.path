@@ -3,41 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.440444444444445,
-        "y": 0.5984777777777766
+        "x": 8.249844444444443,
+        "y": 7.290122222222222
       },
       "prevControl": null,
       "nextControl": {
-        "x": 9.197155555555558,
-        "y": -0.08681111111111162
+        "x": 8.320388888888887,
+        "y": 4.931922222222223
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Left Neutral Pass"
     },
     {
       "anchor": {
-        "x": 7.463777777777778,
-        "y": 3.6218111111111115
+        "x": 8.239766666666666,
+        "y": 0.8705777777777768
       },
       "prevControl": {
-        "x": 8.262951801994657,
-        "y": 3.582248040605325
-      },
-      "nextControl": {
-        "x": 5.428066666666666,
-        "y": 3.7225888888888896
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 3.503211111111111,
-        "y": 0.6186333333333334
-      },
-      "prevControl": {
-        "x": 8.40101111111111,
-        "y": -0.17751111111111106
+        "x": 8.209533333333333,
+        "y": 2.6241111111111097
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,21 +30,32 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.5,
-      "rotationDegrees": 91.40859198457706
+      "waypointRelativePos": 0.15789473684210525,
+      "rotationDegrees": -90.0
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "Auto Aim",
-      "waypointRelativePos": 1.8914728682170314,
+      "name": "Stop Spindex",
+      "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
       "command": {
         "type": "named",
         "data": {
-          "name": "Auto Aim"
+          "name": "Stop Spindex"
+        }
+      }
+    },
+    {
+      "name": "Run Spindex 7 Sec",
+      "waypointRelativePos": 0.2945736434108515,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "Run Spindex 7 Sec"
         }
       }
     }
@@ -75,10 +70,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "1. Trench-R Neutral Disrupt",
+  "folder": "7. Trench-L Follow Pass",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 90.0

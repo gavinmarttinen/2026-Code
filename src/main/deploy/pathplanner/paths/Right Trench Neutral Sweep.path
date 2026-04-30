@@ -16,32 +16,32 @@
     },
     {
       "anchor": {
-        "x": 7.544400000000001,
-        "y": 2.8962111111111106
+        "x": 7.524244444444443,
+        "y": 2.3419333333333325
       },
       "prevControl": {
-        "x": 7.558436170379115,
-        "y": 2.3523095089204844
+        "x": 7.538280614823557,
+        "y": 1.7980317311427063
       },
       "nextControl": {
-        "x": 7.504088888888888,
-        "y": 4.458266666666669
+        "x": 7.48393333333333,
+        "y": 3.903988888888886
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 6.052888888888889,
-        "y": 2.956677777777778
+        "x": 5.972266666666667,
+        "y": 2.3620888888888896
       },
       "prevControl": {
-        "x": 5.9230393300209325,
-        "y": 4.111891094603047
+        "x": 5.8222030090651735,
+        "y": 3.514850622282178
       },
       "nextControl": {
-        "x": 6.345144444444444,
-        "y": 0.3566111111111101
+        "x": 6.1939777777777785,
+        "y": 0.6589444444444441
       },
       "isLocked": false,
       "linkedName": null
@@ -72,7 +72,25 @@
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "Hood Down",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "Hood Down"
+        }
+      }
+    },
+    {
+      "name": "Auto Aim",
+      "waypointRelativePos": 2.863787375415281,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

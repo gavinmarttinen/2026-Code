@@ -309,7 +309,7 @@ import frc.robot.generated.TunerConstants.TunerSwerveDrivetrain;
          SmartDashboard.putData("FieldWithVision", m_field);
 
          if(DriverStation.isDisabled()){
-            NetworkTableInstance.getDefault().getTable("limelight-four").getEntry("throttle_set").setNumber(200);
+            NetworkTableInstance.getDefault().getTable("limelight-four").getEntry("throttle_set").setNumber(200); 
          }
          else{
             NetworkTableInstance.getDefault().getTable("limelight-four").getEntry("throttle_set").setNumber(0);

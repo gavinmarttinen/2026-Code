@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.36902222222923053,
-        "y": 5.949777777777793
+        "x": 4.500911111111112,
+        "y": 7.441288888888889
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.072166666666667,
-        "y": 5.919544444444444
+        "x": 8.370777777777779,
+        "y": 7.9351
       },
       "isLocked": false,
-      "linkedName": "In Depot"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.7899888888888889,
-        "y": 4.871455555555555
+        "x": 8.32038888888889,
+        "y": 3.4907999999999997
       },
       "prevControl": {
-        "x": 2.021777777777778,
-        "y": 5.617211111111111
+        "x": 8.33046666666667,
+        "y": 4.276866666666668
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Depot Climb Left"
+      "linkedName": "Left Ping Right"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -34.74318015830367
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "5. Bump-L Depot Climb",
+  "folder": "9. Trench-L Ping Pong",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

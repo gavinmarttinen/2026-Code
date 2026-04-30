@@ -18,7 +18,11 @@
     "5. Bump-R Preload Disrupt",
     "6. Unsafe Left Autos",
     "6. Unsafe Right Autos",
-    "7. Trench-R Follow Pass"
+    "7. Trench-L Follow Pass",
+    "7. Trench-R Follow Pass",
+    "8. Trench-L Middle Plant",
+    "9. Trench-R Ping Pong",
+    "9. Trench-L Ping Pong"
   ],
   "autoFolders": [
     "Bump Autos",
@@ -26,9 +30,9 @@
     "Cross Autos",
     "Disrupt Autos",
     "Follow Pass Autos",
+    "Middle Plant Autos",
     "Preload Disrupt Autos",
-    "Unsafe Left Autos",
-    "Unsafe Right Autos"
+    "Unsafe Autos"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,

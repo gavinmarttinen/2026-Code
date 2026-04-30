@@ -1,0 +1,123 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Run Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Auto Aim"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Run Spindex 2.75 Sec"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Trench-R Ping Pong"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Left Center Ping"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Right Center Ping"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Left Center Ping"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Right Center Ping"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Left Center Ping"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Right Center Ping"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Left Center Ping"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Right Center Ping"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Left Center Ping"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Right Center Ping"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Left Center Ping"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "Follow Pass Autos",
+  "choreoAuto": false
+}

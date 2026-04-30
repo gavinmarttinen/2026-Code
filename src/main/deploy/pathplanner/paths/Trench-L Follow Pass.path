@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.360700000000001,
-        "y": 7.592455555555556
+        "x": 3.513288888888889,
+        "y": 7.400977777777777
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.179300000000001,
-        "y": 6.564522222222223
+        "x": 7.534322222222223,
+        "y": 7.582377777777777
       },
       "isLocked": false,
-      "linkedName": "Left Neutral Wall"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 10.849911111111112,
-        "y": 5.556744444444445
+        "x": 8.31031111111111,
+        "y": 0.789955555555556
       },
       "prevControl": {
-        "x": 9.849911111111112,
-        "y": 5.556744444444445
+        "x": 8.380855555555554,
+        "y": 6.89708888888889
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Right Neutral Pass"
     }
   ],
   "rotationTargets": [],
@@ -42,10 +42,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "6. Unsafe Left Autos",
+  "folder": "7. Trench-L Follow Pass",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

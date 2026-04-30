@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.360700000000001,
-        "y": 7.592455555555556
+        "x": 4.521066666666667,
+        "y": 0.6186333333333334
       },
       "prevControl": null,
       "nextControl": {
-        "x": 9.360700000000001,
-        "y": 7.592455555555556
+        "x": 6.59708888888889,
+        "y": 0.39692222222222195
       },
       "isLocked": false,
-      "linkedName": "Left Neutral Wall"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 10.960766666666666,
-        "y": 7.642844444444444
+        "x": 8.330466666666668,
+        "y": 4.659822222222221
       },
       "prevControl": {
-        "x": 9.960766666666666,
-        "y": 7.642844444444444
+        "x": 8.55217777777778,
+        "y": 0.7697999999999974
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Left Center Ping"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 90.0
   },
   "reversed": false,
-  "folder": "6. Unsafe Left Autos",
+  "folder": "9. Trench-R Ping Pong",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

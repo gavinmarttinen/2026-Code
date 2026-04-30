@@ -81,7 +81,7 @@ public void periodic(){
 }
 
  public void setPosition(){
-  setTurretPosition(SmartDashboard.getNumber("Turret Position", 0));
+ // setTurretPosition(SmartDashboard.getNumber("Turret Position", 0));
  }
 
 private double clampTurretRotation(double degrees) {
@@ -90,11 +90,12 @@ private double clampTurretRotation(double degrees) {
 }
 
 private void zeroFromPotentiometer(){
-    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(205));
+
+    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(198));
 }
 
-public void setTurretPosition(double degrees){
-    double turnFeedforward = drivetrain.getState().Speeds.omegaRadiansPerSecond * SmartDashboard.getNumber("Turn Feedforward", 0);
+public void setTurretPosition(double degrees, boolean turnCorrection){
+    double turnFeedforward = turnCorrection ? drivetrain.getState().Speeds.omegaRadiansPerSecond * 2.2 : 0;//SmartDashboard.getNumber("Turn Feedforward", 0);
     double min = TurretConstants.turretMinimumRotation;
     double max = TurretConstants.turretMaximumRotation;
     if(degrees < 0 && degrees < -66.5){

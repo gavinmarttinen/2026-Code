@@ -27,7 +27,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.5
+                        "waitTime": 1.0
                       }
                     },
                     {
@@ -39,19 +39,19 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Unsafe Trench-R Neutral"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Auto Wait"
+                        "pathName": "Trench-L Follow Pass"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Unsafe Neutral Hub Right"
+                        "pathName": "Center Pass Left"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Copy of Center Pass Left"
                       }
                     }
                   ]
@@ -64,6 +64,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Unsafe Right Autos",
+  "folder": "Follow Pass Autos",
   "choreoAuto": false
 }

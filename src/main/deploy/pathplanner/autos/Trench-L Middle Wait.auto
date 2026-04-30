@@ -39,19 +39,7 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Unsafe Trench-R Neutral"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Auto Wait"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Unsafe Neutral Trench-R"
+                        "pathName": "Unsafe Trench-L Neutral"
                       }
                     }
                   ]
@@ -64,6 +52,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Unsafe Right Autos",
+  "folder": "Unsafe Autos",
   "choreoAuto": false
 }

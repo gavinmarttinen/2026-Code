@@ -25,33 +25,15 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "path",
                       "data": {
-                        "waitTime": 0.5
+                        "pathName": "Trench-L Middle Plant"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "Run Spindex 2.75 Sec"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Unsafe Trench-L Neutral"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Auto Wait"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Unsafe Neutral Hub Left"
+                        "name": "X Mode"
                       }
                     }
                   ]
@@ -64,6 +46,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Unsafe Left Autos",
+  "folder": "Middle Plant Autos",
   "choreoAuto": false
 }
