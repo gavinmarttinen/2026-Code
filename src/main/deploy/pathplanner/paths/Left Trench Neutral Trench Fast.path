@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.976866666666667,
-        "y": 7.350588888888889
+        "x": 3.986944444444444,
+        "y": 7.471522222222222
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.108755555555536,
-        "y": 7.925022222222224
+        "x": 8.128911111113073,
+        "y": 8.146733333330365
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.732040332147095,
-        "y": 3.9865836298932384
+        "x": 7.85681111111111,
+        "y": 4.7001333333333335
       },
       "prevControl": {
-        "x": 8.366940332147095,
-        "y": 4.147828074337683
+        "x": 8.493449684497518,
+        "y": 4.854370513483649
       },
       "nextControl": {
-        "x": 5.651155041264715,
-        "y": 3.4581048258596168
+        "x": 5.9017222222222205,
+        "y": 4.226477777777778
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 4.007099999999999,
-        "y": 7.340511111111112
+        "x": 3.6543777777797395,
+        "y": 7.481599999997031
       },
       "prevControl": {
-        "x": 8.149066666666645,
-        "y": 8.247511111111116
+        "x": 9.27777777777974,
+        "y": 7.89478888888592
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,6 +48,10 @@
     {
       "waypointRelativePos": 1.0,
       "rotationDegrees": -76.16724867773819
+    },
+    {
+      "waypointRelativePos": 1.7228070175438674,
+      "rotationDegrees": 180.0
     }
   ],
   "constraintZones": [],
@@ -75,10 +79,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 180.0
   },
   "reversed": false,
-  "folder": "1. Trench-L Neutral Disrupt",
+  "folder": "Disrupt Autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

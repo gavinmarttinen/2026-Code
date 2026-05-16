@@ -21,7 +21,7 @@
       },
       "prevControl": {
         "x": 7.9979,
-        "y": 3.2388555555555567
+        "y": 3.238855555555557
       },
       "nextControl": null,
       "isLocked": false,
@@ -76,7 +76,7 @@
     "rotation": 90.0
   },
   "reversed": false,
-  "folder": "7. Trench-R Follow Pass",
+  "folder": "Right Follow Pass Autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 90.0

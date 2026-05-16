@@ -32,7 +32,7 @@ import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.Constants.SpindexConstants;
 import frc.robot.generated.TunerConstants;
-import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.BlockerSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.SpindexSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -48,7 +48,7 @@ public class RobotContainer {
     private final CommandPS5Controller driverController = new CommandPS5Controller(0);
     private final CommandPS5Controller operatorController = new CommandPS5Controller(1);
 
-    private final ClimberSubsystem climberSubsystem = new ClimberSubsystem();
+    private final BlockerSubsystem blockerSubsystem = new BlockerSubsystem();
     private final SpindexSubsystem spindexSubsystem = new SpindexSubsystem();
     private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 
@@ -88,6 +88,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("Hub Turret Position", new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(0,false),turretSubsystem),Commands.run(()->hoodSubsystem.setHood(0.0), hoodSubsystem)));
         NamedCommands.registerCommand("Run Intake", Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed), intakeSubsystem));
         NamedCommands.registerCommand("Auto Aim", new ParallelCommandGroup(Commands.run(()->shooterSubsystem.setAutoAimShooterVelocity(), shooterSubsystem), Commands.run(()->hoodSubsystem.setAutoAimHoodPosition(), hoodSubsystem),Commands.run(()->turretSubsystem.setTurretPosition(autoAim.getHubRotation() - drivetrain.getState().Pose.getRotation().getDegrees(),true), turretSubsystem)));
+        NamedCommands.registerCommand("Auto Aim 2 Sec", new ParallelCommandGroup(Commands.run(()->shooterSubsystem.setAutoAimShooterVelocity(), shooterSubsystem), Commands.run(()->hoodSubsystem.setAutoAimHoodPosition(), hoodSubsystem),Commands.run(()->turretSubsystem.setTurretPosition(autoAim.getHubRotation() - drivetrain.getState().Pose.getRotation().getDegrees(),true), turretSubsystem)).withTimeout(2));
         NamedCommands.registerCommand("Run Spindex 7 Sec", Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed,SpindexConstants.kickerMotorSpeed), spindexSubsystem).withTimeout(7).andThen(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(), spindexSubsystem).withTimeout(0.1)));
         NamedCommands.registerCommand("Run Spindex 3.5 Sec", Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed,SpindexConstants.kickerMotorSpeed), spindexSubsystem).withTimeout(3.5).andThen(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(), spindexSubsystem).withTimeout(0.1)));
         NamedCommands.registerCommand("Run Spindex 5 Sec", Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed,SpindexConstants.kickerMotorSpeed), spindexSubsystem).withTimeout(5).andThen(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(), spindexSubsystem).withTimeout(0.1)));
@@ -96,8 +97,6 @@ public class RobotContainer {
         NamedCommands.registerCommand("Run Spindex 2 Sec", Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed,SpindexConstants.kickerMotorSpeed), spindexSubsystem).withTimeout(2).andThen(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(), spindexSubsystem).withTimeout(0.1)));
         NamedCommands.registerCommand("Run Spindex 2.75 Sec", Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed,SpindexConstants.kickerMotorSpeed), spindexSubsystem).withTimeout(2.75).andThen(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(), spindexSubsystem).withTimeout(0.1)));
         NamedCommands.registerCommand("Stop Spindex", Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(), spindexSubsystem).withTimeout(0.1));
-        NamedCommands.registerCommand("Climber Up", Commands.run(()-> climberSubsystem.climberUp(ClimberConstants.climberMotorSpeed), climberSubsystem).withTimeout(3));
-        NamedCommands.registerCommand("Climber Down", Commands.run(()-> climberSubsystem.autoClimberDown(-ClimberConstants.climberMotorSpeed), climberSubsystem));
         NamedCommands.registerCommand("Auto Wait", Commands.defer(()-> new WaitCommand(getAutoWaitTime()), Set.of()));
         NamedCommands.registerCommand("Hood Down", Commands.run(()-> hoodSubsystem.setPosition(HoodConstants.hoodMinPosition), hoodSubsystem));
         NamedCommands.registerCommand("X Mode", drivetrain.applyRequest(()->brake));
@@ -128,8 +127,7 @@ public class RobotContainer {
     //  turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(autoAim.getHubRotation() - drivetrain.getState().Pose.getRotation().getDegrees()), turretSubsystem));
     //  turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretSpeed(operatorController.getLeftX()), turretSubsystem));
     //  turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.stopTurretMotor(), turretSubsystem));
-        turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(-7,false), turretSubsystem));
-        climberSubsystem.setDefaultCommand(Commands.run(()->climberSubsystem.setClimberSpeed(0), climberSubsystem));
+        turretSubsystem.setDefaultCommand(Commands.run(()->turretSubsystem.setTurretPosition(95,false), turretSubsystem));
         spindexSubsystem.setDefaultCommand(Commands.run(()->spindexSubsystem.reverseKickerStopSpindex(),spindexSubsystem));
         intakeSubsystem.setDefaultCommand(Commands.run(()->intakeSubsystem.setIntakeSpeed(0), intakeSubsystem));
         hoodSubsystem.setDefaultCommand(Commands.run(()->hoodSubsystem.setPosition(0.41), hoodSubsystem));
@@ -151,19 +149,17 @@ public class RobotContainer {
 
 
         operatorController.L2().whileTrue(new ParallelCommandGroup(Commands.run(()->shooterSubsystem.setAutoAimShooterVelocity(), shooterSubsystem), Commands.run(()->hoodSubsystem.setAutoAimHoodPosition(), hoodSubsystem),Commands.run(()->turretSubsystem.setTurretPosition(autoAim.getHubRotation() - drivetrain.getState().Pose.getRotation().getDegrees(),true), turretSubsystem)));
-
-        operatorController.circle().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(81.5,false),turretSubsystem),Commands.run(()->hoodSubsystem.setPosition(0.48), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(51.24), shooterSubsystem))); //Right Trench
-        operatorController.square().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(97,false),turretSubsystem),Commands.run(()->hoodSubsystem.setPosition(0.48), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(51.24), shooterSubsystem))); //Left Trench
-        operatorController.povUp().whileTrue(Commands.run(()->climberSubsystem.setClimberSpeed(ClimberConstants.climberMotorSpeed), climberSubsystem));
-        operatorController.povDown().whileTrue(Commands.run(()->climberSubsystem.setClimberSpeed(-ClimberConstants.climberMotorSpeed), climberSubsystem));
+       // operatorController.circle().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(105,false),turretSubsystem),Commands.run(()->hoodSubsystem.setPosition(0.48), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(51.24), shooterSubsystem))); //Right Trench
+       // operatorController.square().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(105,false),turretSubsystem),Commands.run(()->hoodSubsystem.setPosition(0.48), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(51.24), shooterSubsystem))); //Left Trench
         operatorController.L1().whileTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(IntakeConstants.intakeMotorSpeed), intakeSubsystem));
         operatorController.R1().toggleOnTrue(Commands.run(()->intakeSubsystem.setIntakeSpeed(-IntakeConstants.intakeMotorSpeed), intakeSubsystem));
-        operatorController.povLeft().onTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity)));
-        operatorController.povRight().whileTrue(new ParallelCommandGroup(Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocityMax),shooterSubsystem),Commands.run(()->hoodSubsystem.setHood(1), hoodSubsystem), Commands.run(()->turretSubsystem.setTurretPosition(90,false), turretSubsystem))); //Far Pass
-        operatorController.triangle().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(-5,false),turretSubsystem),Commands.run(()->hoodSubsystem.setPosition(0.41), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocityHub), shooterSubsystem))); //Hub
+      //  operatorController.povLeft().onTrue(Commands.run(()-> shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocity)));
+      //  operatorController.povRight().whileTrue(new ParallelCommandGroup(Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocityMax),shooterSubsystem),Commands.run(()->hoodSubsystem.setHood(1), hoodSubsystem), Commands.run(()->turretSubsystem.setTurretPosition(90,false), turretSubsystem))); //Far Pass
+       // operatorController.triangle().whileTrue(new ParallelCommandGroup(Commands.run(()->turretSubsystem.setTurretPosition(-5,false),turretSubsystem),Commands.run(()->hoodSubsystem.setPosition(0.41), hoodSubsystem), Commands.run(()->shooterSubsystem.setShooterVelocity(ShooterConstants.shooterMotorVelocityHub), shooterSubsystem))); //Hub
         operatorController.R2().whileTrue(Commands.run(()->spindexSubsystem.setSpindexSpeed(SpindexConstants.spindexMotorSpeed, SpindexConstants.kickerMotorSpeed),spindexSubsystem));
-        operatorController.povLeft().whileTrue(Commands.run(()->climberSubsystem.teleopClimberDown(-ClimberConstants.climberMotorSpeed), climberSubsystem));
-      
+        operatorController.povUp().onTrue(Commands.run(()->blockerSubsystem.extendBlocker(), blockerSubsystem));
+        operatorController.povDown().onTrue(Commands.run(()->blockerSubsystem.retractBlocker(), blockerSubsystem));
+        operatorController.button(9).onTrue(Commands.run(()->blockerSubsystem.stopBlocker(), blockerSubsystem));
         drivetrain.registerTelemetry(logger::telemeterize);
     }
     

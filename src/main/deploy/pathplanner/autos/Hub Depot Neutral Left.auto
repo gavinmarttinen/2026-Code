@@ -11,12 +11,6 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Auto Aim"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "Run Intake"
                 }
               },
@@ -27,37 +21,44 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Copy of Copy of Hub Preload"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Run Spindex 5 Sec"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Climber Up"
+                        "pathName": "Hub Depot"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Copy of Left Front Tower Climb"
+                        "pathName": "In Depot"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Copy of Right Tower Climb"
+                        "pathName": "Out Depot"
                       }
                     },
                     {
-                      "type": "named",
+                      "type": "parallel",
                       "data": {
-                        "name": "Climber Down"
+                        "commands": [
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Auto Aim 2 Sec"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Run Spindex 4 Sec"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Depot Neutral-L"
                       }
                     }
                   ]
@@ -70,6 +71,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Climb Autos",
+  "folder": "Depot Autos",
   "choreoAuto": false
 }

@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 8.330466666666668,
-        "y": 4.659822222222221
+        "x": 8.259922222222222,
+        "y": 3.5815
       },
       "prevControl": {
-        "x": 8.55217777777778,
-        "y": 0.7697999999999974
+        "x": 8.330466666666668,
+        "y": 0.33645555555555573
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,7 +45,7 @@
     "rotation": 90.0
   },
   "reversed": false,
-  "folder": "9. Trench-R Ping Pong",
+  "folder": "Right Ping Pong Autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 90.0

@@ -3,32 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.007099999999999,
-        "y": 7.411055555555556
+        "x": 3.624144444444445,
+        "y": 7.461444444444444
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.028133333333335,
-        "y": 7.582377777777777
+        "x": 8.390933333333333,
+        "y": 7.955255555555556
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.411088888888889,
-        "y": 4.014844444444445
+        "x": 8.290155555555556,
+        "y": 4.035
       },
       "prevControl": {
-        "x": 8.249844444444447,
-        "y": 4.982311111111112
+        "x": 8.280077777777777,
+        "y": 5.083088888888888
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.1736842105263168,
+      "rotationDegrees": -178.90314532131913
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
@@ -42,13 +47,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -89.45948981286926
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": "8. Trench-L Middle Plant",
+  "folder": "Middle Wait Autos",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

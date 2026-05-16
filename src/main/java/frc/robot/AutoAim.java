@@ -145,4 +145,8 @@ public double getHubRotation(){
     // }
         return setpoint; 
 }
+
+public double getSwerveAngle(){
+    return drivetrain.getState().Pose.getRotation().getDegrees();
+}
 }

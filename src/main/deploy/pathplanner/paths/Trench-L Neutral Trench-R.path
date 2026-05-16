@@ -37,7 +37,7 @@
       },
       "prevControl": {
         "x": 7.574633333333333,
-        "y": -0.2682111111111113
+        "y": -0.2682111111111112
       },
       "nextControl": null,
       "isLocked": false,
@@ -101,7 +101,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": "3. Trench-R Neutral Cross",
+  "folder": "Right Cross Autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -131.0

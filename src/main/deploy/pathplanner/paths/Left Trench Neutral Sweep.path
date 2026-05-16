@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.966788888888889,
-        "y": 7.380822222222222
+        "x": 3.6644555555555556,
+        "y": 7.511833333333334
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.014877777777778,
-        "y": 7.441288888888888
+        "x": 4.712544444444445,
+        "y": 7.572299999999999
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.76611111111111,
-        "y": 4.548966666666667
+        "x": 7.67541111111111,
+        "y": 5.073011111111112
       },
       "prevControl": {
-        "x": 8.03821111111601,
-        "y": 7.935100000006042
+        "x": 7.977744444444443,
+        "y": 7.7637777777777774
       },
       "nextControl": {
-        "x": 7.691829379645798,
-        "y": 3.6245717862244415
+        "x": 7.571863294918105,
+        "y": 4.151435546993366
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 6.103277777782677,
-        "y": 4.942000000006042
+        "x": 6.073044444444445,
+        "y": 5.405577777777778
       },
       "prevControl": {
-        "x": 5.853453391900924,
-        "y": 3.861773430071919
+        "x": 5.861739997809871,
+        "y": 4.317160533792144
       },
       "nextControl": {
-        "x": 6.818800000009796,
-        "y": 8.035877777789858
+        "x": 6.607166666666667,
+        "y": 8.15681111111111
       },
       "isLocked": false,
       "linkedName": null
@@ -61,6 +61,10 @@
     }
   ],
   "rotationTargets": [
+    {
+      "waypointRelativePos": 0.3631578947368391,
+      "rotationDegrees": 180.0
+    },
     {
       "waypointRelativePos": 0.6611764705882378,
       "rotationDegrees": -68.93424545682214
@@ -117,10 +121,10 @@
     "rotation": 161.9165546169512
   },
   "reversed": false,
-  "folder": "1. Trench-L Neutral Disrupt",
+  "folder": "Disrupt Autos",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

@@ -25,7 +25,7 @@
       },
       "nextControl": {
         "x": 7.962241301506605,
-        "y": 0.27654258252278163
+        "y": 0.2765425825227821
       },
       "isLocked": false,
       "linkedName": null
@@ -37,7 +37,7 @@
       },
       "prevControl": {
         "x": 6.929655555555557,
-        "y": 0.34653333333333297
+        "y": 0.3465333333333329
       },
       "nextControl": null,
       "isLocked": false,
@@ -70,7 +70,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": "3. Trench-L Neutral Cross",
+  "folder": "Left Cross Autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

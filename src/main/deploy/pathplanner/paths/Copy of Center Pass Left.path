@@ -73,7 +73,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": "7. Trench-L Follow Pass",
+  "folder": "Left Follow Pass Autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 90.0

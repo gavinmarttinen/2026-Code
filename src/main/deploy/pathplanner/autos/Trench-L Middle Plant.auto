@@ -25,6 +25,18 @@
                 "data": {
                   "commands": [
                     {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "Run Spindex 2 Sec"
+                      }
+                    },
+                    {
                       "type": "path",
                       "data": {
                         "pathName": "Trench-L Middle Plant"

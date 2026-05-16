@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 8.360700000000001,
-        "y": 7.592455555555556
+        "x": 8.248481613285884,
+        "y": 7.590913404507711
       },
       "prevControl": {
-        "x": 7.360700000000001,
-        "y": 7.592455555555556
+        "x": 7.248481613285884,
+        "y": 7.590913404507711
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,7 +45,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": "6. Unsafe Left Autos",
+  "folder": "Middle Wait Autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

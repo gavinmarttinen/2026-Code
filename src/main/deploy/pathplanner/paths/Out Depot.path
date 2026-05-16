@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 1.7899888888888889,
-        "y": 4.871455555555555
+        "x": 0.9736888888954538,
+        "y": 7.330433333338709
       },
       "prevControl": {
-        "x": 2.021777777777778,
-        "y": 5.617211111111111
+        "x": 1.1752444444510095,
+        "y": 7.149033333338709
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,7 +31,19 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "Auto Aim 2 Sec",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "Auto Aim 2 Sec"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -42,10 +54,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -34.74318015830367
+    "rotation": -148.95450917313684
   },
   "reversed": false,
-  "folder": "5. Bump-L Depot Climb",
+  "folder": "Depot Autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

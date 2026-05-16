@@ -91,14 +91,14 @@ private double clampTurretRotation(double degrees) {
 
 private void zeroFromPotentiometer(){
 
-    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(198));
+    turretMotor.setPosition((potentiometer.get()/360 * 5.33)-degreesToRotations(210));
 }
 
 public void setTurretPosition(double degrees, boolean turnCorrection){
     double turnFeedforward = turnCorrection ? drivetrain.getState().Speeds.omegaRadiansPerSecond * 2.2 : 0;//SmartDashboard.getNumber("Turn Feedforward", 0);
     double min = TurretConstants.turretMinimumRotation;
     double max = TurretConstants.turretMaximumRotation;
-    if(degrees < 0 && degrees < -66.5){
+    if(degrees < 0 && degrees < -42){
         degrees += 360;
     }
     if(degrees < min){

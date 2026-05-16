@@ -3,38 +3,43 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.3264111111111108,
-        "y": 2.694655555555555
+        "x": 0.9736888888954538,
+        "y": 7.330433333338709
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.054311111111111,
-        "y": 2.8962111111111106
+        "x": 1.5582000000065652,
+        "y": 7.400977777783154
       },
       "isLocked": false,
-      "linkedName": "Right Tower"
+      "linkedName": "Depot Climb Left"
     },
     {
       "anchor": {
-        "x": 0.8527555555555557,
-        "y": 3.0272222222222216
+        "x": 8.0886,
+        "y": 7.542066666666667
       },
       "prevControl": {
-        "x": 1.1047000000000005,
-        "y": 2.876055555555555
+        "x": 7.855530599089535,
+        "y": 7.632502579661659
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.28596491228070137,
+      "rotationDegrees": -90.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 1.0,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -42,13 +47,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "4. Old Hub-R Preload Climb",
+  "folder": "Depot Autos",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -148.95450917313684
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

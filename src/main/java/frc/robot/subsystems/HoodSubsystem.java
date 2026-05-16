@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkParameters;
-
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
@@ -47,6 +46,7 @@ private final PIDController pidController = new PIDController(HoodConstants.kP, 
   SmartDashboard.putNumber("AutoAim hub rotation", autoAim.getHubRotation());
   SmartDashboard.putNumber("goal pose X", autoAim.goalPositionWithTOF().getX());
   SmartDashboard.putNumber("goal pose Y", autoAim.goalPositionWithTOF().getY());
+  SmartDashboard.putNumber("Auto Aim Setpoint", autoAim.getHubRotation()-autoAim.getSwerveAngle());
  // setPosition(SmartDashboard.getNumber("Hood Position", 0));
   //setHood(SmartDashboard.getNumber("Hood Position", 0));
  }

@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.330466666666668,
-        "y": 3.3093999999999992
+        "x": 8.290155555555556,
+        "y": 2.452788888888888
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.350622222222222,
-        "y": 4.115622222222221
+        "x": 8.31031111111111,
+        "y": 3.2590111111111097
       },
       "isLocked": false,
       "linkedName": "Right Center Ping"
     },
     {
       "anchor": {
-        "x": 8.330466666666668,
-        "y": 4.659822222222221
+        "x": 8.259922222222222,
+        "y": 3.5815
       },
       "prevControl": {
-        "x": 8.340544444444445,
-        "y": 4.0551555555555545
+        "x": 8.27,
+        "y": 2.9768333333333334
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,7 +45,7 @@
     "rotation": 90.0
   },
   "reversed": false,
-  "folder": "9. Trench-R Ping Pong",
+  "folder": "Right Ping Pong Autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 90.0

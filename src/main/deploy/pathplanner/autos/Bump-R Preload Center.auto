@@ -64,6 +64,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Bump Autos",
+  "folder": "Depot Autos",
   "choreoAuto": false
 }

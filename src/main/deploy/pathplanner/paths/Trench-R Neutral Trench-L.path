@@ -102,10 +102,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -131.0
+    "rotation": -158.19859051364818
   },
   "reversed": false,
-  "folder": "3. Trench-L Neutral Cross",
+  "folder": "Left Cross Autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

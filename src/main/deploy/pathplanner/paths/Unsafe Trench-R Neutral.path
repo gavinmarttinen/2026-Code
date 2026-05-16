@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.523366666666666,
+        "x": 3.513288888888889,
         "y": 0.6186333333333334
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.523366666666667,
+        "x": 4.51328888888889,
         "y": 0.6186333333333334
       },
       "isLocked": false,
@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 8.6328,
-        "y": 0.4372333333333336
+        "x": 8.313036773428234,
+        "y": 0.45756820877817406
       },
       "prevControl": {
-        "x": 7.6328,
-        "y": 0.4372333333333336
+        "x": 7.52761565836299,
+        "y": 0.7695848161328585
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "6. Unsafe Right Autos",
+  "folder": "Middle Wait Autos",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": -90.43976321987438
   },
   "useDefaultConstraints": true
 }
