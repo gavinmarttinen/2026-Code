@@ -25,23 +25,23 @@
       },
       "nextControl": {
         "x": 5.9017222222222205,
-        "y": 4.226477777777778
+        "y": 4.226477777777777
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.6543777777797395,
-        "y": 7.481599999997031
+        "x": 2.7272222222222218,
+        "y": 7.088566666666667
       },
       "prevControl": {
-        "x": 9.27777777777974,
-        "y": 7.89478888888592
+        "x": 8.703344444444445,
+        "y": 9.174666666666667
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Left Disrupt"
     }
   ],
   "rotationTargets": [
@@ -50,7 +50,7 @@
       "rotationDegrees": -76.16724867773819
     },
     {
-      "waypointRelativePos": 1.7228070175438674,
+      "waypointRelativePos": 1.8596491228070309,
       "rotationDegrees": 180.0
     }
   ],
@@ -79,7 +79,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -160.20112364547506
   },
   "reversed": false,
   "folder": "Disrupt Autos",

@@ -11,12 +11,6 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Auto Aim"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "Run Intake"
                 }
               },
@@ -25,21 +19,46 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "wait",
+                      "type": "path",
                       "data": {
-                        "waitTime": 0.5
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "Run Spindex 2.75 Sec"
+                        "pathName": "Bump-L Depot"
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Unsafe Trench-R Neutral"
+                        "pathName": "In Depot"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Out Depot"
+                      }
+                    },
+                    {
+                      "type": "parallel",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Auto Aim 2 Sec"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Run Spindex 4 Sec"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Depot Bump-L Neutral Center"
                       }
                     },
                     {
@@ -58,6 +77,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "Middle Plant Autos",
+  "folder": "Depot Autos",
   "choreoAuto": false
 }

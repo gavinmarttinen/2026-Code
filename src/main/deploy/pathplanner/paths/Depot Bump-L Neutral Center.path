@@ -1,0 +1,73 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.9736888888954538,
+        "y": 7.330433333338709
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.2357111111154064,
+        "y": 4.12570000000387
+      },
+      "isLocked": false,
+      "linkedName": "Depot Climb Left"
+    },
+    {
+      "anchor": {
+        "x": 7.473855555559854,
+        "y": 4.075311111114981
+      },
+      "prevControl": {
+        "x": 6.959888888893187,
+        "y": 6.967633333337203
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.31228070175438594,
+      "rotationDegrees": 0.0
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.28792912513842384,
+      "maxWaypointRelativePos": 0.7109634551495018,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 1.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 2.0,
+    "maxAcceleration": 2.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "Depot Autos",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -148.95450917313684
+  },
+  "useDefaultConstraints": false
+}

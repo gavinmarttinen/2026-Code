@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.6644555555555556,
-        "y": 7.511833333333334
+        "x": 2.7272222222222218,
+        "y": 7.088566666666667
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.712544444444445,
-        "y": 7.572299999999999
+        "x": 3.3218111111111113,
+        "y": 7.5723
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Left Disrupt"
     },
     {
       "anchor": {
@@ -20,12 +20,12 @@
         "y": 5.073011111111112
       },
       "prevControl": {
-        "x": 7.977744444444443,
-        "y": 7.7637777777777774
+        "x": 7.94751111111615,
+        "y": 8.368444444449484
       },
       "nextControl": {
-        "x": 7.571863294918105,
-        "y": 4.151435546993366
+        "x": 7.599098588019541,
+        "y": 4.148781664795595
       },
       "isLocked": false,
       "linkedName": null
@@ -61,6 +61,10 @@
     }
   ],
   "rotationTargets": [
+    {
+      "waypointRelativePos": 0.3315789473684053,
+      "rotationDegrees": 180.0
+    },
     {
       "waypointRelativePos": 0.3631578947368391,
       "rotationDegrees": 180.0
@@ -124,7 +128,7 @@
   "folder": "Disrupt Autos",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -160.20112364547506
   },
   "useDefaultConstraints": true
 }

@@ -100,6 +100,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("Auto Wait", Commands.defer(()-> new WaitCommand(getAutoWaitTime()), Set.of()));
         NamedCommands.registerCommand("Hood Down", Commands.run(()-> hoodSubsystem.setPosition(HoodConstants.hoodMinPosition), hoodSubsystem));
         NamedCommands.registerCommand("X Mode", drivetrain.applyRequest(()->brake));
+        NamedCommands.registerCommand("Extend Blocker", Commands.run(()->blockerSubsystem.extendBlocker(), blockerSubsystem));
 
         autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData("Auto Chooser", autoChooser);
